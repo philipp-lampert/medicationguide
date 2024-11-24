@@ -5,7 +5,19 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 
 	theme: {
-		extend: {}
+		container: {
+			center: true,
+			padding: '2rem'
+		},
+		extend: {
+			colors: {
+				'german-red': '#e2001a',
+				'german-gold': '#f8d100'
+			},
+			borderWidth: {
+				'3': '3px'
+			}
+		}
 	},
 
 	plugins: [forms]

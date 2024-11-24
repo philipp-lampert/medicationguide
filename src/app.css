@@ -1,3 +1,91 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@layer base {
+	html {
+		font-family: 'Retina', 'Tahoma', 'Arial', sans-serif;
+		@apply text-center text-lg font-light;
+	}
+
+	h1 {
+		@apply text-6xl tracking-tight;
+		font-family: 'Times New Roman', serif;
+	}
+	h2 {
+		@apply text-4xl;
+		font-family: 'Times New Roman', serif;
+	}
+
+	h3 {
+		@apply text-xl font-medium;
+	}
+
+	button {
+		@apply border-black flex flex-row items-center;
+	}
+
+	table {
+		@apply table-fixed caption-bottom text-sm;
+	}
+
+	caption {
+		@apply mt-3 text-sm italic;
+	}
+}
+
+@font-face {
+	font-family: 'Retina';
+	src: url('/fonts/RetinaTRIAL-Light-BF66a9ac646dc73.woff2') format('woff2');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Retina';
+	src: url('/fonts/RetinaTRIAL-LightItalic-BF66a9ac64b24c7.woff2') format('woff2');
+	font-weight: 300;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Retina';
+	src: url('/fonts/RetinaTRIAL-Book-BF66a9ac65147ba.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Retina';
+	src: url('/fonts/RetinaTRIAL-BookItalic-BF66a9ac659eba1.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Retina';
+	src: url('/fonts/RetinaTRIAL-Medium-BF66a9ac6350b07.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Retina';
+	src: url('/fonts/RetinaTRIAL-MediumItalic-BF66a9ac63ee868.woff2') format('woff2');
+	font-weight: 500;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Retina';
+	src: url('/fonts/RetinaTRIAL-Bold-BF66a9ac651b5e9.woff2') format('woff2');
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Retina';
+	src: url('/fonts/RetinaTRIAL-BoldItalic-BF66a9ac65def4e.woff2') format('woff2');
+	font-weight: 600;
+	font-style: italic;
+}
