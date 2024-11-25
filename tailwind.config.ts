@@ -16,7 +16,8 @@ export default {
 			},
 			borderWidth: {
 				'3': '3px'
-			}
+			},
+			display: ['group-hover']
 		}
 	},
 

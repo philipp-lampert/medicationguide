@@ -5,7 +5,11 @@
 @layer base {
 	html {
 		font-family: 'Retina', 'Tahoma', 'Arial', sans-serif;
-		@apply text-center text-lg font-light;
+		@apply text-center font-light;
+	}
+
+	body {
+		@apply min-h-full;
 	}
 
 	h1 {
@@ -15,22 +19,15 @@
 	h2 {
 		@apply text-4xl;
 		font-family: 'Times New Roman', serif;
+		letter-spacing: -0.01em;
 	}
 
 	h3 {
 		@apply text-xl font-medium;
 	}
 
-	button {
-		@apply border-black flex flex-row items-center;
-	}
-
-	table {
-		@apply table-fixed caption-bottom text-sm;
-	}
-
-	caption {
-		@apply mt-3 text-sm italic;
+	.button {
+		@apply border-black flex flex-row items-center rounded-2xl;
 	}
 }
 

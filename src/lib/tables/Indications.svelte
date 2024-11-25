@@ -1,9 +1,9 @@
 <script>
 	/** @type {{ [key: number]: string }} */
 	const statusNames = {
-		2: 'Effective',
-		1: 'Intermediary',
-		0: 'Not recommended'
+		2: 'High',
+		1: 'Moderate',
+		0: 'Low'
 	};
 
 	const indications = [
@@ -47,19 +47,16 @@
 
 	/** @type {{ [key: number]: string }} */
 	const statusColors = {
-		2: 'bg-green-200 text-green-800',
-		1: 'bg-yellow-200 text-yellow-800',
-		0: 'bg-red-200 text-red-800'
+		2: 'bg-green-100 text-green-800',
+		1: 'bg-yellow-100 text-yellow-800',
+		0: 'bg-red-100 text-red-800'
 	};
 </script>
 
-<table class="w-4/5 border-collapse overflow-hidden rounded-lg bg-white">
-	<caption class="invisible"
-		>Effectiveness of over-the-counter pain relievers for various symptoms</caption
-	>
+<table class="w-3/4 table-fixed border-collapse overflow-hidden rounded-lg bg-white">
 	<thead>
 		<tr class="bg-gray-100">
-			<th></th>
+			<th class="w-1/4"></th>
 			<th class="px-4 py-3 font-medium">Acetaminophen</th>
 			<th class="px-4 py-3 font-medium">Ibuprofen</th>
 			<th class="px-4 py-3 font-medium">Naproxen</th>
@@ -69,11 +66,13 @@
 	<tbody>
 		{#each indications as row, i}
 			<tr class="{i % 2 === 0 ? 'bg-white' : 'bg-gray-50'} transition-colors hover:bg-gray-100">
-				<td class="px-4 py-3 text-left font-medium">{row.condition}</td>
+				<td class="px-4 py-3 text-left">{row.condition}</td>
 				{#each row.drugs as drugStatus}
 					<td class="px-4 py-3">
 						<span
-							class="rounded-md px-2 py-1 text-xs font-medium {statusColors[drugStatus.status]}"
+							class="rounded-md px-2 pb-1 pt-1.5 text-sm font-medium {statusColors[
+								drugStatus.status
+							]}"
 						>
 							{statusNames[drugStatus.status]}
 						</span>
