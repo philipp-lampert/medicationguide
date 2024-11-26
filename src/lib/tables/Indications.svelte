@@ -53,7 +53,7 @@
 	};
 </script>
 
-<table class="w-3/4 table-fixed border-collapse overflow-hidden rounded-lg bg-white">
+<table class="w-3/4 table-fixed overflow-hidden rounded-lg bg-white">
 	<thead>
 		<tr class="bg-gray-100">
 			<th class="w-1/4"></th>

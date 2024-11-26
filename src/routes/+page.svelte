@@ -22,7 +22,7 @@
 		</p>
 		<a
 			href="/interactive"
-			class="button group flex items-center gap-2 border-3 bg-white px-9 py-2.5 font-medium transition-all duration-500 hover:gap-3"
+			class="flex items-center gap-2 rounded-2xl border-3 border-black bg-white px-9 py-3 font-medium transition-all duration-500 hover:gap-3 hover:drop-shadow-lg"
 		>
 			Start Guide
 			<img

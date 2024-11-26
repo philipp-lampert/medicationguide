@@ -17,17 +17,12 @@
 		font-family: 'Times New Roman', serif;
 	}
 	h2 {
-		@apply text-4xl;
+		@apply tracking-medium-tight text-4xl;
 		font-family: 'Times New Roman', serif;
-		letter-spacing: -0.01em;
 	}
 
 	h3 {
 		@apply text-xl font-medium;
-	}
-
-	.button {
-		@apply border-black flex flex-row items-center rounded-2xl;
 	}
 }
 
@@ -40,14 +35,14 @@
 
 @font-face {
 	font-family: 'Retina';
-	src: url('/fonts/RetinaTRIAL-LightItalic-BF66a9ac64b24c7.woff2') format('woff2');
+	src: url('/fonts/retina-light-italic.woff2') format('woff2');
 	font-weight: 300;
 	font-style: italic;
 }
 
 @font-face {
 	font-family: 'Retina';
-	src: url('/fonts/RetinaTRIAL-Book-BF66a9ac65147ba.woff2') format('woff2');
+	src: url('/fonts/retina-book.woff2') format('woff2');
 	font-weight: 400;
 	font-style: normal;
 }
@@ -75,7 +70,7 @@
 
 @font-face {
 	font-family: 'Retina';
-	src: url('/fonts/RetinaTRIAL-Bold-BF66a9ac651b5e9.woff2') format('woff2');
+	src: url('/fonts/retina-bold.woff2') format('woff2');
 	font-weight: 600;
 	font-style: normal;
 }

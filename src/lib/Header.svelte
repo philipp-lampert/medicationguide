@@ -1,4 +1,6 @@
 <script>
+	import SlidingBottomBorder from './animations/SlidingBottomBorder.svelte';
+
 	let yScroll = $state(0);
 	let threshold = 60;
 	let buffer = 50;
@@ -15,7 +17,7 @@
 
 <svelte:window bind:scrollY={yScroll} />
 
-<header class="sticky top-0 z-50 bg-white">
+<header class="sticky top-0 z-40 bg-white">
 	<div class="container">
 		<div
 			class="flex flex-row items-center border-b-2 border-black transition-all duration-500 {isShrunk
@@ -51,12 +53,13 @@
 					</span>
 					<a
 						href="/interactive"
-						class="button top-1/2 block flex translate-y-1/2 flex-row gap-2 text-sm font-medium transition-all duration-200 {isShrunk
+						class="group top-1/2 block flex flex translate-y-1/2 flex-row flex-row items-center gap-2 text-sm font-medium transition-all duration-200 {isShrunk
 							? 'opacity-100 delay-200'
 							: 'opacity-0'}"
 					>
 						Start Guide
 						<img src="/angle-double-right.svg" alt="Start Guide" class="h-3" />
+						<SlidingBottomBorder />
 					</a>
 				</div>
 			</div>
