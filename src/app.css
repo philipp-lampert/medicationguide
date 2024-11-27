@@ -12,16 +12,16 @@
 		@apply min-h-full;
 	}
 
-	h1 {
+	.h1 {
 		@apply text-6xl tracking-tight;
 		font-family: 'Times New Roman', serif;
 	}
-	h2 {
+	.h2 {
 		@apply tracking-medium-tight text-4xl;
 		font-family: 'Times New Roman', serif;
 	}
 
-	h3 {
+	.h3 {
 		@apply text-xl font-medium;
 	}
 }
