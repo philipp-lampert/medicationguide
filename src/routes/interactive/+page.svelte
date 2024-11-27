@@ -4,114 +4,167 @@
 	import { questions } from './questions';
 	import { capitalizeFirstLetter } from '$lib/utils';
 
-	let currentIndex = $state(0);
-	let direction = $state(1); // 1 for forward, -1 for backward
-	let selectedAnswers: string[] = $state([]); // Tracks answers for the current question
+	const medications = ['ibuprofen', 'acetaminophen', 'naproxen', 'aspirin'];
 
-	let positiveReasons = $state(new Set());
-	let moderateReasons = $state(new Set());
-	let negativeReasons = $state(new Set());
+	let currentIndex: number = $state(0);
+	let direction: number = $state(1); // 1 for forward, -1 for backward
 
-	interface MedicationScores {
-		ibuprofen: { score: number; reasons: Set<string> };
-		acetaminophen: { score: number; reasons: Set<string> };
-		naproxen: { score: number; reasons: Set<string> };
-		aspirin: { score: number; reasons: Set<string> };
-	}
+	let selectedAnswers = $state(
+		[] as {
+			answers: {
+				text: string;
+				image: string;
+				medications: { [key in keyof typeof medicationScores]: { value: number; reason: string } };
+			}[];
+		}[]
+	);
+
+	let numSelectedAnswers = $derived(
+		selectedAnswers.reduce((total, question) => total + (question.answers?.length || 0), 0)
+	);
 
 	let medicationScores = $state({
-		ibuprofen: { score: 0, reasons: new Set<{ reason: string; type: string }>() },
-		acetaminophen: { score: 0, reasons: new Set<{ reason: string; type: string }>() },
-		naproxen: { score: 0, reasons: new Set<{ reason: string; type: string }>() },
-		aspirin: { score: 0, reasons: new Set<{ reason: string; type: string }>() }
+		ibuprofen: 0,
+		acetaminophen: 0,
+		naproxen: 0,
+		aspirin: 0
 	});
 
-	function handleAnswerSelection(answer: {
-		text: string;
-		image: string;
-		medications: { [key in keyof MedicationScores]: { value: number; reason: string } };
-	}) {
-		if (questions[currentIndex].type === 'multiple-choice') {
-			// Toggle selection for multiple-choice questions
-			if (selectedAnswers.includes(answer.text)) {
-				selectedAnswers = selectedAnswers.filter((a) => a !== answer.text);
-				// Subtract scores and reasons
-				for (const [medication, { value, reason }] of Object.entries(answer.medications)) {
-					medicationScores[medication as keyof MedicationScores].score -= value;
-					// Check if reason is not empty before deleting
-					if (reason && reason.trim() !== '') {
-						medicationScores[medication as keyof MedicationScores].reasons.delete({
-							reason,
-							type: value === 1 ? 'positive' : value === 0.5 ? 'moderate' : 'negative'
-						});
-					}
+	$effect(() => {
+		const newTotals: { [key: string]: number } = medications.reduce(
+			(acc, name) => ({ ...acc, [name]: 0 }),
+			{}
+		);
+		(
+			selectedAnswers as {
+				answers: {
+					text: string;
+					image: string;
+					medications: {
+						[key in keyof typeof medicationScores]: { value: number; reason: string };
+					};
+				}[];
+			}[]
+		).forEach((question) => {
+			question.answers.forEach(
+				(answer: {
+					text: string;
+					image: string;
+					medications: {
+						[key in keyof typeof medicationScores]: { value: number; reason: string };
+					};
+				}) => {
+					medications.forEach((medication) => {
+						if (answer.medications[medication as keyof typeof medicationScores]) {
+							newTotals[medication] +=
+								answer.medications[medication as keyof typeof medicationScores].value;
+						}
+					});
 				}
-			} else {
-				selectedAnswers = [...selectedAnswers, answer.text];
-				// Add scores and reasons
-				for (const [medication, { value, reason }] of Object.entries(answer.medications)) {
-					medicationScores[medication as keyof MedicationScores].score += value;
-					// Check if reason is not empty before adding
-					if (reason && reason.trim() !== '') {
-						if (value === 1) {
-							medicationScores[medication as keyof MedicationScores].reasons.add({
-								reason,
-								type: 'positive'
-							});
-						} else if (value === 0.5) {
-							medicationScores[medication as keyof MedicationScores].reasons.add({
-								reason,
-								type: 'moderate'
-							});
-						} else {
-							medicationScores[medication as keyof MedicationScores].reasons.add({
-								reason,
-								type: 'negative'
-							});
+			);
+		});
+
+		medicationScores = {
+			ibuprofen: newTotals.ibuprofen,
+			acetaminophen: newTotals.acetaminophen,
+			naproxen: newTotals.naproxen,
+			aspirin: newTotals.aspirin
+		};
+	});
+
+	type MedicationReasons = {
+		[key in keyof typeof medicationScores]: {
+			positive: string[];
+			neutral: string[];
+			negative: string[];
+		};
+	};
+
+	let medicationReasons: MedicationReasons = $state({
+		ibuprofen: { positive: [], neutral: [], negative: [] },
+		acetaminophen: { positive: [], neutral: [], negative: [] },
+		naproxen: { positive: [], neutral: [], negative: [] },
+		aspirin: { positive: [], neutral: [], negative: [] }
+	});
+
+	$effect(() => {
+		{
+			const newReasons: {
+				[key in keyof typeof medicationScores]: {
+					positive: string[];
+					neutral: string[];
+					negative: string[];
+				};
+			} = {
+				aspirin: { positive: [], neutral: [], negative: [] },
+				ibuprofen: { positive: [], neutral: [], negative: [] },
+				naproxen: { positive: [], neutral: [], negative: [] },
+				acetaminophen: { positive: [], neutral: [], negative: [] }
+			};
+
+			// Loop through selected answers
+			selectedAnswers.forEach((question) => {
+				question.answers.forEach((answer) => {
+					// Loop through each medication
+					for (const medication of Object.keys(newReasons)) {
+						const medicationData = answer.medications[medication as keyof typeof medicationScores];
+
+						// If medication data exists
+						if (medicationData && medicationData.reason !== '') {
+							const reason = medicationData.reason;
+							const value = medicationData.value;
+
+							// Categorize based on value
+							if (value === 1) {
+								newReasons[medication as keyof typeof medicationScores].positive.push(reason);
+							} else if (value === 0.5) {
+								newReasons[medication as keyof typeof medicationScores].neutral.push(reason);
+							} else if (value === 0) {
+								newReasons[medication as keyof typeof medicationScores].negative.push(reason);
+							}
 						}
 					}
-				}
-			}
-		} else {
-			// Single-choice
-			selectedAnswers = [answer.text];
-			// Add scores and reasons for single-choice questions
-			for (const [medication, { value, reason }] of Object.entries(answer.medications)) {
-				medicationScores[medication as keyof MedicationScores].score += value;
-				// Check if reason is not empty before adding
-				if (reason && reason.trim() !== '') {
-					if (value === 1) {
-						medicationScores[medication as keyof MedicationScores].reasons.add({
-							reason,
-							type: 'positive'
-						});
-					} else if (value === 0.5) {
-						medicationScores[medication as keyof MedicationScores].reasons.add({
-							reason,
-							type: 'moderate'
-						});
-					} else {
-						medicationScores[medication as keyof MedicationScores].reasons.add({
-							reason,
-							type: 'negative'
-						});
-					}
-				}
-			}
-			// Move to the next question if applicable
-			if (currentIndex < questions.length - 1) {
-				direction = 1;
-				currentIndex++;
-				selectedAnswers = []; // Reset for the next question
-			}
+				});
+			});
+
+			// Update the medicationReasons store
+			medicationReasons = newReasons;
 		}
+	});
+
+	function answerSelection(answer: {
+		text: string;
+		image: string;
+		medications: { [key in keyof typeof medicationScores]: { value: number; reason: string } };
+	}) {
+		if (!selectedAnswers[currentIndex]) {
+			// Initialize the index if it doesn't exist
+			selectedAnswers[currentIndex] = { answers: [] };
+		}
+
+		const existingAnswerIndex = selectedAnswers[currentIndex].answers.findIndex(
+			(existingAnswer) => JSON.stringify(existingAnswer) === JSON.stringify(answer)
+		);
+
+		if (existingAnswerIndex > -1) {
+			// If the answer exists, remove it (deselection)
+			selectedAnswers[currentIndex].answers.splice(existingAnswerIndex, 1);
+		} else {
+			// If the answer does not exist, add it to the array
+			selectedAnswers[currentIndex].answers.push(answer);
+		}
+		if (questions[currentIndex].type === 'boolean') {
+			currentIndex++;
+		}
+		console.log($state.snapshot(selectedAnswers));
+		console.log($state.snapshot(numSelectedAnswers));
+		console.log($state.snapshot(medicationScores));
+		console.log($state.snapshot(medicationReasons));
 	}
 
-	function calculateFitPercentages() {
-		const totalPossibleScore = questions.length; // One score per question
-
+	function calculatePercentages() {
 		const totalScores = Object.entries(medicationScores).reduce(
-			(scores, [medication, { score }]) => {
+			(scores, [medication, score]) => {
 				scores[medication] = score;
 				return scores;
 			},
@@ -120,76 +173,26 @@
 
 		return Object.entries(totalScores).reduce(
 			(percentages, [medication, totalScore]) => {
-				percentages[medication] = (totalScore / totalPossibleScore) * 100;
+				percentages[medication] = (totalScore / numSelectedAnswers) * 100;
 				return percentages;
 			},
 			{} as { [key: string]: number }
 		);
 	}
 
-	$effect(() => {
-		questions.forEach((question) => {
-			question.answers.forEach((answer) => {
-				if (answer.medications) {
-					Object.entries(answer.medications).forEach(([medication, { value, reason }]) => {
-						// Ensure reason is not empty before adding it
-						if (reason && reason.trim() !== '') {
-							if (value === 1) {
-								positiveReasons.add(reason);
-							} else if (value === 0) {
-								moderateReasons.add(reason);
-							} else {
-								negativeReasons.add(reason);
-							}
-						}
-					});
-				}
-			});
-		});
-	});
-
 	function nextQuestion(event: Event) {
 		event.preventDefault();
-		if (selectedAnswers.length > 0 && currentIndex < questions.length - 1) {
+		if (selectedAnswers[currentIndex].answers.length > 0 && currentIndex < questions.length - 1) {
 			direction = 1;
 			currentIndex++;
-			selectedAnswers = []; // Reset for the next question
 		} else {
 			// User reached the end of the questions
 			currentIndex++; // Increment to trigger the results section
 		}
 	}
 
-	function skipQuestion() {
-		// Treat skipping as a neutral answer for all medications
-		for (const medication in medicationScores) {
-			medicationScores[medication as keyof MedicationScores].score += 1;
-			medicationScores[medication as keyof MedicationScores].reasons.add({
-				reason: 'Question skipped',
-				type: 'neutral'
-			});
-		}
-		// Proceed to the next question
-		if (currentIndex < questions.length - 1) {
-			direction = 1;
-			currentIndex++;
-			selectedAnswers = []; // Reset selections
-		} else {
-			// If the last question, show results
-			currentIndex++;
-		}
-	}
-
-	function handleNoneOfTheAbove() {
-		// Assign a neutral score (1) to all medications
-		for (const medication in medicationScores) {
-			medicationScores[medication as keyof MedicationScores].score += 1;
-			medicationScores[medication as keyof MedicationScores].reasons.add({
-				reason: 'No preference selected',
-				type: 'neutral'
-			});
-		}
-		// Move to the next question
+	function noneOfTheAbove() {
+		selectedAnswers[currentIndex] = { answers: [] };
 		nextQuestion(new Event('submit'));
 	}
 
@@ -197,7 +200,6 @@
 		if (currentIndex > 0) {
 			direction = -1;
 			currentIndex--;
-			selectedAnswers = []; // Reset for the previous question
 		}
 	}
 </script>
@@ -229,9 +231,11 @@
 					{#each question.answers as answer}
 						<button
 							type="button"
-							onclick={() => handleAnswerSelection(answer)}
-							class=" hover flex min-h-24 min-w-24 flex-col items-center justify-center gap-2.5 rounded-2xl border-3 border-black bg-white px-8 py-6 text-lg font-medium text-black drop-shadow-lg transition-all duration-100"
-							class:selected={selectedAnswers.includes(answer.text)}
+							onclick={() => answerSelection(answer)}
+							class="flex min-h-24 min-w-24 flex-col items-center justify-center gap-2.5 rounded-2xl border-3 border-white bg-gray-200 px-8 py-6 text-lg font-medium text-black drop-shadow-lg transition-all duration-300 hover:border-black hover:bg-white hover:drop-shadow-2xl"
+							class:selected={selectedAnswers[currentIndex]?.answers.some(
+								(a) => a.text === answer.text
+							)}
 						>
 							{answer.text}
 							{#if answer.image}
@@ -263,31 +267,20 @@
 							<SlidingBottomBorder />
 						</a>
 					{/if}
-					{#if selectedAnswers.length === 0}
-						{#if questions[currentIndex].type === 'multiple-choice'}
-							<button
-								type="button"
-								onclick={handleNoneOfTheAbove}
-								class="group relative flex flex-row items-center gap-2.5 overflow-hidden bg-white px-0.5 py-0.5 font-medium text-green-800"
-							>
-								None of the above
-								<img src="/none.svg" alt="None of the above" class="h-3.5" />
-								<SlidingBottomBorder />
-							</button>
-						{:else}
-							<button
-								type="button"
-								onclick={skipQuestion}
-								class="group relative flex flex-row items-center gap-2 overflow-hidden bg-white px-0.5 py-0.5 font-medium"
-								disabled={selectedAnswers.length > 0}
-							>
-								Skip
-								<img src="/angle-double-right.svg" alt="Skip" class="h-3.5" />
-								<SlidingBottomBorder />
-							</button>
-						{/if}
+
+					{#if questions[currentIndex].type === 'multiple-choice'}
+						<button
+							type="button"
+							onclick={noneOfTheAbove}
+							class="group relative flex flex-row items-center gap-2.5 overflow-hidden bg-white px-0.5 py-0.5 font-medium text-green-800"
+						>
+							None of the above
+							<img src="/none.svg" alt="None of the above" class="h-3.5" />
+							<SlidingBottomBorder />
+						</button>
 					{/if}
-					{#if selectedAnswers.length > 0}
+
+					{#if selectedAnswers[currentIndex]?.answers.length > 0}
 						<button
 							type="button"
 							onclick={nextQuestion}
@@ -311,7 +304,7 @@
 		<div class="flex flex-col items-center gap-12" in:fly={{ y: 750 * direction, duration: 1000 }}>
 			<h1 class="h1 italic">Results</h1>
 			<div class="grid grid-cols-4 gap-4">
-				{#each Object.entries(calculateFitPercentages()).sort(([, percentageA], [, percentageB]) => percentageB - percentageA) as [medication, percentage]}
+				{#each Object.entries(calculatePercentages()).sort(([, percentageA], [, percentageB]) => percentageB - percentageA) as [medication, percentage]}
 					<div class="rounded-2xl border-2 border-black bg-white p-5 drop-shadow-xl">
 						<h2 class="h3">{capitalizeFirstLetter(medication)}</h2>
 						<p class="mb-4 font-normal">
@@ -329,33 +322,33 @@
 							</div>
 
 							<!-- Positive Reasons -->
-							{#if [...medicationScores[medication as keyof MedicationScores].reasons].some((r) => r.type === 'positive')}
+							{#if medicationReasons[medication as keyof MedicationReasons].positive.length > 0}
 								<div class="rounded-lg bg-green-100 px-4 py-2 text-left text-sm font-normal">
 									<ul>
-										{#each [...medicationScores[medication as keyof MedicationScores].reasons].filter((r) => r.type === 'positive') as reason}
-											<li>- {reason.reason}</li>
+										{#each medicationReasons[medication as keyof MedicationReasons].positive as reason}
+											<li>- {reason}</li>
 										{/each}
 									</ul>
 								</div>
 							{/if}
 
 							<!-- Moderate Reasons -->
-							{#if [...medicationScores[medication as keyof MedicationScores].reasons].some((r) => r.type === 'moderate')}
+							{#if medicationReasons[medication as keyof MedicationReasons].neutral.length > 0}
 								<div class="rounded-lg bg-yellow-100 px-4 py-2 text-left text-sm font-normal">
 									<ul>
-										{#each [...medicationScores[medication as keyof MedicationScores].reasons].filter((r) => r.type === 'moderate') as reason}
-											<li>- {reason.reason}</li>
+										{#each medicationReasons[medication as keyof MedicationReasons].neutral as reason}
+											<li>- {reason}</li>
 										{/each}
 									</ul>
 								</div>
 							{/if}
 
 							<!-- Negative Reasons -->
-							{#if [...medicationScores[medication as keyof MedicationScores].reasons].some((r) => r.type === 'negative')}
+							{#if medicationReasons[medication as keyof MedicationReasons].negative.length > 0}
 								<div class="rounded-lg bg-red-100 px-4 py-2 text-left text-sm font-normal">
 									<ul>
-										{#each [...medicationScores[medication as keyof MedicationScores].reasons].filter((r) => r.type === 'negative') as reason}
-											<li>- {reason.reason}</li>
+										{#each medicationReasons[medication as keyof MedicationReasons].negative as reason}
+											<li>- {reason}</li>
 										{/each}
 									</ul>
 								</div>
@@ -364,7 +357,6 @@
 					</div>
 				{/each}
 			</div>
-
 			<div class="flex flex-row gap-6">
 				<a
 					data-sveltekit-reload
@@ -379,7 +371,7 @@
 					href="/"
 					class="group relative flex flex-row items-center gap-2 overflow-hidden bg-white px-0.5 py-0.5 font-medium"
 				>
-					Home
+					Exit
 					<img src="/angle-double-right.svg" alt="Skip" class="h-3.5" />
 					<SlidingBottomBorder />
 				</a>
@@ -390,11 +382,7 @@
 
 <style lang="postcss">
 	.selected {
-		@apply border-4 border-red-800 bg-red-50 shadow-inner-strong drop-shadow-none;
-	}
-
-	.hover {
-		@apply transition-all duration-100 hover:border-red-800 hover:bg-red-50;
+		@apply border-4 border-black bg-white shadow-inner-strong drop-shadow-none;
 	}
 
 	/* Define the animation for the expanding and contracting effect */

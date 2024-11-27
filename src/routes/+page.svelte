@@ -22,14 +22,18 @@
 		</p>
 		<a
 			href="/interactive"
-			class="flex items-center gap-2 rounded-2xl border-3 border-black bg-white px-9 py-3 font-medium transition-all duration-500 hover:gap-3 hover:drop-shadow-lg"
+			class="group relative inline-flex items-center overflow-hidden rounded-2xl border-3 border-black bg-white px-12 py-3 font-medium drop-shadow-lg transition-all duration-500 hover:drop-shadow-xl"
 		>
-			Start Guide
-			<img
-				class="h-4 transition-all duration-500"
-				src="/angle-double-right.svg"
-				alt="Start Guide"
-			/>
+			<span
+				class="ease absolute right-0 flex h-10 w-10 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-2"
+			>
+				<img
+					class="h-4 transition-all duration-500"
+					src="/angle-double-right.svg"
+					alt="Start Guide"
+				/>
+			</span>
+			<span class="relative transform duration-500 group-hover:-translate-x-3">Start Guide</span>
 		</a>
 	</div>
 </section>
@@ -48,7 +52,7 @@
 			</p>
 		</div>
 		<div class="flex flex-col items-center space-y-6">
-			<h3>Effectiveness of pain relievers for specific symptoms</h3>
+			<h3 class="h3">Effectiveness of pain relievers for specific symptoms</h3>
 			<Indications />
 		</div>
 		<div class="flex flex-col items-center space-y-6">
