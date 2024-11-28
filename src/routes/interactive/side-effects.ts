@@ -2,22 +2,22 @@
 export const sideEffects = {
 	ibuprofen: {
 		positive: [],
-		neutral: ['May cause mild stomach discomfort'],
-		negative: ['Can increase risk of heart problems']
+		neutral: [],
+		negative: []
 	},
 	acetaminophen: {
-		positive: ['Least side effects'],
-		neutral: ['Liver damage if overdosed'],
+		positive: ['Lowest risk of side effects'],
+		neutral: [],
 		negative: []
 	},
 	naproxen: {
-		positive: [],
-		neutral: ['May cause mild digestive issues'],
-		negative: ['Increased risk of heart and stroke']
+		positive: ['Longer lasting pain relief'],
+		neutral: [],
+		negative: []
 	},
 	aspirin: {
 		positive: [],
-		neutral: ['Can cause mild stomach irritation'],
-		negative: ['Risk of bleeding']
+		neutral: ['More frequent side effects'],
+		negative: []
 	}
 };

@@ -15,7 +15,7 @@ export default {
 				times: ['Times New Roman, serif']
 			},
 			letterSpacing: {
-				'medium-tight': '-0.0075em'
+				'medium-tight': '-0.01em'
 			},
 			colors: {
 				'german-red': '#e2001a',

@@ -15,6 +15,9 @@ import kidney from '$lib/assets/icons/answers/kidney.svg';
 import heart from '$lib/assets/icons/answers/heart.svg';
 import liver from '$lib/assets/icons/answers/liver.svg';
 
+import stomach from '$lib/assets/icons/answers/stomach.svg';
+import stomachPain from '$lib/assets/icons/answers/stomach-pain.svg';
+
 import pills from '$lib/assets/icons/answers/pills.svg';
 import noPills from '$lib/assets/icons/answers/no-pills.svg';
 
@@ -23,8 +26,8 @@ import adult from '$lib/assets/icons/answers/adult.svg';
 
 // 1: positive, 0.5: neutral, 0: negative
 export const questions = [
+	// How strong is your pain?
 	{
-		// How strong is your pain?
 		text: [
 			{ content: 'How strong is your ', italic: false },
 			{ content: 'pain', italic: true },
@@ -47,7 +50,7 @@ export const questions = [
 				image: moderate,
 				medications: {
 					ibuprofen: { value: 1, reason: '' },
-					acetaminophen: { value: 1, reason: '' },
+					acetaminophen: { value: 0.5, reason: 'Slightly weaker pain relief' },
 					naproxen: { value: 1, reason: '' },
 					aspirin: { value: 1, reason: '' }
 				}
@@ -57,15 +60,15 @@ export const questions = [
 				image: severe,
 				medications: {
 					ibuprofen: { value: 0.5, reason: 'See doctor for severe pain' },
-					acetaminophen: { value: 0.5, reason: 'See doctor for severe pain' },
+					acetaminophen: { value: 0, reason: 'See doctor for severe pain' },
 					naproxen: { value: 0.5, reason: 'See doctor for severe pain' },
 					aspirin: { value: 0.5, reason: 'See doctor for severe pain' }
 				}
 			}
 		]
 	},
+	// Do you have a fever?
 	{
-		// Do you have a fever?
 		text: [
 			{ content: 'Do you have a ', italic: false },
 			{ content: 'fever', italic: true },
@@ -87,16 +90,16 @@ export const questions = [
 				text: 'Yes',
 				image: temperatureHigh,
 				medications: {
-					ibuprofen: { value: 1, reason: 'Reduces fever' },
-					acetaminophen: { value: 1, reason: 'Reduces fever' },
-					naproxen: { value: 1, reason: 'Does not reduce fever' },
-					aspirin: { value: 0.5, reason: 'Does not reduce fever' }
+					ibuprofen: { value: 1, reason: 'Reduces fever effectively' },
+					acetaminophen: { value: 1, reason: 'Reduces fever effectively' },
+					naproxen: { value: 0.5, reason: '' },
+					aspirin: { value: 0.5, reason: '' }
 				}
 			}
 		]
 	},
+	// Do you have local swelling or inflammation?
 	{
-		// Do you have local swelling or inflammation?
 		text: [
 			{ content: 'Do you have ', italic: false },
 			{ content: 'local swelling ', italic: true },
@@ -129,11 +132,11 @@ export const questions = [
 		]
 	},
 	{
-		// Are you pregnant for more than 6 months?
+		// Are you pregnant for over 6 months?
 		text: [
 			{ content: 'Are you ', italic: false },
 			{ content: 'pregnant ', italic: true },
-			{ content: 'for more than ', italic: false },
+			{ content: 'for over ', italic: false },
 			{ content: '6 months', italic: true },
 			{ content: '?', italic: false }
 		],
@@ -224,10 +227,43 @@ export const questions = [
 				text: 'Yes',
 				image: pills,
 				medications: {
-					ibuprofen: { value: 1, reason: '' },
+					ibuprofen: { value: 0.5, reason: 'May increase bleeding risk' },
 					acetaminophen: { value: 1, reason: '' },
-					naproxen: { value: 1, reason: '' },
-					aspirin: { value: 0, reason: 'Increased bleeding risk' }
+					naproxen: { value: 0.5, reason: 'May increase bleeding risk' },
+					aspirin: { value: 0, reason: 'Increases bleeding risk' }
+				}
+			}
+		]
+	},
+	{
+		// Do you have heartburn or stomach problems?
+		text: [
+			{ content: 'Do you have ', italic: false },
+			{ content: 'heartburn ', italic: true },
+			{ content: 'or ', italic: false },
+			{ content: 'stomach problems', italic: true },
+			{ content: '?', italic: false }
+		],
+		type: 'single-choice',
+		answers: [
+			{
+				text: 'No',
+				image: stomach,
+				medications: {
+					ibuprofen: { value: 0.5, reason: 'Can cause stomach ulcers' },
+					acetaminophen: { value: 1, reason: '' },
+					naproxen: { value: 0.5, reason: 'Can cause stomach ulcers' },
+					aspirin: { value: 0.5, reason: 'Can cause stomach ulcers' }
+				}
+			},
+			{
+				text: 'Yes',
+				image: stomachPain,
+				medications: {
+					ibuprofen: { value: 0, reason: 'May further damage stomach' },
+					acetaminophen: { value: 1, reason: '' },
+					naproxen: { value: 0, reason: 'May further damage stomach' },
+					aspirin: { value: 0, reason: 'May further damage stomach' }
 				}
 			}
 		]

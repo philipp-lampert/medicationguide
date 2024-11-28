@@ -26,7 +26,7 @@
 			]
 		},
 		{
-			condition: 'Reflux/Stomach ulcera',
+			condition: 'Reflux/Stomach ulcers',
 			drugs: [
 				{ drug: 'acetaminophen', status: 2 },
 				{ drug: 'ibuprofen', status: 1 },

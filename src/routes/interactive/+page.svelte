@@ -70,7 +70,9 @@
 						.flatMap((question) =>
 							question.answers.map((answer) => answer.medications[name as Medications]?.value || 0)
 						)
-						.reduce((sum, value) => sum + value, 0) + (name === 'acetaminophen' ? 0.5 : 0) // Add 0.5 to acetaminophen due to reduced risk of side effects
+						.reduce((sum, value) => sum + value, 0) +
+					(name === 'naproxen' ? 0.5 : 0) - // Naproxen is longer lasting
+					(name === 'aspirin' ? 0.5 : 0) // Aspiring has more side effects
 			}),
 			{} as Record<Medications, number>
 		)
@@ -137,7 +139,7 @@
 
 		return Object.entries(totalScores).reduce(
 			(percentages, [medication, totalScore]) => {
-				percentages[medication] = (totalScore / (numSelectedAnswers + 0.5)) * 100; // Add 0.5 to the denominator to account for acetaminophen's reduced risk of side effects
+				percentages[medication] = (totalScore / numSelectedAnswers) * 100; // Add 0.5 to account for naproxen
 				return percentages;
 			},
 			{} as { [key: string]: number }
@@ -151,6 +153,10 @@
 	}
 
 	function noneOfTheAbove() {
+		if (!selectedAnswers[currentIndex]) {
+			// Initialize index if it doesn't exist
+			selectedAnswers[currentIndex] = { answers: [] };
+		}
 		selectedAnswers[currentIndex].answers = [
 			{
 				text: 'None of the above',
@@ -199,7 +205,7 @@
 						<button
 							type="button"
 							onclick={() => answerSelection(answer)}
-							class="flex min-h-24 min-w-24 flex-col items-center justify-center gap-2.5 rounded-2xl border-3 border-white bg-gray-200 px-8 py-6 text-lg font-medium text-black drop-shadow-lg transition-all duration-300 hover:border-black hover:bg-white hover:drop-shadow-2xl"
+							class="flex min-h-24 min-w-24 flex-col items-center justify-center gap-2.5 rounded-2xl border-3 border-white bg-gray-200 px-8 py-6 text-lg font-medium text-black drop-shadow-lg transition-all duration-300 hover:border-black hover:bg-white hover:drop-shadow-xl"
 							class:selected={questions[currentIndex].type === 'single-choice'
 								? selectedAnswers[currentIndex]?.answers[0]?.text === answer.text
 								: selectedAnswers[currentIndex]?.answers.some((a) => a.text === answer.text)}
@@ -293,7 +299,13 @@
 								<div class="rounded-lg bg-green-100 px-4 py-2 text-left text-sm font-normal">
 									<ul>
 										{#each medicationReasons[medication as keyof MedicationReasons].positive as reason}
-											<li>- {reason}</li>
+											<li>
+												{medicationReasons[medication as keyof MedicationReasons].positive.length >
+												1
+													? '-'
+													: ''}
+												{reason}
+											</li>
 										{/each}
 									</ul>
 								</div>
@@ -304,7 +316,12 @@
 								<div class="rounded-lg bg-yellow-100 px-4 py-2 text-left text-sm font-normal">
 									<ul>
 										{#each medicationReasons[medication as keyof MedicationReasons].neutral as reason}
-											<li>- {reason}</li>
+											<li>
+												{medicationReasons[medication as keyof MedicationReasons].neutral.length > 1
+													? '-'
+													: ''}
+												{reason}
+											</li>
 										{/each}
 									</ul>
 								</div>
@@ -315,7 +332,13 @@
 								<div class="rounded-lg bg-red-100 px-4 py-2 text-left text-sm font-normal">
 									<ul>
 										{#each medicationReasons[medication as keyof MedicationReasons].negative as reason}
-											<li>- {reason}</li>
+											<li>
+												{medicationReasons[medication as keyof MedicationReasons].negative.length >
+												1
+													? '-'
+													: ''}
+												{reason}
+											</li>
 										{/each}
 									</ul>
 								</div>
