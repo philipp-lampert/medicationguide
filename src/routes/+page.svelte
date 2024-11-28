@@ -1,8 +1,9 @@
 <script>
+	import '../app.css';
 	import Indications from '$lib/tables/Indications.svelte';
 	import Contraindications from '$lib/tables/Contraindications.svelte';
 	import SeeDoctor from '$lib/tables/SeeDoctor.svelte';
-	import '../app.css';
+	import arrowDoubleRight from '$lib/assets/icons/buttons/arrow-double-right.svg';
 </script>
 
 <svelte:head>
@@ -22,16 +23,12 @@
 		</p>
 		<a
 			href="/interactive"
-			class="group relative inline-flex items-center overflow-hidden rounded-2xl border-3 border-black bg-white px-12 py-3 font-medium drop-shadow-lg transition-all duration-500 hover:drop-shadow-xl"
+			class="group relative inline-flex items-center overflow-hidden rounded-2xl border-3 border-black bg-white px-12 py-3 font-medium drop-shadow-md transition-all duration-500 hover:drop-shadow-xl"
 		>
 			<span
 				class="ease absolute right-0 flex h-10 w-10 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-2"
 			>
-				<img
-					class="h-4 transition-all duration-500"
-					src="/angle-double-right.svg"
-					alt="Start Guide"
-				/>
+				<img class="h-4 transition-all duration-500" src={arrowDoubleRight} alt="Start Guide" />
 			</span>
 			<span class="relative transform duration-500 group-hover:-translate-x-3">Start Guide</span>
 		</a>

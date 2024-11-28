@@ -4,7 +4,7 @@ An open-source, free-to-use, interactive tool that helps users select the approp
 
 ## How it works
 
-To understand how the recommendation engine works, start by exploring the questions.ts file in the `src/interactive` folder. This file contains all the questions and answer choices used to guide users toward the most suitable medication.
+To understand how the recommendation engine works, start by exploring the `questions.ts` file in the `src/interactive` folder. This file contains all the questions and answer choices used to guide users toward the most suitable medication.
 
 ## How to contribute
 

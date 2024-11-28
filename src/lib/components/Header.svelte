@@ -1,5 +1,7 @@
 <script>
-	import SlidingBottomBorder from './animations/SlidingBottomBorder.svelte';
+	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
+	import logo from '$lib/assets/logo.svg';
+	import arrowDoubleRight from '$lib/assets/icons/buttons/arrow-double-right.svg';
 
 	let yScroll = $state(0);
 	let threshold = 60;
@@ -37,7 +39,7 @@
 					? 'py-3'
 					: 'py-7'}"
 			>
-				<img src="/caduceus.jpg" alt="Caduceus" class="h-full object-contain" />
+				<img src={logo} alt="Caduceus" class="h-full object-contain" />
 				<div class="grid min-h-full grid-rows-3 items-stretch">
 					<div class="w-[3px] bg-black"></div>
 					<div class="w-[3px] bg-german-red"></div>
@@ -53,12 +55,12 @@
 					</span>
 					<a
 						href="/interactive"
-						class="group top-1/2 block flex flex translate-y-1/2 flex-row flex-row items-center gap-2 text-sm font-medium transition-all duration-200 {isShrunk
+						class="group top-1/2 flex translate-y-1/2 flex-row items-center gap-2 text-sm font-medium transition-all duration-200 {isShrunk
 							? 'opacity-100 delay-200'
 							: 'opacity-0'}"
 					>
 						Start Guide
-						<img src="/angle-double-right.svg" alt="Start Guide" class="h-3" />
+						<img src={arrowDoubleRight} alt="Start Guide" class="h-3" />
 						<SlidingBottomBorder />
 					</a>
 				</div>

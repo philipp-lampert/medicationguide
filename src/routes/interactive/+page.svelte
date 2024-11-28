@@ -1,20 +1,26 @@
 <script lang="ts">
 	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
+	import arrowDoubleRight from '$lib/assets/icons/buttons/arrow-double-right.svg';
+	import none from '$lib/assets/icons/buttons/none.svg';
+	import turnAround from '$lib/assets/icons/buttons/arrow-turn-around.svg';
 	import { fly } from 'svelte/transition';
 	import { questions } from './questions';
+	import { sideEffects } from './side-effects';
 	import { capitalizeFirstLetter } from '$lib/utils';
 
-	const medications = ['ibuprofen', 'acetaminophen', 'naproxen', 'aspirin'];
-
 	let currentIndex: number = $state(0);
-	let direction: number = $state(1); // 1 for forward, -1 for backward
+	let direction: number = $state(1); // 1: forward, -1: backward
 
+	const medications = ['ibuprofen', 'acetaminophen', 'naproxen', 'aspirin'] as const;
+	type Medications = (typeof medications)[number];
+
+	// Answer selection
 	let selectedAnswers = $state(
 		[] as {
 			answers: {
 				text: string;
 				image: string;
-				medications: { [key in keyof typeof medicationScores]: { value: number; reason: string } };
+				medications: { [K in Medications]: { value: number; reason: string } };
 			}[];
 		}[]
 	);
@@ -23,145 +29,103 @@
 		selectedAnswers.reduce((total, question) => total + (question.answers?.length || 0), 0)
 	);
 
-	let medicationScores = $state({
-		ibuprofen: 0,
-		acetaminophen: 0,
-		naproxen: 0,
-		aspirin: 0
-	});
-
-	$effect(() => {
-		const newTotals: { [key: string]: number } = medications.reduce(
-			(acc, name) => ({ ...acc, [name]: 0 }),
-			{}
-		);
-		(
-			selectedAnswers as {
-				answers: {
-					text: string;
-					image: string;
-					medications: {
-						[key in keyof typeof medicationScores]: { value: number; reason: string };
-					};
-				}[];
-			}[]
-		).forEach((question) => {
-			question.answers.forEach(
-				(answer: {
-					text: string;
-					image: string;
-					medications: {
-						[key in keyof typeof medicationScores]: { value: number; reason: string };
-					};
-				}) => {
-					medications.forEach((medication) => {
-						if (answer.medications[medication as keyof typeof medicationScores]) {
-							newTotals[medication] +=
-								answer.medications[medication as keyof typeof medicationScores].value;
-						}
-					});
-				}
-			);
-		});
-
-		medicationScores = {
-			ibuprofen: newTotals.ibuprofen,
-			acetaminophen: newTotals.acetaminophen,
-			naproxen: newTotals.naproxen,
-			aspirin: newTotals.aspirin
-		};
-	});
-
-	type MedicationReasons = {
-		[key in keyof typeof medicationScores]: {
-			positive: string[];
-			neutral: string[];
-			negative: string[];
-		};
-	};
-
-	let medicationReasons: MedicationReasons = $state({
-		ibuprofen: { positive: [], neutral: [], negative: [] },
-		acetaminophen: { positive: [], neutral: [], negative: [] },
-		naproxen: { positive: [], neutral: [], negative: [] },
-		aspirin: { positive: [], neutral: [], negative: [] }
-	});
-
-	$effect(() => {
-		{
-			const newReasons: {
-				[key in keyof typeof medicationScores]: {
-					positive: string[];
-					neutral: string[];
-					negative: string[];
-				};
-			} = {
-				aspirin: { positive: [], neutral: [], negative: [] },
-				ibuprofen: { positive: [], neutral: [], negative: [] },
-				naproxen: { positive: [], neutral: [], negative: [] },
-				acetaminophen: { positive: [], neutral: [], negative: [] }
-			};
-
-			// Loop through selected answers
-			selectedAnswers.forEach((question) => {
-				question.answers.forEach((answer) => {
-					// Loop through each medication
-					for (const medication of Object.keys(newReasons)) {
-						const medicationData = answer.medications[medication as keyof typeof medicationScores];
-
-						// If medication data exists
-						if (medicationData && medicationData.reason !== '') {
-							const reason = medicationData.reason;
-							const value = medicationData.value;
-
-							// Categorize based on value
-							if (value === 1) {
-								newReasons[medication as keyof typeof medicationScores].positive.push(reason);
-							} else if (value === 0.5) {
-								newReasons[medication as keyof typeof medicationScores].neutral.push(reason);
-							} else if (value === 0) {
-								newReasons[medication as keyof typeof medicationScores].negative.push(reason);
-							}
-						}
-					}
-				});
-			});
-
-			// Update the medicationReasons store
-			medicationReasons = newReasons;
-		}
-	});
-
 	function answerSelection(answer: {
 		text: string;
 		image: string;
 		medications: { [key in keyof typeof medicationScores]: { value: number; reason: string } };
 	}) {
 		if (!selectedAnswers[currentIndex]) {
-			// Initialize the index if it doesn't exist
+			// Initialize index if it doesn't exist
 			selectedAnswers[currentIndex] = { answers: [] };
 		}
 
-		const existingAnswerIndex = selectedAnswers[currentIndex].answers.findIndex(
-			(existingAnswer) => JSON.stringify(existingAnswer) === JSON.stringify(answer)
-		);
-
-		if (existingAnswerIndex > -1) {
-			// If the answer exists, remove it (deselection)
-			selectedAnswers[currentIndex].answers.splice(existingAnswerIndex, 1);
-		} else {
-			// If the answer does not exist, add it to the array
-			selectedAnswers[currentIndex].answers.push(answer);
-		}
-		if (questions[currentIndex].type === 'boolean') {
+		if (questions[currentIndex].type === 'single-choice') {
+			// Replace any existing answer
+			selectedAnswers[currentIndex].answers = [answer];
 			currentIndex++;
+			direction = 1;
+		} else {
+			// For multiple-choice, toggle the answer selection
+			const existingAnswerIndex = selectedAnswers[currentIndex].answers.findIndex(
+				(existingAnswer) => JSON.stringify(existingAnswer) === JSON.stringify(answer)
+			);
+
+			if (existingAnswerIndex > -1) {
+				// If the answer exists, remove it (deselection)
+				selectedAnswers[currentIndex].answers.splice(existingAnswerIndex, 1);
+			} else {
+				// If the answer does not exist, add it to the array
+				selectedAnswers[currentIndex].answers.push(answer);
+			}
 		}
-		console.log($state.snapshot(selectedAnswers));
-		console.log($state.snapshot(numSelectedAnswers));
-		console.log($state.snapshot(medicationScores));
-		console.log($state.snapshot(medicationReasons));
 	}
 
+	// Medication scores
+	let medicationScores: Record<Medications, number> = $derived(
+		medications.reduce(
+			(acc, name) => ({
+				...acc,
+				[name]:
+					selectedAnswers
+						.flatMap((question) =>
+							question.answers.map((answer) => answer.medications[name as Medications]?.value || 0)
+						)
+						.reduce((sum, value) => sum + value, 0) + (name === 'acetaminophen' ? 0.5 : 0) // Add 0.5 to acetaminophen due to reduced risk of side effects
+			}),
+			{} as Record<Medications, number>
+		)
+	);
+
+	// Medication reasons
+	type MedicationReasons = Record<
+		Medications,
+		{
+			positive: string[];
+			neutral: string[];
+			negative: string[];
+		}
+	>;
+
+	let medicationReasons: MedicationReasons = $derived(
+		medications.reduce((acc, medication) => {
+			const userReasons: { positive: string[]; neutral: string[]; negative: string[] } = {
+				positive: [],
+				neutral: [],
+				negative: []
+			};
+
+			selectedAnswers.forEach((question) => {
+				question.answers.forEach((answer) => {
+					const medicationData = answer.medications[medication];
+
+					if (medicationData?.reason) {
+						const categorizeReason = (value: number) => {
+							if (value === 1) return 'positive';
+							if (value === 0.5) return 'neutral';
+							if (value === 0) return 'negative';
+							return null;
+						};
+
+						const category = categorizeReason(medicationData.value);
+						if (category) {
+							userReasons[category].push(medicationData.reason);
+						}
+					}
+				});
+			});
+
+			return {
+				...acc,
+				[medication]: {
+					positive: [...sideEffects[medication].positive, ...userReasons.positive],
+					neutral: [...sideEffects[medication].neutral, ...userReasons.neutral],
+					negative: [...sideEffects[medication].negative, ...userReasons.negative]
+				}
+			};
+		}, {} as MedicationReasons)
+	);
+
+	// Calculate percentages
 	function calculatePercentages() {
 		const totalScores = Object.entries(medicationScores).reduce(
 			(scores, [medication, score]) => {
@@ -173,27 +137,30 @@
 
 		return Object.entries(totalScores).reduce(
 			(percentages, [medication, totalScore]) => {
-				percentages[medication] = (totalScore / numSelectedAnswers) * 100;
+				percentages[medication] = (totalScore / (numSelectedAnswers + 0.5)) * 100; // Add 0.5 to the denominator to account for acetaminophen's reduced risk of side effects
 				return percentages;
 			},
 			{} as { [key: string]: number }
 		);
 	}
 
-	function nextQuestion(event: Event) {
-		event.preventDefault();
-		if (selectedAnswers[currentIndex].answers.length > 0 && currentIndex < questions.length - 1) {
-			direction = 1;
-			currentIndex++;
-		} else {
-			// User reached the end of the questions
-			currentIndex++; // Increment to trigger the results section
-		}
+	// Navigation buttons
+	function nextQuestion() {
+		currentIndex++;
+		direction = 1;
 	}
 
 	function noneOfTheAbove() {
-		selectedAnswers[currentIndex] = { answers: [] };
-		nextQuestion(new Event('submit'));
+		selectedAnswers[currentIndex].answers = [
+			{
+				text: 'None of the above',
+				image: '',
+				medications: Object.fromEntries(
+					medications.map((med) => [med, { value: 1, reason: '' }])
+				) as Record<Medications, { value: number; reason: string }>
+			}
+		];
+		nextQuestion();
 	}
 
 	function goBack() {
@@ -233,9 +200,9 @@
 							type="button"
 							onclick={() => answerSelection(answer)}
 							class="flex min-h-24 min-w-24 flex-col items-center justify-center gap-2.5 rounded-2xl border-3 border-white bg-gray-200 px-8 py-6 text-lg font-medium text-black drop-shadow-lg transition-all duration-300 hover:border-black hover:bg-white hover:drop-shadow-2xl"
-							class:selected={selectedAnswers[currentIndex]?.answers.some(
-								(a) => a.text === answer.text
-							)}
+							class:selected={questions[currentIndex].type === 'single-choice'
+								? selectedAnswers[currentIndex]?.answers[0]?.text === answer.text
+								: selectedAnswers[currentIndex]?.answers.some((a) => a.text === answer.text)}
 						>
 							{answer.text}
 							{#if answer.image}
@@ -253,7 +220,7 @@
 							onclick={goBack}
 							class="group relative flex flex-row items-center gap-2.5 overflow-hidden bg-white px-0.5 py-0.5 font-medium"
 						>
-							<img src="/arrow-turn-around.svg" alt="Previous" class="h-3.5" />
+							<img src={turnAround} alt="Previous" class="h-3.5" />
 							Previous
 							<SlidingBottomBorder />
 						</button>
@@ -262,7 +229,7 @@
 							href="/"
 							class="group relative flex flex-row items-center gap-2.5 overflow-hidden bg-white px-0.5 py-0.5 font-medium"
 						>
-							<img src="/arrow-turn-around.svg" alt="Exit" class="h-3.5" />
+							<img src={turnAround} alt="Exit" class="h-3.5" />
 							Exit
 							<SlidingBottomBorder />
 						</a>
@@ -275,7 +242,7 @@
 							class="group relative flex flex-row items-center gap-2.5 overflow-hidden bg-white px-0.5 py-0.5 font-medium text-green-800"
 						>
 							None of the above
-							<img src="/none.svg" alt="None of the above" class="h-3.5" />
+							<img src={none} alt="None of the above" class="h-3.5" />
 							<SlidingBottomBorder />
 						</button>
 					{/if}
@@ -290,7 +257,7 @@
 							{:else}
 								Show Results
 							{/if}
-							<img src="/angle-double-right.svg" alt="Next Question" class="h-3.5" />
+							<img src={arrowDoubleRight} alt="Next Question" class="h-3.5" />
 							<span
 								class="animate-span absolute bottom-0 left-0 z-50 h-0.5 w-full scale-x-0 transform bg-black"
 							></span>
@@ -363,7 +330,7 @@
 					href="/interactive"
 					class="group relative flex flex-row items-center gap-2.5 overflow-hidden bg-white px-0.5 py-0.5 font-medium"
 				>
-					<img src="/arrow-turn-around.svg" alt="Previous" class="h-3.5" />
+					<img src={turnAround} alt="Previous" class="h-3.5" />
 					Restart
 					<SlidingBottomBorder />
 				</a>
@@ -372,7 +339,7 @@
 					class="group relative flex flex-row items-center gap-2 overflow-hidden bg-white px-0.5 py-0.5 font-medium"
 				>
 					Exit
-					<img src="/angle-double-right.svg" alt="Skip" class="h-3.5" />
+					<img src={arrowDoubleRight} alt="Skip" class="h-3.5" />
 					<SlidingBottomBorder />
 				</a>
 			</div>
