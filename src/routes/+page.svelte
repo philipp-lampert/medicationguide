@@ -1,17 +1,17 @@
 <script>
-	import '../app.css';
 	import Indications from '$lib/tables/Indications.svelte';
 	import Contraindications from '$lib/tables/Contraindications.svelte';
 	import SeeDoctor from '$lib/tables/SeeDoctor.svelte';
 	import arrowDoubleRight from '$lib/assets/icons/buttons/arrow-double-right.svg';
+	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
 </script>
 
 <svelte:head>
-	<title>Medication Guide</title>
+	<title>Medication Guide: Pain Relievers</title>
 </svelte:head>
 
 <section class="my-32">
-	<div class="container flex flex-col items-center space-y-12">
+	<div class="container flex flex-col items-center gap-12">
 		<h1 class="h1">Which <span class="italic">pain reliever</span> should I use?</h1>
 		<p class="max-w-2xl">
 			While many analgesics can be purchased without a prescription, not all are effective for every
@@ -35,7 +35,7 @@
 	</div>
 </section>
 <section class="my-32">
-	<div class="container flex flex-col items-center space-y-16">
+	<article class="container flex flex-col items-center gap-20">
 		<div class="flex flex-col space-y-6">
 			<h2 class="h2">
 				Differences between <span class="italic">over-the-counter </span> analgesics
@@ -45,21 +45,24 @@
 				medication is effective against every symptom or safe for everyone. Selecting the right
 				analgesic requires careful consideration of both the desired therapeutic effects and
 				potential risks. The tables below summarize the key differences. For a personalized
-				recommendation, use our <a class="underline" href="/interactive">interactive guide</a>.
+				recommendation, use our <a class="text-link group" href="/interactive"
+					>interactive guide<SlidingBottomBorder /></a
+				>.
 			</p>
 		</div>
+
 		<div class="flex flex-col items-center space-y-6">
-			<h3 class="h3">Effectiveness of pain relievers for specific symptoms</h3>
+			<h3 class="h3">Effectiveness for specific symptoms</h3>
 			<Indications />
 		</div>
 		<div class="flex flex-col items-center space-y-6">
-			<h3 class="h3">Contraindications and side-effects</h3>
+			<h3 class="h3">Contraindications and side effects</h3>
 			<Contraindications />
 		</div>
-	</div>
+	</article>
 </section>
 <section class="my-32">
-	<div class="container flex flex-col items-center space-y-10">
+	<article class="container flex flex-col items-center space-y-10">
 		<h2 class="h2">When should I see a <span class="italic">doctor</span>?</h2>
 		<p class="max-w-4xl">
 			While many types of pain can be managed with over-the-counter medications, certain situations
@@ -67,5 +70,5 @@
 			you experience any of the following:
 		</p>
 		<SeeDoctor />
-	</div>
+	</article>
 </section>

@@ -4,8 +4,7 @@
 
 @layer base {
 	html {
-		font-family: 'Retina', 'Tahoma', 'Arial', sans-serif;
-		@apply text-center font-light;
+		@apply text-center font-retina font-light;
 	}
 
 	body {
@@ -13,12 +12,10 @@
 	}
 
 	.h1 {
-		@apply text-6xl tracking-tight;
-		font-family: 'Times New Roman', serif;
+		@apply font-times text-6xl tracking-tight;
 	}
 	.h2 {
-		@apply tracking-medium-tight text-4xl;
-		font-family: 'Times New Roman', serif;
+		@apply text-4.5xl font-times tracking-medium-tight;
 	}
 
 	.h3 {
@@ -26,9 +23,13 @@
 	}
 }
 
+.text-link {
+	@apply relative pb-[3px] font-normal underline decoration-gray-300 underline-offset-4;
+}
+
 @font-face {
 	font-family: 'Retina';
-	src: url('/fonts/RetinaTRIAL-Light-BF66a9ac646dc73.woff2') format('woff2');
+	src: url('/fonts/retina-light.woff2') format('woff2');
 	font-weight: 300;
 	font-style: normal;
 }
@@ -79,5 +80,63 @@
 	font-family: 'Retina';
 	src: url('/fonts/RetinaTRIAL-BoldItalic-BF66a9ac65def4e.woff2') format('woff2');
 	font-weight: 600;
+	font-style: italic;
+}
+
+/* Trial fonts */
+@font-face {
+	font-family: 'Tobias';
+	src: url('fonts/tobias/TobiasTRIAL-Light.woff2') format('woff2');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Tobias';
+	src: url('fonts/tobias/TobiasTRIAL-LightItalic.woff2') format('woff2');
+	font-weight: 300;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Tobias';
+	src: url('fonts/tobias/TobiasTRIAL-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Tobias';
+	src: url('fonts/tobias/TobiasTRIAL-RegularItalic.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+}
+
+/* Teodor */
+@font-face {
+	font-family: 'Teodor';
+	src: url('fonts/teodor/TeodorTRIAL-Light.woff2') format('woff2');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Teodor';
+	src: url('fonts/teodor/TeodorTRIAL-LightItalic.woff2') format('woff2');
+	font-weight: 300;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Teodor';
+	src: url('fonts/teodor/TeodorTRIAL-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Teodor';
+	src: url('fonts/teodor/TeodorTRIAL-RegularItalic.woff2') format('woff2');
+	font-weight: 400;
 	font-style: italic;
 }

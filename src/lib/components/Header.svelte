@@ -28,10 +28,18 @@
 		>
 			<nav class="ml-3 mt-auto font-medium">
 				<ul class="flex h-16 flex-row items-center gap-x-6">
-					<li><a class="block p-2" href="/">Home</a></li>
-					<li><a class="block p-2" href="/knowledge">Knowledge base</a></li>
-					<li><a class="block p-2" href="/about">About</a></li>
-					<li><a class="block p-2" href="/donate">Donate</a></li>
+					<li>
+						<a class="group relative p-2" href="/"
+							>Home
+							<SlidingBottomBorder />
+						</a>
+					</li>
+					<li>
+						<a class="group relative p-2" href="/about"
+							>About
+							<SlidingBottomBorder />
+						</a>
+					</li>
 				</ul>
 			</nav>
 			<div

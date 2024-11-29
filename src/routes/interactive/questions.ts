@@ -132,12 +132,12 @@ export const questions = [
 		]
 	},
 	{
-		// Are you pregnant for over 6 months?
+		// Are you pregnant in the 3rd trimester?
 		text: [
 			{ content: 'Are you ', italic: false },
 			{ content: 'pregnant ', italic: true },
-			{ content: 'for over ', italic: false },
-			{ content: '6 months', italic: true },
+			{ content: 'in the ', italic: false },
+			{ content: '3rd trimester', italic: true },
 			{ content: '?', italic: false }
 		],
 		type: 'single-choice',
@@ -197,7 +197,7 @@ export const questions = [
 				image: liver,
 				medications: {
 					ibuprofen: { value: 0.5, reason: 'Avoid in liver failure' },
-					acetaminophen: { value: 0, reason: 'Contraindicated in liver failure' },
+					acetaminophen: { value: 0.5, reason: 'Lower dosage in liver failure' },
 					naproxen: { value: 0.5, reason: 'Avoid in liver failure' },
 					aspirin: { value: 0.5, reason: 'Avoid in liver failure' }
 				}

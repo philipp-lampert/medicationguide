@@ -10,9 +10,14 @@ export default {
 			padding: '2rem'
 		},
 		extend: {
+			fontSize: {
+				'4.5xl': '2.625rem'
+			},
 			fontFamily: {
 				retina: ['Retina, Tahoma, Arial, sans-serif'],
-				times: ['Times New Roman, serif']
+				times: ['Times New Roman, serif'],
+				tobias: ['Tobias, serif'],
+				teodor: ['Teodor, serif']
 			},
 			letterSpacing: {
 				'medium-tight': '-0.01em'

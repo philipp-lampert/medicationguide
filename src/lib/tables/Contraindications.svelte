@@ -1,74 +1,86 @@
-<script>
-	/** @type {{ [key: number]: string }} */
-	const statusNames = {
-		2: 'None',
-		1: 'Relative',
-		0: 'Absolute'
+<script lang="ts">
+	import { statusColors } from './table-design';
+
+	const statusNames: { [key: number]: string } = {
+		1: 'Safe',
+		0.5: 'Avoid',
+		0: 'High risk'
 	};
 
 	const contraindications = [
 		{
 			condition: 'Children < 15 years',
 			drugs: [
-				{ drug: 'acetaminophen', status: 2 },
-				{ drug: 'ibuprofen', status: 2 },
-				{ drug: 'naproxen', status: 1 },
+				{ drug: 'acetaminophen', status: 1 },
+				{ drug: 'ibuprofen', status: 1 },
+				{ drug: 'naproxen', status: 0.5 },
 				{ drug: 'aspirin', status: 0 }
 			]
 		},
 		{
-			condition: 'Pregnancy > 6 months',
+			condition: 'Pregnancy (3rd trimester)',
 			drugs: [
-				{ drug: 'acetaminophen', status: 2 },
+				{ drug: 'acetaminophen', status: 1 },
 				{ drug: 'ibuprofen', status: 0 },
 				{ drug: 'naproxen', status: 0 },
 				{ drug: 'aspirin', status: 0 }
 			]
 		},
 		{
-			condition: 'Reflux/Stomach ulcers',
+			condition: 'Gastric irritation/ulcers',
 			drugs: [
-				{ drug: 'acetaminophen', status: 2 },
-				{ drug: 'ibuprofen', status: 1 },
-				{ drug: 'naproxen', status: 1 },
-				{ drug: 'aspirin', status: 1 }
+				{ drug: 'acetaminophen', status: 1 },
+				{ drug: 'ibuprofen', status: 0.5 },
+				{ drug: 'naproxen', status: 0.5 },
+				{ drug: 'aspirin', status: 0 }
 			]
 		},
 		{
 			condition: 'Kidney disease',
 			drugs: [
-				{ drug: 'acetaminophen', status: 2 },
-				{ drug: 'ibuprofen', status: 1 },
-				{ drug: 'naproxen', status: 1 },
-				{ drug: 'aspirin', status: 1 }
+				{ drug: 'acetaminophen', status: 0.5 },
+				{ drug: 'ibuprofen', status: 0 },
+				{ drug: 'naproxen', status: 0 },
+				{ drug: 'aspirin', status: 0 }
 			]
 		},
 		{
-			condition: 'Heart failure',
+			condition: 'Cardiovascular events',
 			drugs: [
-				{ drug: 'acetaminophen', status: 2 },
+				{ drug: 'acetaminophen', status: 1 },
 				{ drug: 'ibuprofen', status: 0 },
 				{ drug: 'naproxen', status: 0 },
-				{ drug: 'aspirin', status: 1 }
+				{ drug: 'aspirin', status: 0.5 }
 			]
 		},
 		{
 			condition: 'Liver disease',
 			drugs: [
+				{ drug: 'acetaminophen', status: 0.5 },
+				{ drug: 'ibuprofen', status: 0.5 },
+				{ drug: 'naproxen', status: 0.5 },
+				{ drug: 'aspirin', status: 0.5 }
+			]
+		},
+		{
+			condition: 'Bleeding risk',
+			drugs: [
 				{ drug: 'acetaminophen', status: 1 },
-				{ drug: 'ibuprofen', status: 1 },
-				{ drug: 'naproxen', status: 1 },
-				{ drug: 'aspirin', status: 1 }
+				{ drug: 'ibuprofen', status: 0.5 },
+				{ drug: 'naproxen', status: 0.5 },
+				{ drug: 'aspirin', status: 0 }
+			]
+		},
+		{
+			condition: 'Consequences of overdose',
+			drugs: [
+				{ drug: 'acetaminophen', status: 0 },
+				{ drug: 'ibuprofen', status: 0.5 },
+				{ drug: 'naproxen', status: 0.5 },
+				{ drug: 'aspirin', status: 0 }
 			]
 		}
 	];
-
-	/** @type {{ [key: number]: string }} */
-	const statusColors = {
-		2: 'bg-green-100 text-green-800',
-		1: 'bg-yellow-100 text-yellow-800',
-		0: 'bg-red-100 text-red-800'
-	};
 </script>
 
 <table class="w-3/4 table-fixed border-collapse overflow-hidden rounded-lg bg-white">

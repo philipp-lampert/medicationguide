@@ -1,8 +1,9 @@
-<script>
-	/** @type {{ [key: number]: string }} */
-	const statusNames = {
-		2: 'High',
-		1: 'Moderate',
+<script lang="ts">
+	import { statusColors } from './table-design';
+
+	const statusNames: { [key: number]: string } = {
+		1: 'High',
+		0.5: 'Moderate',
 		0: 'Low'
 	};
 
@@ -10,27 +11,27 @@
 		{
 			condition: 'Fever',
 			drugs: [
-				{ drug: 'acetaminophen', status: 2 },
-				{ drug: 'ibuprofen', status: 2 },
-				{ drug: 'naproxen', status: 2 },
-				{ drug: 'aspirin', status: 2 }
+				{ drug: 'acetaminophen', status: 1 },
+				{ drug: 'ibuprofen', status: 1 },
+				{ drug: 'naproxen', status: 0.5 },
+				{ drug: 'aspirin', status: 0.5 }
 			]
 		},
 		{
 			condition: 'Headache',
 			drugs: [
-				{ drug: 'acetaminophen', status: 2 },
-				{ drug: 'ibuprofen', status: 2 },
-				{ drug: 'naproxen', status: 2 },
-				{ drug: 'aspirin', status: 2 }
+				{ drug: 'acetaminophen', status: 1 },
+				{ drug: 'ibuprofen', status: 0.5 },
+				{ drug: 'naproxen', status: 0.5 },
+				{ drug: 'aspirin', status: 1 }
 			]
 		},
 		{
 			condition: 'Menstrual cramps',
 			drugs: [
 				{ drug: 'acetaminophen', status: 0 },
-				{ drug: 'ibuprofen', status: 2 },
-				{ drug: 'naproxen', status: 2 },
+				{ drug: 'ibuprofen', status: 1 },
+				{ drug: 'naproxen', status: 1 },
 				{ drug: 'aspirin', status: 0 }
 			]
 		},
@@ -38,19 +39,30 @@
 			condition: 'Inflammation',
 			drugs: [
 				{ drug: 'acetaminophen', status: 0 },
-				{ drug: 'ibuprofen', status: 2 },
+				{ drug: 'ibuprofen', status: 1 },
+				{ drug: 'naproxen', status: 1 },
+				{ drug: 'aspirin', status: 0.5 }
+			]
+		},
+		{
+			condition: 'Back pain',
+			drugs: [
+				{ drug: 'acetaminophen', status: 0.5 },
+				{ drug: 'ibuprofen', status: 1 },
+				{ drug: 'naproxen', status: 1 },
+				{ drug: 'aspirin', status: 0.5 }
+			]
+		},
+		{
+			condition: 'Chronic pain',
+			drugs: [
+				{ drug: 'acetaminophen', status: 0.5 },
+				{ drug: 'ibuprofen', status: 0.5 },
 				{ drug: 'naproxen', status: 1 },
 				{ drug: 'aspirin', status: 0 }
 			]
 		}
 	];
-
-	/** @type {{ [key: number]: string }} */
-	const statusColors = {
-		2: 'bg-green-100 text-green-800',
-		1: 'bg-yellow-100 text-yellow-800',
-		0: 'bg-red-100 text-red-800'
-	};
 </script>
 
 <table class="w-3/4 table-fixed overflow-hidden rounded-lg bg-white">
@@ -65,7 +77,7 @@
 	</thead>
 	<tbody>
 		{#each indications as row, i}
-			<tr class="{i % 2 === 0 ? 'bg-white' : 'bg-gray-50'} transition-colors hover:bg-gray-100">
+			<tr class="{i % 1 === 0 ? 'bg-white' : 'bg-gray-50'} transition-colors hover:bg-gray-100">
 				<td class="px-4 py-3 text-left">{row.condition}</td>
 				{#each row.drugs as drugStatus}
 					<td class="px-4 py-3">

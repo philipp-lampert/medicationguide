@@ -5,14 +5,23 @@
 	import turnAround from '$lib/assets/icons/buttons/arrow-turn-around.svg';
 	import { fly } from 'svelte/transition';
 	import { questions } from './questions';
-	import { sideEffects } from './side-effects';
 	import { capitalizeFirstLetter } from '$lib/utils';
+	import { medicationInfo } from './medication-info';
 
 	let currentIndex: number = $state(0);
 	let direction: number = $state(1); // 1: forward, -1: backward
 
-	const medications = ['ibuprofen', 'acetaminophen', 'naproxen', 'aspirin'] as const;
-	type Medications = (typeof medications)[number];
+	const MEDICATIONS = ['ibuprofen', 'acetaminophen', 'naproxen', 'aspirin'] as const;
+
+	type Medications = (typeof MEDICATIONS)[number];
+	type MedicationReasons = Record<
+		Medications,
+		{
+			positive: string[];
+			neutral: string[];
+			negative: string[];
+		}
+	>;
 
 	// Answer selection
 	let selectedAnswers = $state(
@@ -25,14 +34,10 @@
 		}[]
 	);
 
-	let numSelectedAnswers = $derived(
-		selectedAnswers.reduce((total, question) => total + (question.answers?.length || 0), 0)
-	);
-
 	function answerSelection(answer: {
 		text: string;
 		image: string;
-		medications: { [key in keyof typeof medicationScores]: { value: number; reason: string } };
+		medications: { [K in Medications]: { value: number; reason: string } };
 	}) {
 		if (!selectedAnswers[currentIndex]) {
 			// Initialize index if it doesn't exist
@@ -60,36 +65,9 @@
 		}
 	}
 
-	// Medication scores
-	let medicationScores: Record<Medications, number> = $derived(
-		medications.reduce(
-			(acc, name) => ({
-				...acc,
-				[name]:
-					selectedAnswers
-						.flatMap((question) =>
-							question.answers.map((answer) => answer.medications[name as Medications]?.value || 0)
-						)
-						.reduce((sum, value) => sum + value, 0) +
-					(name === 'naproxen' ? 0.5 : 0) - // Naproxen is longer lasting
-					(name === 'aspirin' ? 0.5 : 0) // Aspiring has more side effects
-			}),
-			{} as Record<Medications, number>
-		)
-	);
-
 	// Medication reasons
-	type MedicationReasons = Record<
-		Medications,
-		{
-			positive: string[];
-			neutral: string[];
-			negative: string[];
-		}
-	>;
-
 	let medicationReasons: MedicationReasons = $derived(
-		medications.reduce((acc, medication) => {
+		MEDICATIONS.reduce((acc, medication) => {
 			const userReasons: { positive: string[]; neutral: string[]; negative: string[] } = {
 				positive: [],
 				neutral: [],
@@ -119,16 +97,40 @@
 			return {
 				...acc,
 				[medication]: {
-					positive: [...sideEffects[medication].positive, ...userReasons.positive],
-					neutral: [...sideEffects[medication].neutral, ...userReasons.neutral],
-					negative: [...sideEffects[medication].negative, ...userReasons.negative]
+					positive: [...medicationInfo[medication].positive, ...userReasons.positive],
+					neutral: [...medicationInfo[medication].neutral, ...userReasons.neutral],
+					negative: [...medicationInfo[medication].negative, ...userReasons.negative]
 				}
 			};
 		}, {} as MedicationReasons)
 	);
 
+	// CALCULATE MATCHING PERCENTAGES
+	// Medication scores based on selected answers
+	let medicationScores: Record<Medications, number> = $derived(
+		MEDICATIONS.reduce(
+			(acc, name) => ({
+				...acc,
+				[name]:
+					selectedAnswers
+						.flatMap((question) =>
+							question.answers.map((answer) => answer.medications[name as Medications]?.value || 0)
+						)
+						.reduce((sum, value) => sum + value, 0) +
+					(name === 'naproxen' ? 0.5 : 0) - // Naproxen is longer lasting
+					(name === 'aspirin' ? 0.5 : 0) // Aspiring has more side effects
+			}),
+			{} as Record<Medications, number>
+		)
+	);
+
+	// Number of selected answers
+	let numSelectedAnswers = $derived(
+		selectedAnswers.reduce((total, question) => total + (question.answers?.length || 0), 0)
+	);
+
 	// Calculate percentages
-	function calculatePercentages() {
+	export function calculatePercentages() {
 		const totalScores = Object.entries(medicationScores).reduce(
 			(scores, [medication, score]) => {
 				scores[medication] = score;
@@ -146,7 +148,7 @@
 		);
 	}
 
-	// Navigation buttons
+	// Navigation
 	function nextQuestion() {
 		currentIndex++;
 		direction = 1;
@@ -162,7 +164,7 @@
 				text: 'None of the above',
 				image: '',
 				medications: Object.fromEntries(
-					medications.map((med) => [med, { value: 1, reason: '' }])
+					MEDICATIONS.map((med) => [med, { value: 1, reason: '' }])
 				) as Record<Medications, { value: number; reason: string }>
 			}
 		];
@@ -177,6 +179,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Interactive Medication Guide</title>
+</svelte:head>
+
 <div class="container my-16 flex h-full flex-col items-center justify-center">
 	{#each questions as question, index (index)}
 		{#if index === currentIndex}
@@ -187,7 +193,7 @@
 				onsubmit={nextQuestion}
 			>
 				<div class="flex flex-col gap-2">
-					<p class="font-times text-4xl tracking-medium-tight">
+					<p class="font-times text-4.5xl tracking-tight">
 						{#each question.text as part}
 							{#if typeof part === 'string'}
 								{part}
@@ -295,13 +301,12 @@
 							</div>
 
 							<!-- Positive Reasons -->
-							{#if medicationReasons[medication as keyof MedicationReasons].positive.length > 0}
+							{#if medicationReasons[medication as Medications].positive.length > 0}
 								<div class="rounded-lg bg-green-100 px-4 py-2 text-left text-sm font-normal">
 									<ul>
-										{#each medicationReasons[medication as keyof MedicationReasons].positive as reason}
+										{#each medicationReasons[medication as Medications].positive as reason}
 											<li>
-												{medicationReasons[medication as keyof MedicationReasons].positive.length >
-												1
+												{medicationReasons[medication as Medications].positive.length > 1
 													? '-'
 													: ''}
 												{reason}
@@ -312,14 +317,12 @@
 							{/if}
 
 							<!-- Moderate Reasons -->
-							{#if medicationReasons[medication as keyof MedicationReasons].neutral.length > 0}
+							{#if medicationReasons[medication as Medications].neutral.length > 0}
 								<div class="rounded-lg bg-yellow-100 px-4 py-2 text-left text-sm font-normal">
 									<ul>
-										{#each medicationReasons[medication as keyof MedicationReasons].neutral as reason}
+										{#each medicationReasons[medication as Medications].neutral as reason}
 											<li>
-												{medicationReasons[medication as keyof MedicationReasons].neutral.length > 1
-													? '-'
-													: ''}
+												{medicationReasons[medication as Medications].neutral.length > 1 ? '-' : ''}
 												{reason}
 											</li>
 										{/each}
@@ -328,13 +331,12 @@
 							{/if}
 
 							<!-- Negative Reasons -->
-							{#if medicationReasons[medication as keyof MedicationReasons].negative.length > 0}
+							{#if medicationReasons[medication as Medications].negative.length > 0}
 								<div class="rounded-lg bg-red-100 px-4 py-2 text-left text-sm font-normal">
 									<ul>
-										{#each medicationReasons[medication as keyof MedicationReasons].negative as reason}
+										{#each medicationReasons[medication as Medications].negative as reason}
 											<li>
-												{medicationReasons[medication as keyof MedicationReasons].negative.length >
-												1
+												{medicationReasons[medication as Medications].negative.length > 1
 													? '-'
 													: ''}
 												{reason}

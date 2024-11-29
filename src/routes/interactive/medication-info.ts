@@ -1,5 +1,5 @@
-// Information shown independent of user selection
-export const sideEffects = {
+// Medication information will always be shown in the results section
+export const medicationInfo = {
 	ibuprofen: {
 		positive: [],
 		neutral: [],
