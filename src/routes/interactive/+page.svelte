@@ -4,6 +4,7 @@
 	import none from '$lib/assets/icons/buttons/none.svg';
 	import turnAround from '$lib/assets/icons/buttons/arrow-turn-around.svg';
 	import { fly } from 'svelte/transition';
+	import { quartInOut } from 'svelte/easing';
 	import { questions } from './questions';
 	import { capitalizeFirstLetter } from '$lib/utils';
 	import { medicationInfo } from './medication-info';
@@ -183,17 +184,17 @@
 	<title>Interactive Medication Guide</title>
 </svelte:head>
 
-<div class="container my-16 flex h-full flex-col items-center justify-center">
+<div class="container my-12 flex min-h-[500px] flex-col items-center justify-center">
 	{#each questions as question, index (index)}
 		{#if index === currentIndex}
 			<form
-				class="absolute mx-3 flex flex-col items-center justify-center gap-6 rounded-3xl border-2 border-black bg-white px-8 py-8 text-center drop-shadow-2xl sm:mx-12 sm:max-w-2xl md:gap-10 md:border-3 md:px-20 md:py-12"
-				in:fly={{ y: 750 * direction, duration: 1000 }}
-				out:fly={{ y: -750 * direction, duration: 1000 }}
+				class="absolute mx-3 flex flex-col items-center justify-center gap-6 rounded-3xl border-2 border-black bg-white px-8 py-8 text-center drop-shadow-2xl sm:mx-6 sm:max-w-4xl md:gap-10 md:border-3 md:px-20 md:py-12"
+				in:fly={{ y: 750 * direction, duration: 1250, easing: quartInOut }}
+				out:fly={{ y: -750 * direction, duration: 1250, easing: quartInOut }}
 				onsubmit={nextQuestion}
 			>
 				<div class="flex flex-col gap-2">
-					<p class="font-times text-3xl tracking-tight sm:text-4.5xl">
+					<h1 class="font-times text-3xl leading-8 tracking-tight sm:text-4xl md:text-4.5xl">
 						{#each question.text as part}
 							{#if typeof part === 'string'}
 								{part}
@@ -201,7 +202,7 @@
 								<span class:italic={part.italic}>{part.content}</span>
 							{/if}
 						{/each}
-					</p>
+					</h1>
 					{#if questions[currentIndex].type === 'multiple-choice'}
 						<span class="text-lg italic">Select all that apply.</span>
 					{/if}
@@ -216,11 +217,11 @@
 							type="button"
 							onclick={() => answerSelection(answer)}
 							class="
-											flex h-36 w-36 flex-col items-center justify-center gap-2.5 rounded-2xl border-3 border-white
+											flex h-32 w-32 flex-col items-center justify-center gap-2.5 rounded-2xl border-3 border-white
 											bg-gray-200 font-medium text-black drop-shadow-lg transition-all
 											duration-300 hover:border-black hover:bg-white
-											hover:drop-shadow-xl sm:h-40 sm:w-40
-											sm:text-lg
+											hover:drop-shadow-xl sm:h-36 sm:w-36 sm:text-lg lg:h-40
+											lg:w-40
 											{question.answers.length === 3 && index === 2 ? 'col-span-2 sm:col-auto' : ''}
 									"
 							class:selected={questions[currentIndex].type === 'single-choice'
@@ -291,7 +292,10 @@
 		{/if}
 	{/each}
 	{#if currentIndex === questions.length}
-		<div class="flex flex-col items-center gap-12" in:fly={{ y: 750 * direction, duration: 1000 }}>
+		<div
+			class="flex flex-col items-center gap-12"
+			in:fly={{ y: 750 * direction, duration: 1250, easing: quartInOut }}
+		>
 			<h1 class="h1 italic">Results</h1>
 			<div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4">
 				{#each Object.entries(calculatePercentages()).sort(([, percentageA], [, percentageB]) => percentageB - percentageA) as [medication, percentage]}

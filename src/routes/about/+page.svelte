@@ -70,11 +70,17 @@
 				This project was created by Philipp Lampert, final-year medical student from Germany, in
 				collaboration with senior doctors from Berlin's Charité university hospital. For more
 				information about myself, you can visit my
-				<a class="text-link group" href="https://www.researchgate.net/profile/Philipp-Lampert"
+				<a
+					class="text-link group"
+					href="https://www.researchgate.net/profile/Philipp-Lampert"
+					target="_blank"
 					>ResearchGate <SlidingBottomBorder />
 				</a>
 				and
-				<a class="text-link group" href="www.linkedin.com/in/philipp-lampert-84aabb1b3"
+				<a
+					class="text-link group"
+					href="https://www.linkedin.com/in/philipp-lampert-84aabb1b3"
+					target="_blank"
 					>LinkedIn<SlidingBottomBorder />
 				</a> profiles.
 			</p>
