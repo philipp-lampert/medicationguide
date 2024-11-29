@@ -3,15 +3,13 @@ import type { Config } from 'tailwindcss';
 
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
-
+	corePlugins: {
+		container: false
+	},
 	theme: {
-		container: {
-			center: true,
-			padding: '2rem'
-		},
 		extend: {
 			fontSize: {
-				'4.5xl': '2.625rem'
+				'4.5xl': ['2.625rem', '3rem']
 			},
 			fontFamily: {
 				retina: ['Retina, Tahoma, Arial, sans-serif'],

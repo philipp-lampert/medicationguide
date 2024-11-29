@@ -3,7 +3,7 @@
 </script>
 
 <footer class="z-50 bg-white">
-	<div class="container">
+	<div class="mx-auto max-w-[1400px] sm:px-12 md:px-16 lg:px-20">
 		<div class="flex h-40 flex-row place-content-between border-t-2 border-black">
 			<div class="ml-5 flex h-full flex-row gap-x-5 py-10">
 				<img src={logo} alt="Logo" class="h-full object-contain" />

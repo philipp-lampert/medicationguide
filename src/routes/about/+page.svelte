@@ -6,10 +6,12 @@
 	<title>About Medication Guide</title>
 </svelte:head>
 
-<section class="my-32">
+<section class="section">
 	<article class="container flex flex-col items-center">
 		<h1 class="h1 mb-3">Medication Guide</h1>
-		<h2 class="mb-12 text-2xl italic">Interactive Tools for Better Health Decisions</h2>
+		<h2 class="mb-12 text-lg italic sm:text-xl md:text-2xl">
+			Interactive Tools for Better Health Decisions
+		</h2>
 		<p class="max-w-3xl">
 			Medication Guide is designed to support you in making well-informed decisions about
 			over-the-counter pain medication. Through our interactive guide, educational resources, and
@@ -19,9 +21,11 @@
 		</p>
 	</article>
 </section>
-<section class="my-32">
+<section class="section">
 	<div class="container flex flex-col items-center">
-		<div class="grid w-full grid-cols-4 gap-x-10 border-y-2 border-black py-8">
+		<div
+			class="grid w-full grid-cols-1 gap-x-10 gap-y-8 border-y-2 border-black py-8 md:grid-cols-2 lg:grid-cols-4"
+		>
 			<article class=" flex flex-col gap-2 bg-white text-left">
 				<h3 class="h3">Interactive Guide</h3>
 				<p>
@@ -58,11 +62,11 @@
 		</div>
 	</div>
 </section>
-<section class="my-32">
-	<article class="container max-w-3xl">
+<section class="section">
+	<article class="container flex flex-col items-center">
 		<div>
 			<h2 class="h2 mb-4">Who is <span class="italic">behind</span> the project?</h2>
-			<p>
+			<p class="max-w-3xl">
 				This project was created by Philipp Lampert, final-year medical student from Germany, in
 				collaboration with senior doctors from Berlin's Charité university hospital. For more
 				information about myself, you can visit my

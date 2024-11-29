@@ -10,8 +10,8 @@
 	<title>Medication Guide: Pain Relievers</title>
 </svelte:head>
 
-<section class="my-32">
-	<div class="container flex flex-col items-center gap-12">
+<section class="section">
+	<div class="container flex flex-col items-center gap-8 md:gap-12">
 		<h1 class="h1">Which <span class="italic">pain reliever</span> should I use?</h1>
 		<p class="max-w-2xl">
 			While many analgesics can be purchased without a prescription, not all are effective for every
@@ -34,9 +34,9 @@
 		</a>
 	</div>
 </section>
-<section class="my-32">
-	<article class="container flex flex-col items-center gap-20">
-		<div class="flex flex-col space-y-6">
+<section class="section">
+	<article class="container flex flex-col items-center gap-16 md:gap-20">
+		<div class="flex flex-col items-center gap-y-6">
 			<h2 class="h2">
 				Differences between <span class="italic">over-the-counter </span> analgesics
 			</h2>
@@ -50,25 +50,30 @@
 				>.
 			</p>
 		</div>
-
-		<div class="flex flex-col items-center space-y-6">
-			<h3 class="h3">Effectiveness for specific symptoms</h3>
-			<Indications />
+		<div class="w-full lg:w-fit">
+			<h3 class="h3 mb-4 lg:mb-6">Effectiveness for specific symptoms</h3>
+			<div class="w-full overflow-auto rounded-xl lg:w-fit">
+				<Indications />
+			</div>
 		</div>
-		<div class="flex flex-col items-center space-y-6">
-			<h3 class="h3">Contraindications and side effects</h3>
-			<Contraindications />
+		<div class="w-full lg:w-fit">
+			<h3 class="h3 mb-4 lg:mb-6">Contraindications and side effects</h3>
+			<div class="w-full overflow-auto rounded-xl lg:w-fit">
+				<Contraindications />
+			</div>
 		</div>
 	</article>
 </section>
-<section class="my-32">
-	<article class="container flex flex-col items-center space-y-10">
+<section class="section">
+	<article class="container flex flex-col items-center gap-y-10">
 		<h2 class="h2">When should I see a <span class="italic">doctor</span>?</h2>
 		<p class="max-w-4xl">
 			While many types of pain can be managed with over-the-counter medications, certain situations
 			require medical attention to identify or address underlying causes. You should see a doctor if
 			you experience any of the following:
 		</p>
-		<SeeDoctor />
+		<div class="w-full overflow-auto rounded-xl lg:w-fit">
+			<SeeDoctor />
+		</div>
 	</article>
 </section>

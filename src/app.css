@@ -12,19 +12,27 @@
 	}
 
 	.h1 {
-		@apply font-times text-6xl tracking-tight;
+		@apply text-4.5xl font-times tracking-tight sm:text-5xl lg:text-6xl;
 	}
 	.h2 {
-		@apply text-4.5xl font-times tracking-medium-tight;
+		@apply lg:text-4.5xl font-times text-3xl tracking-medium-tight md:text-4xl;
 	}
 
 	.h3 {
-		@apply text-xl font-medium;
+		@apply text-lg font-medium lg:text-xl;
 	}
 }
 
 .text-link {
 	@apply relative pb-[3px] font-normal underline decoration-gray-300 underline-offset-4;
+}
+
+.container {
+	@apply mx-auto max-w-[1400px] px-8 sm:px-12 md:px-16 lg:px-20;
+}
+
+.section {
+	@apply my-20 sm:my-24 md:my-28 lg:my-32;
 }
 
 @font-face {

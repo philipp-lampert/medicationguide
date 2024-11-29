@@ -83,7 +83,7 @@
 	];
 </script>
 
-<table class="w-3/4 table-fixed border-collapse overflow-hidden rounded-lg bg-white">
+<table class="w-[650px] table-auto border-collapse rounded-lg bg-white leading-5 md:w-[900px]">
 	<thead>
 		<tr class="bg-gray-100">
 			<th class="w-1/4"></th>

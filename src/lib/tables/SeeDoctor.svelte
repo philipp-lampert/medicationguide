@@ -25,14 +25,14 @@
 </script>
 
 <table
-	class="w-3/4 border-collapse overflow-hidden rounded-lg border border-black bg-white text-left"
+	class="w-[650px] table-auto border-collapse rounded-lg bg-white text-left leading-5 md:w-[900px]"
 >
 	<tbody>
 		{#each reasons as row, i}
 			<tr class="{i % 2 === 0 ? 'bg-gray-50' : 'bg-white'} transition-colors hover:bg-gray-100">
 				<td class="px-4 py-3 font-medium">{row.symptom}</td>
 				<td class="px-4 py-3">
-					<span class="rounded-md px-2 py-1">
+					<span class="px-2 py-1">
 						{row.reason}
 					</span>
 				</td>

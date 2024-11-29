@@ -65,7 +65,7 @@
 	];
 </script>
 
-<table class="w-3/4 table-fixed overflow-hidden rounded-lg bg-white">
+<table class="w-[650px] table-auto border-collapse rounded-lg bg-white leading-5 md:w-[900px]">
 	<thead>
 		<tr class="bg-gray-100">
 			<th class="w-1/4"></th>
@@ -78,7 +78,7 @@
 	<tbody>
 		{#each indications as row, i}
 			<tr class="{i % 1 === 0 ? 'bg-white' : 'bg-gray-50'} transition-colors hover:bg-gray-100">
-				<td class="px-4 py-3 text-left">{row.condition}</td>
+				<td class=" px-4 py-3 text-left">{row.condition}</td>
 				{#each row.drugs as drugStatus}
 					<td class="px-4 py-3">
 						<span

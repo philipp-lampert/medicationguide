@@ -20,14 +20,14 @@
 <svelte:window bind:scrollY={yScroll} />
 
 <header class="sticky top-0 z-40 bg-white">
-	<div class="container">
+	<div class="mx-auto max-w-[1400px] sm:px-12 md:px-16 lg:px-20">
 		<div
-			class="flex flex-row items-center border-b-2 border-black transition-all duration-500 {isShrunk
-				? 'h-16'
-				: 'h-32'}"
+			class="flex flex-row items-center border-b-2 border-black px-4 transition-all duration-500 sm:px-0 {isShrunk
+				? 'h-14 sm:h-16'
+				: 'h-20 sm:h-28 md:h-32'}"
 		>
-			<nav class="ml-3 mt-auto font-medium">
-				<ul class="flex h-16 flex-row items-center gap-x-6">
+			<nav class="mt-auto font-medium sm:ml-3">
+				<ul class="flex h-14 flex-row items-center gap-x-1 sm:h-16 sm:gap-x-4 md:gap-x-6">
 					<li>
 						<a class="group relative p-2" href="/"
 							>Home
@@ -43,9 +43,9 @@
 				</ul>
 			</nav>
 			<div
-				class="ml-auto mr-5 flex h-full flex-row gap-x-5 transition-all duration-500 {isShrunk
+				class="ml-auto mr-2 flex h-full flex-row gap-x-3 transition-all duration-500 sm:mr-5 sm:gap-x-4 md:gap-x-5 {isShrunk
 					? 'py-3'
-					: 'py-7'}"
+					: 'py-4 sm:py-6 md:py-7'}"
 			>
 				<img src={logo} alt="Caduceus" class="h-full object-contain" />
 				<div class="grid min-h-full grid-rows-3 items-stretch">
@@ -53,9 +53,9 @@
 					<div class="w-[3px] bg-german-red"></div>
 					<div class="w-[3px] bg-german-gold"></div>
 				</div>
-				<div class="relative">
+				<div class="relative flex h-full items-center">
 					<span
-						class="duration-50 absolute left-0 block text-left font-normal leading-5 transition-all duration-200 {isShrunk
+						class="duration-50 absolute left-0 top-0 block text-left text-sm font-normal leading-4 transition-all duration-200 md:text-base md:leading-5 {isShrunk
 							? 'opacity-0'
 							: 'opacity-100 delay-200'}"
 					>
@@ -63,7 +63,7 @@
 					</span>
 					<a
 						href="/interactive"
-						class="group top-1/2 flex translate-y-1/2 flex-row items-center gap-2 text-sm font-medium transition-all duration-200 {isShrunk
+						class="group flex flex-row items-center gap-1 text-sm font-medium transition-all duration-200 sm:gap-2 {isShrunk
 							? 'opacity-100 delay-200'
 							: 'opacity-0'}"
 					>

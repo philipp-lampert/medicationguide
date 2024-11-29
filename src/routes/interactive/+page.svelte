@@ -187,13 +187,13 @@
 	{#each questions as question, index (index)}
 		{#if index === currentIndex}
 			<form
-				class="absolute flex flex-col items-center justify-center gap-10 rounded-3xl border-3 border-black bg-white px-20 py-12 text-center drop-shadow-2xl"
+				class="absolute mx-3 flex flex-col items-center justify-center gap-6 rounded-3xl border-2 border-black bg-white px-8 py-8 text-center drop-shadow-2xl sm:mx-12 sm:max-w-2xl md:gap-10 md:border-3 md:px-20 md:py-12"
 				in:fly={{ y: 750 * direction, duration: 1000 }}
 				out:fly={{ y: -750 * direction, duration: 1000 }}
 				onsubmit={nextQuestion}
 			>
 				<div class="flex flex-col gap-2">
-					<p class="font-times text-4.5xl tracking-tight">
+					<p class="font-times text-3xl tracking-tight sm:text-4.5xl">
 						{#each question.text as part}
 							{#if typeof part === 'string'}
 								{part}
@@ -206,26 +206,37 @@
 						<span class="text-lg italic">Select all that apply.</span>
 					{/if}
 				</div>
-				<div class="flex flex-wrap gap-6">
-					{#each question.answers as answer}
+				<div
+					class="grid grid-cols-2 justify-items-center gap-4 {question.answers.length === 3
+						? 'sm:grid-cols-3'
+						: 'sm:grid-cols-2'}"
+				>
+					{#each question.answers as answer, index}
 						<button
 							type="button"
 							onclick={() => answerSelection(answer)}
-							class="flex min-h-24 min-w-24 flex-col items-center justify-center gap-2.5 rounded-2xl border-3 border-white bg-gray-200 px-8 py-6 text-lg font-medium text-black drop-shadow-lg transition-all duration-300 hover:border-black hover:bg-white hover:drop-shadow-xl"
+							class="
+											flex h-36 w-36 flex-col items-center justify-center gap-2.5 rounded-2xl border-3 border-white
+											bg-gray-200 font-medium text-black drop-shadow-lg transition-all
+											duration-300 hover:border-black hover:bg-white
+											hover:drop-shadow-xl sm:h-40 sm:w-40
+											sm:text-lg
+											{question.answers.length === 3 && index === 2 ? 'col-span-2 sm:col-auto' : ''}
+									"
 							class:selected={questions[currentIndex].type === 'single-choice'
 								? selectedAnswers[currentIndex]?.answers[0]?.text === answer.text
 								: selectedAnswers[currentIndex]?.answers.some((a) => a.text === answer.text)}
 						>
 							{answer.text}
 							{#if answer.image}
-								<img src={answer.image} alt={answer.text} class="max-h-16" />
+								<img src={answer.image} alt={answer.text} class="h-16" />
 							{/if}
 						</button>
 					{/each}
 				</div>
 
 				<!-- Navigation Buttons -->
-				<div class="flex gap-6">
+				<div class="flex flex-wrap justify-center gap-x-6 gap-y-1">
 					{#if currentIndex > 0}
 						<button
 							type="button"
@@ -282,7 +293,7 @@
 	{#if currentIndex === questions.length}
 		<div class="flex flex-col items-center gap-12" in:fly={{ y: 750 * direction, duration: 1000 }}>
 			<h1 class="h1 italic">Results</h1>
-			<div class="grid grid-cols-4 gap-4">
+			<div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4">
 				{#each Object.entries(calculatePercentages()).sort(([, percentageA], [, percentageB]) => percentageB - percentageA) as [medication, percentage]}
 					<div class="rounded-2xl border-2 border-black bg-white p-5 drop-shadow-xl">
 						<h2 class="h3">{capitalizeFirstLetter(medication)}</h2>
@@ -377,7 +388,7 @@
 		@apply border-4 border-black bg-white shadow-inner-strong drop-shadow-none;
 	}
 
-	/* Define the animation for the expanding and contracting effect */
+	/* Looping animation to expand and contract underline */
 	@keyframes spanAnimation {
 		0% {
 			transform: scaleX(0);
@@ -390,7 +401,6 @@
 		}
 	}
 
-	/* Apply the animation to the span with class animate-span */
 	.animate-span {
 		animation: spanAnimation 2s ease-in-out infinite;
 	}
