@@ -33,5 +33,10 @@ export default {
 		}
 	},
 
-	plugins: [forms]
+	plugins: [
+		forms,
+		function ({ addVariant }) {
+			addVariant('hover', '@media (any-hover: hover) and (any-pointer: fine) { &:hover }');
+		}
+	]
 } satisfies Config;

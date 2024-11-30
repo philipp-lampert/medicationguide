@@ -1,11 +1,14 @@
 <script>
+	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
 	import logo from '$lib/assets/logo.svg';
 </script>
 
 <footer class="z-50 bg-white">
 	<div class="mx-auto max-w-[1400px] sm:px-12 md:px-16 lg:px-20">
-		<div class="flex h-40 flex-row place-items-stretch border-t-2 border-black">
-			<a href="/" class=" ml-5 flex h-full flex-row gap-x-5 py-10">
+		<div
+			class="flex h-32 flex-row place-items-stretch border-t-2 border-black py-6 md:h-36 md:py-8 lg:h-40 lg:py-10"
+		>
+			<a href="/" class="ml-5 flex h-full flex-row gap-x-5">
 				<img src={logo} alt="Logo" class="h-full object-contain" />
 				<div class="grid min-h-full grid-rows-3 items-stretch">
 					<div class="w-[3px] bg-black"></div>
@@ -19,12 +22,20 @@
 				</div>
 			</a>
 			<div
-				class="mr-5 grid grow gap-y-1 self-center text-right text-sm text-gray-500 md:mx-6 md:grid-cols-4 md:text-center lg:max-w-3xl lg:text-base"
+				class="ml-auto mr-5 flex flex-col items-end self-center text-right text-sm text-gray-500"
 			>
-				<a href="/legal/impressum">Impressum</a>
-				<a href="/legal/privacy">Privacy Policy</a>
-				<a href="/legal/terms">Terms of Use</a>
-				<a href="/legal/disclaimer">Disclaimer</a>
+				<a class="group relative inline-block w-fit p-0.5" href="/legal/impressum"
+					>Impressum<SlidingBottomBorder color="bg-gray-300" />
+				</a>
+				<a class="group relative inline-block w-fit p-0.5" href="/legal/privacy"
+					>Privacy Policy<SlidingBottomBorder color="bg-gray-300" />
+				</a>
+				<a class="group relative inline-block w-fit p-0.5" href="/legal/terms"
+					>Terms of Use<SlidingBottomBorder color="bg-gray-300" />
+				</a>
+				<a class="group relative inline-block w-fit p-0.5" href="/legal/disclaimer"
+					>Disclaimer<SlidingBottomBorder color="bg-gray-300" />
+				</a>
 			</div>
 		</div>
 	</div>

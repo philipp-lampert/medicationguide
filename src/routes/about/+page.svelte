@@ -54,6 +54,7 @@
 					how our interactive guide works or contribute to the project, have a look at our <a
 						href="https://github.com/philipp-lampert/medication-guide"
 						class="text-link group"
+						target="_blank"
 						>repository
 						<SlidingBottomBorder /></a
 					>.
