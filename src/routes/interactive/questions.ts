@@ -29,9 +29,9 @@ export const questions = [
 	// How strong is your pain?
 	{
 		text: [
-			{ content: 'How strong is your ', italic: false },
-			{ content: 'pain', italic: true },
-			{ content: '?', italic: false }
+			{ content: 'How strong is your ', highlight: false },
+			{ content: 'pain', highlight: true },
+			{ content: '?', highlight: false }
 		],
 		type: 'single-choice',
 		answers: [
@@ -70,9 +70,9 @@ export const questions = [
 	// Do you have a fever?
 	{
 		text: [
-			{ content: 'Do you have a ', italic: false },
-			{ content: 'fever', italic: true },
-			{ content: '?', italic: false }
+			{ content: 'Do you have a ', highlight: false },
+			{ content: 'fever', highlight: true },
+			{ content: '?', highlight: false }
 		],
 		type: 'single-choice',
 		answers: [
@@ -101,11 +101,11 @@ export const questions = [
 	// Do you have local swelling or inflammation?
 	{
 		text: [
-			{ content: 'Do you have ', italic: false },
-			{ content: 'local swelling ', italic: true },
-			{ content: 'or ', italic: false },
-			{ content: 'inflammation', italic: true },
-			{ content: '?', italic: false }
+			{ content: 'Do you have ', highlight: false },
+			{ content: 'local swelling ', highlight: true },
+			{ content: 'or ', highlight: false },
+			{ content: 'inflammation', highlight: true },
+			{ content: '?', highlight: false }
 		],
 		type: 'single-choice',
 		answers: [
@@ -134,11 +134,11 @@ export const questions = [
 	{
 		// Are you pregnant in the 3rd trimester?
 		text: [
-			{ content: 'Are you ', italic: false },
-			{ content: 'pregnant ', italic: true },
-			{ content: 'in the ', italic: false },
-			{ content: '3rd trimester', italic: true },
-			{ content: '?', italic: false }
+			{ content: 'Are you ', highlight: false },
+			{ content: 'pregnant ', highlight: true },
+			{ content: 'in the ', highlight: false },
+			{ content: '3rd trimester', highlight: true },
+			{ content: '?', highlight: false }
 		],
 		type: 'single-choice',
 		answers: [
@@ -167,8 +167,9 @@ export const questions = [
 	{
 		// Do you have any of the following?
 		text: [
-			{ content: 'Do you suffer from ', italic: false },
-			{ content: 'any of the following?', italic: true }
+			{ content: 'Do you suffer from ', highlight: false },
+			{ content: 'any of the following', highlight: true },
+			{ content: '?', highlight: false }
 		],
 		type: 'multiple-choice',
 		answers: [
@@ -207,9 +208,9 @@ export const questions = [
 	{
 		// Do you currently take anticoagulants?
 		text: [
-			{ content: 'Do you currently take ', italic: false },
-			{ content: 'anticoagulants', italic: true },
-			{ content: '?', italic: false }
+			{ content: 'Do you currently take ', highlight: false },
+			{ content: 'anticoagulants', highlight: true },
+			{ content: '?', highlight: false }
 		],
 		type: 'single-choice',
 		answers: [
@@ -238,11 +239,11 @@ export const questions = [
 	{
 		// Do you have heartburn or stomach problems?
 		text: [
-			{ content: 'Do you have ', italic: false },
-			{ content: 'heartburn ', italic: true },
-			{ content: 'or ', italic: false },
-			{ content: 'stomach problems', italic: true },
-			{ content: '?', italic: false }
+			{ content: 'Do you have ', highlight: false },
+			{ content: 'heartburn ', highlight: true },
+			{ content: 'or ', highlight: false },
+			{ content: 'stomach problems', highlight: true },
+			{ content: '?', highlight: false }
 		],
 		type: 'single-choice',
 		answers: [
@@ -271,9 +272,9 @@ export const questions = [
 	{
 		// Are you older than 16 years?
 		text: [
-			{ content: 'Are you older than ', italic: false },
-			{ content: '16 years', italic: true },
-			{ content: '?', italic: false }
+			{ content: 'Are you older than ', highlight: false },
+			{ content: '16 years', highlight: true },
+			{ content: '?', highlight: false }
 		],
 		type: 'single-choice',
 		answers: [

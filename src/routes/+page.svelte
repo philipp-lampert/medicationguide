@@ -23,7 +23,7 @@
 		</p>
 		<a
 			href="/interactive"
-			class="group relative inline-flex items-center overflow-hidden rounded-2xl border-3 border-black bg-white px-12 py-3 font-medium drop-shadow-md transition-all duration-500 hover:drop-shadow-xl"
+			class="group relative inline-flex items-center overflow-hidden rounded-2xl border-3 border-black bg-white px-12 py-3 font-medium"
 		>
 			<span
 				class="ease absolute right-0 flex h-10 w-10 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-2"

@@ -53,7 +53,7 @@
 					<div class="w-[3px] bg-german-red"></div>
 					<div class="w-[3px] bg-german-gold"></div>
 				</div>
-				<div class="relative flex h-full items-center">
+				<div class="relative flex items-center">
 					<span
 						class="duration-50 absolute left-0 top-0 block text-left text-sm font-normal leading-4 transition-all duration-200 md:text-base md:leading-5 {isShrunk
 							? 'opacity-0'
@@ -63,7 +63,7 @@
 					</span>
 					<a
 						href="/interactive"
-						class="group flex flex-row items-center gap-1 text-sm font-medium transition-all duration-200 sm:gap-2 {isShrunk
+						class="group relative z-50 flex flex-row items-center gap-1 text-sm font-medium transition-all duration-200 sm:gap-2 {isShrunk
 							? 'opacity-100 delay-200'
 							: 'opacity-0'}"
 					>

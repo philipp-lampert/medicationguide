@@ -188,18 +188,18 @@
 	{#each questions as question, index (index)}
 		{#if index === currentIndex}
 			<form
-				class="absolute mx-3 flex flex-col items-center justify-center gap-6 rounded-3xl border-2 border-black bg-white px-8 py-8 text-center drop-shadow-2xl sm:mx-6 sm:max-w-4xl md:gap-10 md:border-3 md:px-20 md:py-12"
+				class="absolute mx-3 flex flex-col items-center justify-center gap-6 rounded-3xl px-4 text-center sm:mx-6 sm:max-w-4xl md:gap-10 md:px-20 md:py-12"
 				in:fly={{ y: 750 * direction, duration: 1250, easing: quartInOut }}
 				out:fly={{ y: -750 * direction, duration: 1250, easing: quartInOut }}
 				onsubmit={nextQuestion}
 			>
 				<div class="flex flex-col gap-2">
-					<h1 class="font-times text-3xl leading-8 tracking-tight sm:text-4xl md:text-4.5xl">
+					<h1 class="font-retina text-3xl font-light leading-8 tracking-tight sm:text-4xl">
 						{#each question.text as part}
 							{#if typeof part === 'string'}
 								{part}
 							{:else}
-								<span class:italic={part.italic}>{part.content}</span>
+								<span class:font-medium={part.highlight}>{part.content}</span>
 							{/if}
 						{/each}
 					</h1>
@@ -217,10 +217,10 @@
 							type="button"
 							onclick={() => answerSelection(answer)}
 							class="
-											flex h-32 w-32 flex-col items-center justify-center gap-2.5 rounded-2xl border-3 border-white
-											bg-gray-200 font-medium text-black drop-shadow-lg transition-all
+											flex h-36 w-36 flex-col items-center justify-center gap-2 rounded-2xl border-2
+											bg-gray-200 font-medium text-black transition-all
 											duration-300 hover:border-black hover:bg-white
-											hover:drop-shadow-xl sm:h-36 sm:w-36 sm:text-lg lg:h-40
+											hover:drop-shadow-xl sm:gap-3 sm:text-lg lg:h-40
 											lg:w-40
 											{question.answers.length === 3 && index === 2 ? 'col-span-2 sm:col-auto' : ''}
 									"
@@ -237,7 +237,7 @@
 				</div>
 
 				<!-- Navigation Buttons -->
-				<div class="flex flex-wrap justify-center gap-x-6 gap-y-1">
+				<div class="mx-2 flex flex-wrap justify-center gap-x-6 gap-y-1">
 					{#if currentIndex > 0}
 						<button
 							type="button"

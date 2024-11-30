@@ -14,8 +14,7 @@ export default {
 			fontFamily: {
 				retina: ['Retina, Tahoma, Arial, sans-serif'],
 				times: ['Times New Roman, serif'],
-				tobias: ['Tobias, serif'],
-				teodor: ['Teodor, serif']
+				'retina-narrow': ['RetinaNarrow, sans-serif']
 			},
 			letterSpacing: {
 				'medium-tight': '-0.01em'

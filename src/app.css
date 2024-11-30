@@ -10,29 +10,43 @@
 	body {
 		@apply min-h-full;
 	}
+}
 
+@layer components {
 	.h1 {
-		@apply text-4.5xl font-times tracking-tight sm:text-5xl lg:text-6xl;
+		@apply font-times text-4.5xl tracking-tight sm:text-5xl lg:text-6xl;
 	}
+	.h1-legal {
+		@apply mb-2 text-4xl font-medium;
+	}
+
 	.h2 {
-		@apply lg:text-4.5xl font-times text-3xl tracking-medium-tight md:text-4xl;
+		@apply font-times text-3xl tracking-medium-tight md:text-4xl lg:text-4.5xl;
+	}
+
+	.h2-legal {
+		@apply h3 mb-4 border-b-2;
 	}
 
 	.h3 {
 		@apply text-lg font-medium lg:text-xl;
 	}
-}
 
-.text-link {
-	@apply relative pb-[3px] font-normal underline decoration-gray-300 underline-offset-4;
-}
+	.h3-legal {
+		@apply mt-4 font-medium;
+	}
 
-.container {
-	@apply mx-auto max-w-[1400px] px-8 sm:px-12 md:px-16 lg:px-20;
-}
+	.text-link {
+		@apply relative pb-[3px] font-normal underline decoration-slate-200 underline-offset-4;
+	}
 
-.section {
-	@apply my-20 sm:my-24 md:my-28 lg:my-32;
+	.container {
+		@apply mx-auto max-w-[1400px] px-8 sm:px-12 md:px-16 lg:px-20;
+	}
+
+	.section {
+		@apply my-20 sm:my-24 md:my-28 lg:my-32;
+	}
 }
 
 @font-face {
@@ -58,93 +72,21 @@
 
 @font-face {
 	font-family: 'Retina';
-	src: url('/fonts/RetinaTRIAL-BookItalic-BF66a9ac659eba1.woff2') format('woff2');
+	src: url('/fonts/retina-book-italic.woff2') format('woff2');
 	font-weight: 400;
 	font-style: italic;
 }
 
 @font-face {
 	font-family: 'Retina';
-	src: url('/fonts/RetinaTRIAL-Medium-BF66a9ac6350b07.woff2') format('woff2');
+	src: url('/fonts/retina-medium.woff2') format('woff2');
 	font-weight: 500;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Retina';
-	src: url('/fonts/RetinaTRIAL-MediumItalic-BF66a9ac63ee868.woff2') format('woff2');
+	src: url('/fonts/retina-medium-italic.woff2') format('woff2');
 	font-weight: 500;
-	font-style: italic;
-}
-
-@font-face {
-	font-family: 'Retina';
-	src: url('/fonts/retina-bold.woff2') format('woff2');
-	font-weight: 600;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Retina';
-	src: url('/fonts/RetinaTRIAL-BoldItalic-BF66a9ac65def4e.woff2') format('woff2');
-	font-weight: 600;
-	font-style: italic;
-}
-
-/* Trial fonts */
-@font-face {
-	font-family: 'Tobias';
-	src: url('fonts/tobias/TobiasTRIAL-Light.woff2') format('woff2');
-	font-weight: 300;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Tobias';
-	src: url('fonts/tobias/TobiasTRIAL-LightItalic.woff2') format('woff2');
-	font-weight: 300;
-	font-style: italic;
-}
-
-@font-face {
-	font-family: 'Tobias';
-	src: url('fonts/tobias/TobiasTRIAL-Regular.woff2') format('woff2');
-	font-weight: 400;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Tobias';
-	src: url('fonts/tobias/TobiasTRIAL-RegularItalic.woff2') format('woff2');
-	font-weight: 400;
-	font-style: italic;
-}
-
-/* Teodor */
-@font-face {
-	font-family: 'Teodor';
-	src: url('fonts/teodor/TeodorTRIAL-Light.woff2') format('woff2');
-	font-weight: 300;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Teodor';
-	src: url('fonts/teodor/TeodorTRIAL-LightItalic.woff2') format('woff2');
-	font-weight: 300;
-	font-style: italic;
-}
-
-@font-face {
-	font-family: 'Teodor';
-	src: url('fonts/teodor/TeodorTRIAL-Regular.woff2') format('woff2');
-	font-weight: 400;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Teodor';
-	src: url('fonts/teodor/TeodorTRIAL-RegularItalic.woff2') format('woff2');
-	font-weight: 400;
 	font-style: italic;
 }
