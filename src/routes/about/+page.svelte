@@ -1,9 +1,20 @@
 <script>
 	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
+	import OrganizationSchema from './OrganizationSchema.svelte';
 </script>
 
 <svelte:head>
-	<title>About Medication Guide</title>
+	<title>About Medication Guide™ | Personalized Recommendations</title>
+	<meta
+		name="description"
+		content="Medication Guide is designed to support you in making informed decisions about over-the-counter pain medication. As a free and open-source project, we aim to make reliable health information accessible for everyone."
+	/>
+	<meta
+		name="keywords"
+		content="personalized recommendation, personalized medicine, pain reliever, painkiller, analgesic, pain management, medication, over-the-counter, open-source"
+	/>
+	<meta name="author" content="Philipp Lampert" />
+	<OrganizationSchema />
 </svelte:head>
 
 <section class="section">

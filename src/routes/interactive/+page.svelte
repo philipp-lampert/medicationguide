@@ -181,7 +181,16 @@
 </script>
 
 <svelte:head>
-	<title>Interactive Medication Guide</title>
+	<title>Interactive Pain Reliever Guide | Find The Best Option</title>
+	<meta
+		name="description"
+		content="Use our interactive tool to get personalized painkiller recommendations based on your symptoms and risk profile, helping you find the most effective option with minimal side effects."
+	/>
+	<meta
+		name="keywords"
+		content="pain reliever, painkiller, analgesic, pain management, medication, over-the-counter, ibuprofen, acetaminophen, aspirin, naproxen, paracetamol"
+	/>
+	<meta name="author" content="Philipp Lampert" />
 </svelte:head>
 
 <div class="container my-12 flex min-h-[500px] flex-col items-center justify-center">
@@ -293,11 +302,11 @@
 	{/each}
 	{#if currentIndex === questions.length}
 		<div
-			class="flex flex-col items-center gap-10"
+			class="flex flex-col items-center gap-8 py-6 sm:gap-10"
 			in:fly={{ y: 750 * direction, duration: 1250, easing: quartInOut }}
 		>
 			<h1 class="h1 italic">Results</h1>
-			<div class="grid w-full grid-cols-1 gap-x-16 gap-y-10 py-8 md:grid-cols-2 lg:grid-cols-4">
+			<div class="grid w-full grid-cols-1 gap-x-16 gap-y-10 md:grid-cols-2 lg:grid-cols-4">
 				{#each Object.entries(calculatePercentages()).sort(([, percentageA], [, percentageB]) => percentageB - percentageA) as [medication, percentage]}
 					<div class=" flex flex-col gap-2 bg-white text-left">
 						<h2 class="h3 border-b-2">{capitalizeFirstLetter(medication)}</h2>

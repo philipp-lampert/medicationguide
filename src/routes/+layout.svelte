@@ -7,7 +7,7 @@
 
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
-	import Favicon from '$lib/Favicon.svelte';
+	import Favicon from '$lib/assets/Favicon.svelte';
 
 	injectAnalytics({ mode: dev ? 'development' : 'production' });
 	injectSpeedInsights();

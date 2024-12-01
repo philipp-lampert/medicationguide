@@ -4,16 +4,27 @@
 	import SeeDoctor from '$lib/tables/SeeDoctor.svelte';
 	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
 	import ArrowDoubleRight from '$lib/assets/icons/buttons/ArrowDoubleRight.svelte';
+	import MedicalWebPageSchema from './MedicalWebPageSchema.svelte';
 </script>
 
 <svelte:head>
-	<title>Medication Guide: Pain Relievers</title>
+	<title>Which Pain Reliever Should I Use? | Medication Guide™</title>
+	<meta
+		name="description"
+		content="Use our interactive guide to get a personalized recommendation for the best painkiller based on your symptoms and risk profile. Choose the most effective option while minimizing side effects."
+	/>
+	<meta
+		name="keywords"
+		content="pain reliever, painkiller, analgesic, pain management, medication, over-the-counter, ibuprofen, acetaminophen, aspirin, naproxen, paracetamol"
+	/>
+	<meta name="author" content="Philipp Lampert" />
+	<MedicalWebPageSchema />
 </svelte:head>
 
 <section class="section">
 	<div class="container flex flex-col items-center gap-8 md:gap-12">
 		<h1 class="h1">Which <span class="italic">pain reliever</span> should I use?</h1>
-		<p class="max-w-2xl text-left">
+		<p class="max-w-2xl">
 			While many analgesics can be purchased without a prescription, not all are effective for every
 			symptom. Side effects also vary and can put individuals with certain health conditions at
 			risk.
@@ -24,8 +35,8 @@
 		<a
 			href="/interactive"
 			class="group relative inline-flex items-center overflow-hidden rounded-2xl
-										  bg-black px-12 py-3 font-normal text-white drop-shadow-xl
-											transition-all duration-500 hover:drop-shadow-2xl"
+										  bg-black px-12 py-3.5 font-normal text-white shadow-xl
+											transition-all duration-500 hover:shadow-2xl"
 		>
 			<span
 				class="ease absolute right-0 flex h-10 w-10 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-2"
