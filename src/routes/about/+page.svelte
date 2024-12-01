@@ -83,7 +83,11 @@
 					href="https://www.linkedin.com/in/philipp-lampert-84aabb1b3"
 					target="_blank"
 					>LinkedIn<SlidingBottomBorder />
-				</a> profiles.
+				</a>
+				profiles. Feel free to reach out to us by sending an email to
+				<a class="text-link group" href="mailto:info@medicationguide.org"
+					>info@medicationguide.org<SlidingBottomBorder /></a
+				>.
 			</p>
 		</div>
 	</article>

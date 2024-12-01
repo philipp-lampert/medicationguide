@@ -1,7 +1,7 @@
 <script lang="ts">
 	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
-	import arrowDoubleRight from '$lib/assets/icons/buttons/arrow-double-right.svg';
-	import none from '$lib/assets/icons/buttons/none.svg';
+	import ArrowDoubleRight from '$lib/assets/icons/buttons/ArrowDoubleRight.svelte';
+	import IconNone from '$lib/assets/icons/buttons/IconNone.svelte';
 	import turnAround from '$lib/assets/icons/buttons/arrow-turn-around.svg';
 	import { fly } from 'svelte/transition';
 	import { quartInOut } from 'svelte/easing';
@@ -217,8 +217,8 @@
 							type="button"
 							onclick={() => answerSelection(answer)}
 							class="
-											flex h-36 w-36 flex-col items-center justify-center gap-2 rounded-2xl border-2
-											bg-gray-200 font-medium text-black transition-all
+											flex h-36 w-36 flex-col items-center justify-center gap-2 rounded-2xl border-2 border-gray-200
+											 bg-gray-50 font-medium text-black transition-all
 											duration-300 hover:border-black hover:bg-white
 											hover:drop-shadow-xl sm:gap-3 sm:text-lg lg:h-40
 											lg:w-40
@@ -266,8 +266,8 @@
 							class="group relative flex flex-row items-center gap-2.5 overflow-hidden bg-white px-0.5 py-0.5 font-medium text-green-800"
 						>
 							None of the above
-							<img src={none} alt="None of the above" class="h-3.5" />
-							<SlidingBottomBorder />
+							<IconNone classes={'fill-current h-3.5'} />
+							<SlidingBottomBorder color={'bg-current'} />
 						</button>
 					{/if}
 
@@ -281,7 +281,7 @@
 							{:else}
 								Show Results
 							{/if}
-							<img src={arrowDoubleRight} alt="Next Question" class="h-3.5" />
+							<ArrowDoubleRight classes="h-3.5" />
 							<span
 								class="animate-span absolute bottom-0 left-0 z-50 h-0.5 w-full scale-x-0 transform bg-black"
 							></span>
@@ -293,18 +293,17 @@
 	{/each}
 	{#if currentIndex === questions.length}
 		<div
-			class="flex flex-col items-center gap-12"
+			class="flex flex-col items-center gap-10"
 			in:fly={{ y: 750 * direction, duration: 1250, easing: quartInOut }}
 		>
 			<h1 class="h1 italic">Results</h1>
-			<div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4">
+			<div class="grid w-full grid-cols-1 gap-x-16 gap-y-10 py-8 md:grid-cols-2 lg:grid-cols-4">
 				{#each Object.entries(calculatePercentages()).sort(([, percentageA], [, percentageB]) => percentageB - percentageA) as [medication, percentage]}
-					<div class="rounded-2xl border-2 border-black bg-white p-5 drop-shadow-xl">
-						<h2 class="h3">{capitalizeFirstLetter(medication)}</h2>
-						<p class="mb-4 font-normal">
+					<div class=" flex flex-col gap-2 bg-white text-left">
+						<h2 class="h3 border-b-2">{capitalizeFirstLetter(medication)}</h2>
+						<div class="text-sm font-normal">
 							{(percentage as number).toFixed(0)}% match
-						</p>
-
+						</div>
 						<div class="flex flex-col gap-2">
 							<!-- Progress Bar -->
 							<div class="h-2 w-full rounded bg-gray-200">
@@ -379,7 +378,7 @@
 					class="group relative flex flex-row items-center gap-2 overflow-hidden bg-white px-0.5 py-0.5 font-medium"
 				>
 					Exit
-					<img src={arrowDoubleRight} alt="Skip" class="h-3.5" />
+					<ArrowDoubleRight classes="h-3.5" />
 					<SlidingBottomBorder />
 				</a>
 			</div>
@@ -389,7 +388,7 @@
 
 <style lang="postcss">
 	.selected {
-		@apply border-4 border-black bg-white shadow-inner-strong drop-shadow-none;
+		@apply border-3 border-black bg-white shadow-inner-strong drop-shadow-none;
 	}
 
 	/* Looping animation to expand and contract underline */

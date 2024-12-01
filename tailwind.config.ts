@@ -9,7 +9,8 @@ export default {
 	theme: {
 		extend: {
 			fontSize: {
-				'4.5xl': ['2.625rem', '3rem']
+				'4.5xl': ['2.625rem', '3rem'],
+				'5.5xl': ['3.375rem', '1']
 			},
 			fontFamily: {
 				retina: ['Retina, Tahoma, Arial, sans-serif'],
@@ -27,7 +28,7 @@ export default {
 				'3': '3px'
 			},
 			boxShadow: {
-				'inner-strong': 'inset 0 0px 15px 0px rgb(0 0 0 / 0.25)'
+				'inner-strong': 'inset 0 0px 12px 0px rgb(0 0 0 / 0.25)'
 			},
 			display: ['group-hover']
 		}

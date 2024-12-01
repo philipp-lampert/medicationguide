@@ -1,12 +1,22 @@
 <script lang="ts">
 	import '../app.css';
+	import { dev } from '$app/environment';
+	import { injectAnalytics } from '@vercel/analytics/sveltekit';
+	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+	import { page } from '$app/stores';
+
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
-	import { page } from '$app/stores';
+	import Favicon from '$lib/Favicon.svelte';
+
+	injectAnalytics({ mode: dev ? 'development' : 'production' });
+	injectSpeedInsights();
 
 	let isQuestionPage = $derived($page.url.pathname.startsWith('/interactive'));
 	let { children } = $props();
 </script>
+
+<Favicon />
 
 <div class="flex min-h-screen flex-col">
 	<Header />

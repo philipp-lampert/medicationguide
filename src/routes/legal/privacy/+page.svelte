@@ -178,17 +178,9 @@
 				<h2 class="h2-legal">Contacting Us</h2>
 				<p>
 					If you have any questions about our Privacy Policy or practices, please contact us at
-					<a class="text-link group" href="mailto:philipp.lampert@charite.de"
-						>philipp.lampert@charite.de<SlidingBottomBorder /></a
-					> or by writing to us at:
-				</p>
-				<br />
-				<p>
-					Medication Guide<br />
-					Philipp Lampert<br />
-					Pappelallee 45<br />
-					10437 Berlin<br />
-					Germany
+					<a class="text-link group" href="mailto:info@medicationguide.org"
+						>info@medicationguide.org<SlidingBottomBorder /></a
+					>.
 				</p>
 			</div>
 		</div>

@@ -15,8 +15,8 @@
 					Deutschland
 				</p>
 				<p>
-					E-Mail: <a class="text-link group" href="mailto:philipp.lampert@charite.de"
-						>philipp.lampert@charite.de
+					E-Mail: <a class="text-link group" href="mailto:info@medicationguide.org"
+						>info@medicationguide.org
 						<SlidingBottomBorder />
 					</a>
 				</p>
@@ -24,18 +24,20 @@
 			<div>
 				<h2 class="h2-legal">Umsatzsteuer-ID</h2>
 				<p>
-					Umsatzsteuer-Identifikationsnummer gem&auml;&szlig; &sect; 27 a Umsatzsteuergesetz:<br />
+					Umsatzsteuer-Identifikationsnummer gem&auml;&szlig; &sect; 27 a Umsatzsteuergesetz:
 					DE368254012
 				</p>
 			</div>
 			<div>
 				<h2 class="h2-legal">EU-Streitschlichtung</h2>
 				<p>
-					Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a
+					Die Europäische Kommission stellt eine <a
 						href="https://ec.europa.eu/consumers/odr/"
 						target="_blank"
-						rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a
-					>.<br /> Unsere E-Mail-Adresse finden Sie oben im Impressum.
+						rel="noopener noreferrer"
+						class="text-link group">Plattform zur Online-Streitbeilegung<SlidingBottomBorder /></a
+					>
+					bereit.
 				</p>
 			</div>
 			<div>

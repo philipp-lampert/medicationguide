@@ -2,8 +2,8 @@
 	import Indications from '$lib/tables/Indications.svelte';
 	import Contraindications from '$lib/tables/Contraindications.svelte';
 	import SeeDoctor from '$lib/tables/SeeDoctor.svelte';
-	import arrowDoubleRight from '$lib/assets/icons/buttons/arrow-double-right.svg';
 	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
+	import ArrowDoubleRight from '$lib/assets/icons/buttons/ArrowDoubleRight.svelte';
 </script>
 
 <svelte:head>
@@ -13,7 +13,7 @@
 <section class="section">
 	<div class="container flex flex-col items-center gap-8 md:gap-12">
 		<h1 class="h1">Which <span class="italic">pain reliever</span> should I use?</h1>
-		<p class="max-w-2xl">
+		<p class="max-w-2xl text-left">
 			While many analgesics can be purchased without a prescription, not all are effective for every
 			symptom. Side effects also vary and can put individuals with certain health conditions at
 			risk.
@@ -23,12 +23,14 @@
 		</p>
 		<a
 			href="/interactive"
-			class="group relative inline-flex items-center overflow-hidden rounded-2xl border-3 border-black bg-white px-12 py-3 font-medium"
+			class="group relative inline-flex items-center overflow-hidden rounded-2xl
+										  bg-black px-12 py-3 font-normal text-white drop-shadow-xl
+											transition-all duration-500 hover:drop-shadow-2xl"
 		>
 			<span
 				class="ease absolute right-0 flex h-10 w-10 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-2"
 			>
-				<img class="h-4 transition-all duration-500" src={arrowDoubleRight} alt="Start Guide" />
+				<ArrowDoubleRight classes={'h-4 fill-white'} />
 			</span>
 			<span class="relative transform duration-500 group-hover:-translate-x-3">Start Guide</span>
 		</a>

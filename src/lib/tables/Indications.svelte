@@ -77,7 +77,7 @@
 	</thead>
 	<tbody>
 		{#each indications as row, i}
-			<tr class="{i % 1 === 0 ? 'bg-white' : 'bg-gray-50'} transition-colors hover:bg-gray-100">
+			<tr class="{i % 2 === 0 ? 'bg-white' : 'bg-gray-50'} transition-colors hover:bg-gray-100">
 				<td class=" px-4 py-3 text-left">{row.condition}</td>
 				{#each row.drugs as drugStatus}
 					<td class="px-4 py-3">

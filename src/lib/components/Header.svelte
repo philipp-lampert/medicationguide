@@ -1,7 +1,7 @@
 <script>
 	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
 	import logo from '$lib/assets/logo.svg';
-	import arrowDoubleRight from '$lib/assets/icons/buttons/arrow-double-right.svg';
+	import ArrowDoubleRight from '$lib/assets/icons/buttons/ArrowDoubleRight.svelte';
 
 	let yScroll = $state(0);
 	let threshold = 60;
@@ -68,7 +68,7 @@
 							: 'opacity-0'}"
 					>
 						Start Guide
-						<img src={arrowDoubleRight} alt="Start Guide" class="h-3" />
+						<ArrowDoubleRight classes={'h-3'} />
 						<SlidingBottomBorder />
 					</a>
 				</div>
