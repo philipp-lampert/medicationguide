@@ -13,7 +13,14 @@
 		name="keywords"
 		content="personalized recommendation, personalized medicine, pain reliever, painkiller, analgesic, pain management, medication, over-the-counter, open-source"
 	/>
-	<meta name="author" content="Philipp Lampert" />
+	<meta property="og:title" content="About Medication Guide™" />
+	<meta property="og:type" content="website" />
+	<meta
+		property="og:description"
+		content="An interactive guide for selecting the most appropriate pain reliever based on your symptoms and risk profile."
+	/>
+	<meta property="og:image" content="https://medicationguide.org/logo-social.jpg" />
+	<meta property="og:url" content="https://medicationguide.org/about" />
 	<OrganizationSchema />
 </svelte:head>
 
@@ -77,7 +84,7 @@
 <section class="section">
 	<article class="container flex flex-col items-center">
 		<div>
-			<h2 class="h2 mb-4">Who is <span class="italic">behind</span> the project?</h2>
+			<h2 class="h2 mb-4">Who is behind the project?</h2>
 			<p class="max-w-3xl">
 				This project was created by Philipp Lampert, final-year medical student from Germany, in
 				collaboration with senior doctors from Berlin's Charité university hospital. For more

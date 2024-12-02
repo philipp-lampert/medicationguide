@@ -14,14 +14,14 @@
 
 @layer components {
 	.h1 {
-		@apply font-times text-4.5xl tracking-tight sm:text-5xl lg:text-6xl;
+		@apply font-editors text-4.5xl sm:text-5xl lg:text-6xl;
 	}
 	.h1-legal {
 		@apply mb-2 text-4xl font-medium;
 	}
 
 	.h2 {
-		@apply font-times text-3xl tracking-medium-tight md:text-4xl lg:text-4.5xl;
+		@apply font-editors text-3xl tracking-medium-wide md:text-4xl lg:text-4.5xl;
 	}
 
 	.h2-legal {
@@ -45,7 +45,7 @@
 	}
 
 	.section {
-		@apply my-20 sm:my-24 md:my-28 lg:my-32;
+		@apply my-24 md:my-28 lg:my-32;
 	}
 }
 
@@ -89,4 +89,13 @@
 	src: url('/fonts/retina-medium-italic.woff2') format('woff2');
 	font-weight: 500;
 	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Editors';
+	src:
+		url('/fonts/editors-note/regular.woff2') format('woff2'),
+		url('/fonts/editors-note/regular.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
 }

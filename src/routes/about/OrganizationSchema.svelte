@@ -8,20 +8,11 @@
   "addressCountry": "Germany",
   "addressRegion": "Berlin"
 },
-"aggregateRating": {
-  "@type": "AggregateRating",
-  "ratingValue": "4.7",
-  "reviewCount": "1047",
-  "itemReviewed": {
-    "@type": "MedicalWebPage",
-    "name": "Medication Guide",
-    "url": "https://medicationguide.org/interactive"
-  }
-},
 "brand": {
   "@type": "Brand",
   "name": "Medication Guide",
-  "slogan": "Interactive Tools for Better Health Decisions"
+  "slogan": "Interactive Tools for Better Health Decisions",
+  "logo": "https://medicationguide.org/logo-social.jpg"
 },
 "email": "info@medicationguide.org",
 "founder": {

@@ -12,27 +12,24 @@
     "position": 1,
     "name": "Home",
     "item": {
-      "@type": "WebPage",
-      "name": "Home",
-      "url": "https://medicationguide.org"
+      "@id": "https://medicationguide.org",
+      "name": "Home"
      }
     },
     {
     "@type": "ListItem",
     "position": 2,
     "item": {
-      "@type": "WebPage",
-      "name": "Interactive Guide",
-      "url": "https://medicationguide.org/interactive"
+      "@id": "https://medicationguide.org/interactive",
+      "name": "Interactive Guide"
       }
     },
     {
     "@type": "ListItem",
     "position": 3,
     "item": {
-      "@type": "WebPage",
-      "name": "About",
-      "url": "https://medicationguide.org/about"
+    "@id": "https://medicationguide.org/about",
+      "name": "About"   
       }
     }]
 },
@@ -43,16 +40,7 @@
     "@type": "Thing",
     "name": "Medication Guide",
     "description": "Medication Guide is designed to support you in making well-informed decisions about over-the-counter pain medication. Through our interactive guide, educational resources, and expert-backed advice, we aim to provide guidance for selecting the most appropriate treatment for you and your symptoms.",
-    "url": "https://medicationguide.org"},
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.7",
-    "reviewCount": "1047",
-    "itemReviewed": {
-    "@type": "MedicalWebPage",
-    "name": "Medication Guide",
-    "url": "https://medicationguide.org/interactive"
-  }
+    "url": "https://medicationguide.org"}
   },
   "author": {
     "@type": "Person",

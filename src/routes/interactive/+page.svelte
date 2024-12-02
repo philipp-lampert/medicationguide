@@ -190,7 +190,14 @@
 		name="keywords"
 		content="pain reliever, painkiller, analgesic, pain management, medication, over-the-counter, ibuprofen, acetaminophen, aspirin, naproxen, paracetamol"
 	/>
-	<meta name="author" content="Philipp Lampert" />
+	<meta property="og:title" content="Medication Guide™" />
+	<meta property="og:type" content="website" />
+	<meta
+		property="og:description"
+		content="Personalized recommendations for the best painkiller based on your symptoms and risk profile."
+	/>
+	<meta property="og:image" content="https://medicationguide.org/logo-social.jpg" />
+	<meta property="og:url" content="https://medicationguide.org/interactive" />
 </svelte:head>
 
 <div class="container my-12 flex min-h-[500px] flex-col items-center justify-center">
@@ -305,7 +312,7 @@
 			class="flex flex-col items-center gap-8 py-6 sm:gap-10"
 			in:fly={{ y: 750 * direction, duration: 1250, easing: quartInOut }}
 		>
-			<h1 class="h1 italic">Results</h1>
+			<h1 class="h1">Results</h1>
 			<div class="grid w-full grid-cols-1 gap-x-16 gap-y-10 md:grid-cols-2 lg:grid-cols-4">
 				{#each Object.entries(calculatePercentages()).sort(([, percentageA], [, percentageB]) => percentageB - percentageA) as [medication, percentage]}
 					<div class=" flex flex-col gap-2 bg-white text-left">
