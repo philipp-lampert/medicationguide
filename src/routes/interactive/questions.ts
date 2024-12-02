@@ -2,6 +2,9 @@ import mild from '$lib/assets/icons/answers/mild.svg';
 import moderate from '$lib/assets/icons/answers/moderate.svg';
 import severe from '$lib/assets/icons/answers/severe.svg';
 
+import lightning from '$lib/assets/icons/answers/lightning.svg';
+import time from '$lib/assets/icons/answers/time.svg';
+
 import temperatureHigh from '$lib/assets/icons/answers/temperature-high.svg';
 import temperatureLow from '$lib/assets/icons/answers/temperature-low.svg';
 
@@ -63,6 +66,39 @@ export const questions = [
 					acetaminophen: { value: 0, reason: 'See doctor for severe pain' },
 					naproxen: { value: 0.5, reason: 'See doctor for severe pain' },
 					aspirin: { value: 0.5, reason: 'See doctor for severe pain' }
+				}
+			}
+		]
+	},
+	// Is your paint acute or chronic??
+	{
+		text: [
+			{ content: 'Is your pain ', highlight: false },
+			{ content: 'acute ', highlight: true },
+			{ content: 'or ', highlight: false },
+			{ content: 'chronic', highlight: true },
+			{ content: '?', highlight: false }
+		],
+		type: 'single-choice',
+		answers: [
+			{
+				text: 'Acute',
+				image: lightning,
+				medications: {
+					ibuprofen: { value: 1, reason: '' },
+					acetaminophen: { value: 1, reason: 'Lowest risk of side effects' },
+					naproxen: { value: 0.5, reason: 'Slower onset of effect' },
+					aspirin: { value: 0.5, reason: 'Highest risk of side effects' }
+				}
+			},
+			{
+				text: 'Chronic',
+				image: time,
+				medications: {
+					ibuprofen: { value: 0.5, reason: '' },
+					acetaminophen: { value: 1, reason: 'Lowest risk of side effects' },
+					naproxen: { value: 1, reason: 'Longer duration of effect' },
+					aspirin: { value: 0, reason: 'Highest risk of side effects' }
 				}
 			}
 		]

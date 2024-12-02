@@ -14,14 +14,14 @@
 
 @layer components {
 	.h1 {
-		@apply font-editors text-4.5xl sm:text-5xl lg:text-6xl;
+		@apply font-editors text-4xl font-medium md:text-5xl lg:text-5.5xl;
 	}
 	.h1-legal {
 		@apply mb-2 text-4xl font-medium;
 	}
 
 	.h2 {
-		@apply font-editors text-3xl tracking-medium-wide md:text-4xl lg:text-4.5xl;
+		@apply font-editors text-3xl font-normal tracking-medium-wide;
 	}
 
 	.h2-legal {
@@ -41,7 +41,7 @@
 	}
 
 	.container {
-		@apply mx-auto max-w-[1400px] px-8 sm:px-12 md:px-16 lg:px-20;
+		@apply mx-auto max-w-[1400px] px-8 sm:px-16 md:px-16 lg:px-20;
 	}
 
 	.section {
@@ -91,6 +91,7 @@
 	font-style: italic;
 }
 
+/* Editor's Note */
 @font-face {
 	font-family: 'Editors';
 	src:
@@ -98,4 +99,17 @@
 		url('/fonts/editors-note/regular.woff') format('woff');
 	font-weight: 400;
 	font-style: normal;
+}
+
+/* Helvetica */
+@font-face {
+	font-family: 'Helvetica';
+	src: url('/fonts/helvetica/Helvetica-Bold.ttf') format('truetype');
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: 'Helvetica';
+	src: url('/fonts/helvetica/Helvetica.ttf') format('truetype');
+	font-weight: 400;
 }

@@ -6,18 +6,18 @@ export const medicationInfo = {
 		negative: []
 	},
 	acetaminophen: {
-		positive: ['Lowest risk of side effects'],
+		positive: [],
 		neutral: [],
 		negative: []
 	},
 	naproxen: {
-		positive: ['Longer lasting pain relief'],
+		positive: [],
 		neutral: [],
 		negative: []
 	},
 	aspirin: {
 		positive: [],
-		neutral: ['More frequent side effects'],
+		neutral: [],
 		negative: []
 	}
 };

@@ -112,14 +112,11 @@
 		MEDICATIONS.reduce(
 			(acc, name) => ({
 				...acc,
-				[name]:
-					selectedAnswers
-						.flatMap((question) =>
-							question.answers.map((answer) => answer.medications[name as Medications]?.value || 0)
-						)
-						.reduce((sum, value) => sum + value, 0) +
-					(name === 'naproxen' ? 0.5 : 0) - // Naproxen is longer lasting
-					(name === 'aspirin' ? 0.5 : 0) // Aspiring has more side effects
+				[name]: selectedAnswers
+					.flatMap((question) =>
+						question.answers.map((answer) => answer.medications[name as Medications]?.value || 0)
+					)
+					.reduce((sum, value) => sum + value, 0)
 			}),
 			{} as Record<Medications, number>
 		)
@@ -142,7 +139,7 @@
 
 		return Object.entries(totalScores).reduce(
 			(percentages, [medication, totalScore]) => {
-				percentages[medication] = (totalScore / numSelectedAnswers) * 100; // Add 0.5 to account for naproxen
+				percentages[medication] = (totalScore / numSelectedAnswers) * 100;
 				return percentages;
 			},
 			{} as { [key: string]: number }

@@ -15,10 +15,11 @@ export default {
 			fontFamily: {
 				retina: ['Retina, Tahoma, Arial, sans-serif'],
 				times: ['Times New Roman, serif'],
-				editors: ['Editors, Times New Roman, serif']
+				editors: ['Editors, Times New Roman, serif'],
+				helvetica: ['Helvetica, sans-serif']
 			},
 			letterSpacing: {
-				'medium-wide': '0.0125em'
+				'medium-wide': '0.015em'
 			},
 			colors: {
 				'german-red': '#e2001a',

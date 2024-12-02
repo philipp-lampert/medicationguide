@@ -31,14 +31,16 @@
 <section class="section">
 	<div class="container flex flex-col items-center gap-8 md:gap-12">
 		<h1 class="h1">Which pain reliever should I use?</h1>
-		<p class="max-w-2xl">
-			While many analgesics can be purchased without a prescription, not all are effective for every
-			symptom. Side effects also vary and can put individuals with certain health conditions at
-			risk.
-		</p>
-		<p class="max-w-2xl font-medium">
-			Use the interactive guide to find the appropriate medication for you and your symptoms.
-		</p>
+		<div>
+			<p class="mb-4 max-w-2xl">
+				While many analgesics can be purchased without a prescription, not all are effective for
+				every symptom. Side effects also vary and can put individuals with certain health conditions
+				at risk.
+			</p>
+			<p class="max-w-2xl font-medium">
+				Use the interactive guide to find the appropriate medication for you and your symptoms.
+			</p>
+		</div>
 		<a
 			href="/interactive"
 			class="group relative inline-flex items-center overflow-hidden rounded-2xl
@@ -59,17 +61,17 @@
 		<div class="flex flex-col items-center gap-y-6">
 			<h2 class="h2">Differences between over-the-counter analgesics</h2>
 			<p class="max-w-4xl">
-				Pain relievers vary in their mechanisms of action and side effects. Thus, not every
-				medication is effective against every symptom or safe for everyone. Selecting the right
+				Pain relievers differ in how they work and the side effects they may cause. Not all are
+				effective for every type of pain, nor are they safe for everyone. Selecting the right
 				analgesic requires careful consideration of both the desired therapeutic effects and
-				potential risks. The tables below summarize the key differences. For a personalized
-				recommendation, use our <a class="text-link group" href="/interactive"
+				potential risks. The tables below highlights the most important distinctions. For a
+				personalized recommendation, use our <a class="text-link group" href="/interactive"
 					>interactive guide<SlidingBottomBorder /></a
 				>.
 			</p>
 		</div>
 		<div class="w-full lg:w-fit">
-			<h3 class="h3 mb-4 lg:mb-6">Effectiveness for specific symptoms</h3>
+			<h3 class="h3 mb-4 lg:mb-6">Effectiveness and indications</h3>
 			<div class="w-full overflow-auto rounded-xl lg:w-fit">
 				<Indications />
 			</div>
