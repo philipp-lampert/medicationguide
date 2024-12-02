@@ -2,6 +2,10 @@
 	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
 </script>
 
+<svelte:head>
+	<title>Impressum | Medication Guide™</title>
+</svelte:head>
+
 <section class="section">
 	<div class="container">
 		<h1 class="mb-8 text-4xl font-medium">Impressum</h1>

@@ -9,10 +9,6 @@
 		name="description"
 		content="Medication Guide is designed to support you in making informed decisions about over-the-counter pain medication. As a free and open-source project, we aim to make reliable health information accessible for everyone."
 	/>
-	<meta
-		name="keywords"
-		content="personalized recommendation, personalized medicine, pain reliever, painkiller, analgesic, pain management, medication, over-the-counter, open-source"
-	/>
 	<meta property="og:title" content="About Medication Guide™" />
 	<meta property="og:type" content="website" />
 	<meta
@@ -26,7 +22,7 @@
 
 <section class="section">
 	<article class="container flex flex-col items-center">
-		<h1 class="h1 mb-3">Medication Guide</h1>
+		<h1 class="h1 mb-1">Medication Guide</h1>
 		<h2 class="mb-12 text-lg italic sm:text-xl md:text-2xl">
 			Interactive Tools for Better Health Decisions
 		</h2>

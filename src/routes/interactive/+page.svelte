@@ -3,6 +3,8 @@
 	import ArrowDoubleRight from '$lib/assets/icons/buttons/ArrowDoubleRight.svelte';
 	import IconNone from '$lib/assets/icons/buttons/IconNone.svelte';
 	import turnAround from '$lib/assets/icons/buttons/arrow-turn-around.svg';
+	import reload from '$lib/assets/icons/buttons/reload.svg';
+	import home from '$lib/assets/icons/buttons/home.svg';
 	import { fly } from 'svelte/transition';
 	import { quartInOut } from 'svelte/easing';
 	import { questions } from './questions';
@@ -183,10 +185,6 @@
 		name="description"
 		content="Use our interactive tool to get personalized painkiller recommendations based on your symptoms and risk profile, helping you find the most effective option with minimal side effects."
 	/>
-	<meta
-		name="keywords"
-		content="pain reliever, painkiller, analgesic, pain management, medication, over-the-counter, ibuprofen, acetaminophen, aspirin, naproxen, paracetamol"
-	/>
 	<meta property="og:title" content="Medication Guide™" />
 	<meta property="og:type" content="website" />
 	<meta
@@ -257,7 +255,7 @@
 							onclick={goBack}
 							class="group relative flex flex-row items-center gap-2.5 overflow-hidden bg-white px-0.5 py-0.5 font-medium"
 						>
-							<img src={turnAround} alt="Previous" class="h-3.5" />
+							<img src={turnAround} alt="Previous" class="h-4 pb-0.5" />
 							Previous
 							<SlidingBottomBorder />
 						</button>
@@ -266,7 +264,7 @@
 							href="/"
 							class="group relative flex flex-row items-center gap-2.5 overflow-hidden bg-white px-0.5 py-0.5 font-medium"
 						>
-							<img src={turnAround} alt="Exit" class="h-3.5" />
+							<img src={turnAround} alt="Exit" class="h-4 pb-0.5" />
 							Exit
 							<SlidingBottomBorder />
 						</a>
@@ -279,7 +277,7 @@
 							class="group relative flex flex-row items-center gap-2.5 overflow-hidden bg-white px-0.5 py-0.5 font-medium text-green-800"
 						>
 							None of the above
-							<IconNone classes={'fill-current h-3.5'} />
+							<IconNone classes={'fill-current h-4 pb-0.5'} />
 							<SlidingBottomBorder color={'bg-current'} />
 						</button>
 					{/if}
@@ -308,6 +306,7 @@
 		<div
 			class="flex flex-col items-center gap-8 py-6 sm:gap-10"
 			in:fly={{ y: 750 * direction, duration: 1250, easing: quartInOut }}
+			out:fly={{ y: -750 * direction, duration: 1250, easing: quartInOut }}
 		>
 			<h1 class="h1">Results</h1>
 			<div class="grid w-full grid-cols-1 gap-x-16 gap-y-10 md:grid-cols-2 lg:grid-cols-4">
@@ -377,21 +376,29 @@
 				{/each}
 			</div>
 			<div class="flex flex-row gap-6">
+				<button
+					type="button"
+					onclick={goBack}
+					class="group relative flex flex-row items-center gap-2.5 overflow-hidden bg-white px-0.5 py-0.5 font-medium"
+				>
+					<img src={turnAround} alt="Previous" class="h-4 pb-0.5" />
+					Previous
+					<SlidingBottomBorder />
+				</button>
 				<a
 					data-sveltekit-reload
 					href="/interactive"
 					class="group relative flex flex-row items-center gap-2.5 overflow-hidden bg-white px-0.5 py-0.5 font-medium"
 				>
-					<img src={turnAround} alt="Previous" class="h-3.5" />
+					<img src={reload} alt="Previous" class="h-4 pb-0.5" />
 					Restart
 					<SlidingBottomBorder />
 				</a>
 				<a
 					href="/"
-					class="group relative flex flex-row items-center gap-2 overflow-hidden bg-white px-0.5 py-0.5 font-medium"
-				>
-					Exit
-					<ArrowDoubleRight classes="h-3.5" />
+					class="group relative flex flex-row items-center gap-2.5 overflow-hidden bg-white px-0.5 py-0.5 font-medium"
+					><img src={home} alt="Home" class="h-4 pb-0.5" />
+					Home
 					<SlidingBottomBorder />
 				</a>
 			</div>

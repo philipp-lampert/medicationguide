@@ -1,8 +1,12 @@
+<svelte:head>
+	<title>Disclaimer | Medication Guide™</title>
+</svelte:head>
+
 <section class="section">
 	<div class="container">
 		<div class="mb-12">
 			<h1 class="h1-legal">Disclaimer</h1>
-			<p>Last Updated On 30-Nov-2024</p>
+			<p>Last updated: November 30, 2024</p>
 		</div>
 		<div class="mx-auto flex max-w-xl flex-col gap-12 text-left">
 			<div>
