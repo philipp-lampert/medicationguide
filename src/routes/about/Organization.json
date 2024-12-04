@@ -1,0 +1,32 @@
+{
+	"@context": "https://schema.org",
+	"@type": "MedicalOrganization",
+	"medicalSpecialty": "https://schema.org/PublicHealth",
+	"address": {
+		"@type": "PostalAddress",
+		"addressCountry": "DE",
+		"addressRegion": "Berlin",
+		"postalCode": "10437"
+	},
+	"name": "Medication Guide",
+	"logo": "https://medicationguide.org/logo-social.jpg",
+	"contactPoint": {
+		"@type": "ContactPoint",
+		"email": "info@medicationguide.org"
+	},
+	"founder": {
+		"@type": "Person",
+		"name": "Philipp Lampert"
+	},
+	"foundingLocation": {
+		"@type": "Place",
+		"address": {
+			"@type": "PostalAddress",
+			"addressCountry": "Germany",
+			"addressRegion": "Berlin"
+		}
+	},
+	"vatID": "DE368254012",
+	"description": "Medication Guide is an open-source project, providing interactive guides and educational resources to support informed decisions about over-the-counter pain medication.",
+	"url": "https//medicationguide.org"
+}

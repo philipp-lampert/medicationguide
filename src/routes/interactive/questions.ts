@@ -88,7 +88,7 @@ export const questions = [
 					ibuprofen: { value: 1, reason: '' },
 					acetaminophen: { value: 1, reason: 'Lowest risk of side effects' },
 					naproxen: { value: 0.5, reason: 'Slower onset of effect' },
-					aspirin: { value: 0.5, reason: 'Highest risk of side effects' }
+					aspirin: { value: 0.5, reason: 'Increased risk of side effects' }
 				}
 			},
 			{
@@ -96,9 +96,9 @@ export const questions = [
 				image: time,
 				medications: {
 					ibuprofen: { value: 0.5, reason: '' },
-					acetaminophen: { value: 1, reason: 'Lowest risk of side effects' },
+					acetaminophen: { value: 1, reason: 'Lower risk of side effects' },
 					naproxen: { value: 1, reason: 'Longer duration of effect' },
-					aspirin: { value: 0, reason: 'Highest risk of side effects' }
+					aspirin: { value: 0, reason: 'High risk of side effects' }
 				}
 			}
 		]
@@ -298,7 +298,7 @@ export const questions = [
 				image: stomachPain,
 				medications: {
 					ibuprofen: { value: 0, reason: 'May further damage stomach' },
-					acetaminophen: { value: 1, reason: '' },
+					acetaminophen: { value: 1, reason: 'Does not affect stomach' },
 					naproxen: { value: 0, reason: 'May further damage stomach' },
 					aspirin: { value: 0, reason: 'May further damage stomach' }
 				}

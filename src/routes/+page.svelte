@@ -4,7 +4,9 @@
 	import SeeDoctor from '$lib/tables/SeeDoctor.svelte';
 	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
 	import ArrowDoubleRight from '$lib/assets/icons/buttons/ArrowDoubleRight.svelte';
-	import MedicalWebPageSchema from './MedicalWebPageSchema.svelte';
+	import Schema from '$lib/components/Schema.svelte';
+	import MedicalWebPage from './MedicalWebPage.json';
+	import MedicalScholarlyArticle from './MedicalScholarlyArticle.json';
 </script>
 
 <svelte:head>
@@ -21,7 +23,8 @@
 	/>
 	<meta property="og:image" content="https://medicationguide.org/logo-social.jpg" />
 	<meta property="og:url" content="https://medicationguide.org" />
-	<MedicalWebPageSchema />
+	<Schema json={MedicalWebPage} />
+	<Schema json={MedicalScholarlyArticle} />
 </svelte:head>
 
 <section class="section">
