@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
 	import { statusColors } from './table-design';
 
 	const statusNames: { [key: number]: string } = {
@@ -11,7 +12,7 @@
 		{
 			condition: 'Children < 15 years',
 			drugs: [
-				{ drug: 'acetaminophen', status: 1 },
+				{ drug: 'paracetamol', status: 1 },
 				{ drug: 'ibuprofen', status: 1 },
 				{ drug: 'naproxen', status: 0.5 },
 				{ drug: 'aspirin', status: 0 }
@@ -20,7 +21,7 @@
 		{
 			condition: 'Pregnancy (3rd trimester)',
 			drugs: [
-				{ drug: 'acetaminophen', status: 1 },
+				{ drug: 'paracetamol', status: 1 },
 				{ drug: 'ibuprofen', status: 0 },
 				{ drug: 'naproxen', status: 0 },
 				{ drug: 'aspirin', status: 0 }
@@ -29,7 +30,7 @@
 		{
 			condition: 'Gastric irritation/ulcers',
 			drugs: [
-				{ drug: 'acetaminophen', status: 1 },
+				{ drug: 'paracetamol', status: 1 },
 				{ drug: 'ibuprofen', status: 0.5 },
 				{ drug: 'naproxen', status: 0.5 },
 				{ drug: 'aspirin', status: 0 }
@@ -38,7 +39,7 @@
 		{
 			condition: 'Kidney disease',
 			drugs: [
-				{ drug: 'acetaminophen', status: 0.5 },
+				{ drug: 'paracetamol', status: 0.5 },
 				{ drug: 'ibuprofen', status: 0 },
 				{ drug: 'naproxen', status: 0 },
 				{ drug: 'aspirin', status: 0 }
@@ -47,7 +48,7 @@
 		{
 			condition: 'Cardiovascular events',
 			drugs: [
-				{ drug: 'acetaminophen', status: 1 },
+				{ drug: 'paracetamol', status: 1 },
 				{ drug: 'ibuprofen', status: 0 },
 				{ drug: 'naproxen', status: 0 },
 				{ drug: 'aspirin', status: 0.5 }
@@ -56,7 +57,7 @@
 		{
 			condition: 'Liver disease',
 			drugs: [
-				{ drug: 'acetaminophen', status: 0.5 },
+				{ drug: 'paracetamol', status: 0.5 },
 				{ drug: 'ibuprofen', status: 0.5 },
 				{ drug: 'naproxen', status: 0.5 },
 				{ drug: 'aspirin', status: 0.5 }
@@ -65,7 +66,7 @@
 		{
 			condition: 'Bleeding risk',
 			drugs: [
-				{ drug: 'acetaminophen', status: 1 },
+				{ drug: 'paracetamol', status: 1 },
 				{ drug: 'ibuprofen', status: 0.5 },
 				{ drug: 'naproxen', status: 0.5 },
 				{ drug: 'aspirin', status: 0 }
@@ -74,7 +75,7 @@
 		{
 			condition: 'Consequences of overdose',
 			drugs: [
-				{ drug: 'acetaminophen', status: 0 },
+				{ drug: 'paracetamol', status: 0 },
 				{ drug: 'ibuprofen', status: 0.5 },
 				{ drug: 'naproxen', status: 0.5 },
 				{ drug: 'aspirin', status: 0 }
@@ -87,7 +88,7 @@
 	<thead>
 		<tr class="bg-gray-100">
 			<th class="w-1/4"></th>
-			<th class="px-4 py-3 font-medium">Acetaminophen</th>
+			<th class="px-4 py-3 font-medium">{paracetamolAcetaminophen()}</th>
 			<th class="px-4 py-3 font-medium">Ibuprofen</th>
 			<th class="px-4 py-3 font-medium">Naproxen</th>
 			<th class="px-4 py-3 font-medium">Aspirin</th>

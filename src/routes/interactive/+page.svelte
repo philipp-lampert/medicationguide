@@ -8,13 +8,14 @@
 	import { fly } from 'svelte/transition';
 	import { quartInOut } from 'svelte/easing';
 	import { questions } from './questions';
-	import { capitalizeFirstLetter } from '$lib/utils';
+	import { capitalizeFirstLetter } from '$lib/functions/utils';
 	import { medicationInfo } from './medication-info';
+	import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
 
 	let currentIndex: number = $state(0);
 	let direction: number = $state(1); // 1: forward, -1: backward
 
-	const MEDICATIONS = ['ibuprofen', 'acetaminophen', 'naproxen', 'aspirin'] as const;
+	const MEDICATIONS = ['ibuprofen', 'paracetamol', 'naproxen', 'aspirin'] as const;
 
 	type Medications = (typeof MEDICATIONS)[number];
 	type MedicationReasons = Record<
@@ -199,13 +200,13 @@
 	{#each questions as question, index (index)}
 		{#if index === currentIndex}
 			<form
-				class="absolute mx-3 flex flex-col items-center justify-center gap-6 rounded-3xl px-4 text-center sm:mx-6 sm:max-w-4xl md:gap-10 md:px-20 md:py-12"
+				class="absolute mx-7 flex flex-col items-center justify-center gap-6 text-center sm:mx-8 sm:max-w-4xl md:gap-10 md:py-12"
 				in:fly={{ y: 750 * direction, duration: 1250, easing: quartInOut }}
 				out:fly={{ y: -750 * direction, duration: 1250, easing: quartInOut }}
 				onsubmit={nextQuestion}
 			>
 				<div class="flex flex-col gap-2">
-					<h1 class="font-retina text-3xl font-light leading-8 tracking-tight sm:text-4xl">
+					<h1 class="font-retina text-3xl font-light leading-8 tracking-tight">
 						{#each question.text as part}
 							{#if typeof part === 'string'}
 								{part}
@@ -231,8 +232,8 @@
 											flex h-36 w-36 flex-col items-center justify-center gap-2 rounded-2xl border-2 border-gray-200
 											 bg-gray-50 font-medium text-black transition-all
 											duration-300 hover:border-black hover:bg-white
-											hover:drop-shadow-xl sm:gap-3 sm:text-lg lg:h-40
-											lg:w-40
+											hover:drop-shadow-xl sm:h-40 sm:w-40 sm:gap-3
+											sm:text-lg
 											{question.answers.length === 3 && index === 2 ? 'col-span-2 sm:col-auto' : ''}
 									"
 							class:selected={questions[currentIndex].type === 'single-choice'
@@ -312,7 +313,13 @@
 			<div class="grid w-full grid-cols-1 gap-x-16 gap-y-10 md:grid-cols-2 lg:grid-cols-4">
 				{#each Object.entries(calculatePercentages()).sort(([, percentageA], [, percentageB]) => percentageB - percentageA) as [medication, percentage]}
 					<div class=" flex flex-col gap-2 bg-white text-left">
-						<h2 class="h3 border-b-2">{capitalizeFirstLetter(medication)}</h2>
+						<h2 class="h3 border-b-2">
+							{#if medication === 'paracetamol'}
+								{paracetamolAcetaminophen()}
+							{:else}
+								{capitalizeFirstLetter(medication)}
+							{/if}
+						</h2>
 						<div class="text-sm font-normal">
 							{(percentage as number).toFixed(0)}% match
 						</div>

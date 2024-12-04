@@ -43,7 +43,7 @@ export const questions = [
 				image: mild,
 				medications: {
 					ibuprofen: { value: 1, reason: '' },
-					acetaminophen: { value: 1, reason: '' },
+					paracetamol: { value: 1, reason: '' },
 					naproxen: { value: 1, reason: '' },
 					aspirin: { value: 1, reason: '' }
 				}
@@ -53,7 +53,7 @@ export const questions = [
 				image: moderate,
 				medications: {
 					ibuprofen: { value: 1, reason: '' },
-					acetaminophen: { value: 0.5, reason: 'Slightly weaker pain relief' },
+					paracetamol: { value: 0.5, reason: 'Slightly weaker pain relief' },
 					naproxen: { value: 1, reason: '' },
 					aspirin: { value: 1, reason: '' }
 				}
@@ -63,7 +63,7 @@ export const questions = [
 				image: severe,
 				medications: {
 					ibuprofen: { value: 0.5, reason: 'See doctor for severe pain' },
-					acetaminophen: { value: 0, reason: 'See doctor for severe pain' },
+					paracetamol: { value: 0, reason: 'See doctor for severe pain' },
 					naproxen: { value: 0.5, reason: 'See doctor for severe pain' },
 					aspirin: { value: 0.5, reason: 'See doctor for severe pain' }
 				}
@@ -86,7 +86,7 @@ export const questions = [
 				image: lightning,
 				medications: {
 					ibuprofen: { value: 1, reason: '' },
-					acetaminophen: { value: 1, reason: 'Lowest risk of side effects' },
+					paracetamol: { value: 1, reason: 'Lowest risk of side effects' },
 					naproxen: { value: 0.5, reason: 'Slower onset of effect' },
 					aspirin: { value: 0.5, reason: 'Increased risk of side effects' }
 				}
@@ -96,7 +96,7 @@ export const questions = [
 				image: time,
 				medications: {
 					ibuprofen: { value: 0.5, reason: '' },
-					acetaminophen: { value: 1, reason: 'Lower risk of side effects' },
+					paracetamol: { value: 1, reason: 'Lower risk of side effects' },
 					naproxen: { value: 1, reason: 'Longer duration of effect' },
 					aspirin: { value: 0, reason: 'High risk of side effects' }
 				}
@@ -117,7 +117,7 @@ export const questions = [
 				image: temperatureLow,
 				medications: {
 					ibuprofen: { value: 1, reason: '' },
-					acetaminophen: { value: 1, reason: '' },
+					paracetamol: { value: 1, reason: '' },
 					naproxen: { value: 1, reason: '' },
 					aspirin: { value: 1, reason: '' }
 				}
@@ -127,7 +127,7 @@ export const questions = [
 				image: temperatureHigh,
 				medications: {
 					ibuprofen: { value: 1, reason: 'Reduces fever effectively' },
-					acetaminophen: { value: 1, reason: 'Reduces fever effectively' },
+					paracetamol: { value: 1, reason: 'Reduces fever effectively' },
 					naproxen: { value: 0.5, reason: '' },
 					aspirin: { value: 0.5, reason: '' }
 				}
@@ -150,7 +150,7 @@ export const questions = [
 				image: noInflammation,
 				medications: {
 					ibuprofen: { value: 1, reason: '' },
-					acetaminophen: { value: 1, reason: '' },
+					paracetamol: { value: 1, reason: '' },
 					naproxen: { value: 1, reason: '' },
 					aspirin: { value: 1, reason: '' }
 				}
@@ -160,7 +160,7 @@ export const questions = [
 				image: inflammation,
 				medications: {
 					ibuprofen: { value: 1, reason: 'Anti-inflammatory' },
-					acetaminophen: { value: 0.5, reason: 'Does not reduce inflammation' },
+					paracetamol: { value: 0.5, reason: 'Does not reduce inflammation' },
 					naproxen: { value: 1, reason: 'Anti-inflammatory' },
 					aspirin: { value: 0.5, reason: 'Does not reduce inflammation' }
 				}
@@ -183,7 +183,7 @@ export const questions = [
 				image: person,
 				medications: {
 					ibuprofen: { value: 1, reason: '' },
-					acetaminophen: { value: 1, reason: '' },
+					paracetamol: { value: 1, reason: '' },
 					naproxen: { value: 1, reason: '' },
 					aspirin: { value: 1, reason: '' }
 				}
@@ -193,7 +193,7 @@ export const questions = [
 				image: pregnant,
 				medications: {
 					ibuprofen: { value: 0, reason: 'Pregnancy > 6 months' },
-					acetaminophen: { value: 1, reason: 'Safe in pregnancy' },
+					paracetamol: { value: 1, reason: 'Safe in pregnancy' },
 					naproxen: { value: 0, reason: 'Pregnancy > 6 months' },
 					aspirin: { value: 0, reason: 'Pregnancy > 6 months' }
 				}
@@ -214,7 +214,7 @@ export const questions = [
 				image: kidney,
 				medications: {
 					ibuprofen: { value: 0, reason: 'Contraindicated in kidney disease' },
-					acetaminophen: { value: 0.5, reason: 'Avoid in kidney disease' },
+					paracetamol: { value: 0.5, reason: 'Avoid in kidney disease' },
 					naproxen: { value: 0, reason: 'Contraindicated in kidney disease' },
 					aspirin: { value: 0, reason: 'Contraindicated in kidney disease' }
 				}
@@ -224,7 +224,7 @@ export const questions = [
 				image: heart,
 				medications: {
 					ibuprofen: { value: 0, reason: 'Contraindicated in heart failure' },
-					acetaminophen: { value: 0.5, reason: 'Avoid in heart failure' },
+					paracetamol: { value: 0.5, reason: 'Avoid in heart failure' },
 					naproxen: { value: 0, reason: 'Contraindicated in  heart failure' },
 					aspirin: { value: 0, reason: 'Contraindicated in  heart failure' }
 				}
@@ -234,7 +234,7 @@ export const questions = [
 				image: liver,
 				medications: {
 					ibuprofen: { value: 0.5, reason: 'Avoid in liver failure' },
-					acetaminophen: { value: 0.5, reason: 'Lower dosage in liver failure' },
+					paracetamol: { value: 0.5, reason: 'Lower dosage in liver failure' },
 					naproxen: { value: 0.5, reason: 'Avoid in liver failure' },
 					aspirin: { value: 0.5, reason: 'Avoid in liver failure' }
 				}
@@ -255,7 +255,7 @@ export const questions = [
 				image: noPills,
 				medications: {
 					ibuprofen: { value: 1, reason: '' },
-					acetaminophen: { value: 1, reason: '' },
+					paracetamol: { value: 1, reason: '' },
 					naproxen: { value: 1, reason: '' },
 					aspirin: { value: 1, reason: '' }
 				}
@@ -265,7 +265,7 @@ export const questions = [
 				image: pills,
 				medications: {
 					ibuprofen: { value: 0.5, reason: 'May increase bleeding risk' },
-					acetaminophen: { value: 1, reason: '' },
+					paracetamol: { value: 1, reason: '' },
 					naproxen: { value: 0.5, reason: 'May increase bleeding risk' },
 					aspirin: { value: 0, reason: 'Increases bleeding risk' }
 				}
@@ -288,7 +288,7 @@ export const questions = [
 				image: stomach,
 				medications: {
 					ibuprofen: { value: 0.5, reason: 'Can cause stomach ulcers' },
-					acetaminophen: { value: 1, reason: '' },
+					paracetamol: { value: 1, reason: '' },
 					naproxen: { value: 0.5, reason: 'Can cause stomach ulcers' },
 					aspirin: { value: 0.5, reason: 'Can cause stomach ulcers' }
 				}
@@ -298,7 +298,7 @@ export const questions = [
 				image: stomachPain,
 				medications: {
 					ibuprofen: { value: 0, reason: 'May further damage stomach' },
-					acetaminophen: { value: 1, reason: 'Does not affect stomach' },
+					paracetamol: { value: 1, reason: 'Does not affect stomach' },
 					naproxen: { value: 0, reason: 'May further damage stomach' },
 					aspirin: { value: 0, reason: 'May further damage stomach' }
 				}
@@ -319,7 +319,7 @@ export const questions = [
 				image: child,
 				medications: {
 					ibuprofen: { value: 0.5, reason: 'Risk of dehydration in children' },
-					acetaminophen: { value: 1, reason: 'First choice for children' },
+					paracetamol: { value: 1, reason: 'First choice for children' },
 					naproxen: { value: 0, reason: 'Contraindicated in children' },
 					aspirin: { value: 0, reason: 'Contraindicated in children' }
 				}
@@ -329,7 +329,7 @@ export const questions = [
 				image: adult,
 				medications: {
 					ibuprofen: { value: 1, reason: '' },
-					acetaminophen: { value: 1, reason: '' },
+					paracetamol: { value: 1, reason: '' },
 					naproxen: { value: 1, reason: '' },
 					aspirin: { value: 1, reason: '' }
 				}

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { statusColors } from './table-design';
+	import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
 
 	const statusNames: { [key: number]: string } = {
 		1: 'High',
@@ -11,7 +12,7 @@
 		{
 			condition: 'Fever',
 			drugs: [
-				{ drug: 'acetaminophen', status: 1 },
+				{ drug: 'paracetamol', status: 1 },
 				{ drug: 'ibuprofen', status: 1 },
 				{ drug: 'naproxen', status: 0.5 },
 				{ drug: 'aspirin', status: 0.5 }
@@ -20,7 +21,7 @@
 		{
 			condition: 'Headache',
 			drugs: [
-				{ drug: 'acetaminophen', status: 1 },
+				{ drug: 'paracetamol', status: 1 },
 				{ drug: 'ibuprofen', status: 0.5 },
 				{ drug: 'naproxen', status: 0.5 },
 				{ drug: 'aspirin', status: 1 }
@@ -29,7 +30,7 @@
 		{
 			condition: 'Menstrual cramps',
 			drugs: [
-				{ drug: 'acetaminophen', status: 0 },
+				{ drug: 'paracetamol', status: 0 },
 				{ drug: 'ibuprofen', status: 1 },
 				{ drug: 'naproxen', status: 1 },
 				{ drug: 'aspirin', status: 0 }
@@ -38,7 +39,7 @@
 		{
 			condition: 'Inflammation',
 			drugs: [
-				{ drug: 'acetaminophen', status: 0 },
+				{ drug: 'paracetamol', status: 0 },
 				{ drug: 'ibuprofen', status: 1 },
 				{ drug: 'naproxen', status: 1 },
 				{ drug: 'aspirin', status: 0.5 }
@@ -47,7 +48,7 @@
 		{
 			condition: 'Back pain',
 			drugs: [
-				{ drug: 'acetaminophen', status: 0.5 },
+				{ drug: 'paracetamol', status: 0.5 },
 				{ drug: 'ibuprofen', status: 1 },
 				{ drug: 'naproxen', status: 1 },
 				{ drug: 'aspirin', status: 0.5 }
@@ -56,7 +57,7 @@
 		{
 			condition: 'Chronic pain',
 			drugs: [
-				{ drug: 'acetaminophen', status: 0.5 },
+				{ drug: 'paracetamol', status: 0.5 },
 				{ drug: 'ibuprofen', status: 0.5 },
 				{ drug: 'naproxen', status: 1 },
 				{ drug: 'aspirin', status: 0 }
@@ -69,7 +70,7 @@
 	<thead>
 		<tr class="bg-gray-100">
 			<th class="w-1/4"></th>
-			<th class="px-4 py-3 font-medium">Acetaminophen</th>
+			<th class="px-4 py-3 font-medium">{paracetamolAcetaminophen()}</th>
 			<th class="px-4 py-3 font-medium">Ibuprofen</th>
 			<th class="px-4 py-3 font-medium">Naproxen</th>
 			<th class="px-4 py-3 font-medium">Aspirin</th>

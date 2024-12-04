@@ -5,7 +5,7 @@ export const medicationInfo = {
 		neutral: [],
 		negative: []
 	},
-	acetaminophen: {
+	paracetamol: {
 		positive: [],
 		neutral: [],
 		negative: []
