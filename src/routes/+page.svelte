@@ -61,7 +61,7 @@
 			<h2 class="h2">Differences between over-the-counter analgesics</h2>
 			<p class="max-w-4xl">
 				Pain relievers differ in how they work and the side effects they may cause. Not all are
-				effective for every type of pain, nor safe for everyone. Selecting the right analgesic
+				effective for every type of pain, nor safe for everyone. Selecting the right painkiller
 				requires careful consideration of both the desired therapeutic effects and potential risks.
 				The tables below highlight the most important distinctions. For a personalized
 				recommendation, use our <a class="text-link group" href="/interactive"

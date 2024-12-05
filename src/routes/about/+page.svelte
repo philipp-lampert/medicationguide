@@ -99,7 +99,7 @@
 					target="_blank"
 					>LinkedIn<SlidingBottomBorder />
 				</a>
-				profiles. Feel free to reach out to us by sending an email to
+				profiles. Feel free to reach out by sending an email to
 				<a class="text-link group" href="mailto:info@medicationguide.org"
 					>info@medicationguide.org<SlidingBottomBorder /></a
 				>.

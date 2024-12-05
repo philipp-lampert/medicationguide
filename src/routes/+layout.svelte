@@ -17,7 +17,7 @@
 
 <div class="flex min-h-screen flex-col">
 	<Header />
-	<main class="relative flex-grow {isQuestionPage ? 'flex items-center justify-center' : ''}">
+	<main class="relative flex-grow {isQuestionPage ? '' : ''}">
 		{@render children()}
 	</main>
 	<Footer />

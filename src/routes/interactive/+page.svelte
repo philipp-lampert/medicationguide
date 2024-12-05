@@ -196,17 +196,17 @@
 	<meta property="og:url" content="https://medicationguide.org/interactive" />
 </svelte:head>
 
-<div class="container my-12 flex min-h-[500px] flex-col items-center justify-center">
+<div class="container relative my-12 flex min-h-[500px] flex-grow justify-center">
 	{#each questions as question, index (index)}
 		{#if index === currentIndex}
 			<form
-				class="absolute mx-7 flex flex-col items-center justify-center gap-6 text-center sm:mx-8 sm:max-w-4xl md:gap-10 md:py-12"
+				class="absolute inset-x-0 top-[250px] mx-auto flex -translate-y-1/2 flex-col items-center justify-center gap-6 text-center sm:max-w-4xl md:gap-10 md:py-12"
 				in:fly={{ y: 750 * direction, duration: 1250, easing: quartInOut }}
 				out:fly={{ y: -750 * direction, duration: 1250, easing: quartInOut }}
 				onsubmit={nextQuestion}
 			>
 				<div class="flex flex-col gap-2">
-					<h1 class="font-retina text-3xl font-light leading-8 tracking-tight">
+					<h1 class="mx-8 font-retina text-3xl font-light leading-8 tracking-tight">
 						{#each question.text as part}
 							{#if typeof part === 'string'}
 								{part}
@@ -229,8 +229,8 @@
 							type="button"
 							onclick={() => answerSelection(answer)}
 							class="
-											flex h-36 w-36 flex-col items-center justify-center gap-2 rounded-2xl border-2 border-gray-200
-											 bg-gray-50 font-medium text-black transition-all
+											 flex h-36 w-36 flex-col items-center justify-center gap-2 rounded-2xl border-2
+											 border-gray-200 bg-gray-50 font-medium text-black transition-all
 											duration-300 hover:border-black hover:bg-white
 											hover:drop-shadow-xl sm:h-40 sm:w-40 sm:gap-3
 											sm:text-lg
@@ -249,7 +249,7 @@
 				</div>
 
 				<!-- Navigation Buttons -->
-				<div class="mx-2 flex flex-wrap justify-center gap-x-6 gap-y-1">
+				<div class="mx-10 flex flex-wrap justify-center gap-x-6 gap-y-1">
 					{#if currentIndex > 0}
 						<button
 							type="button"
@@ -275,7 +275,7 @@
 						<button
 							type="button"
 							onclick={noneOfTheAbove}
-							class="group relative flex flex-row items-center gap-2.5 overflow-hidden bg-white px-0.5 py-0.5 font-medium text-green-800"
+							class="group relative flex flex-row items-center gap-2.5 overflow-hidden whitespace-nowrap bg-white px-0.5 py-0.5 font-medium text-green-800"
 						>
 							None of the above
 							<IconNone classes={'fill-current h-4 pb-0.5'} />
@@ -305,7 +305,7 @@
 	{/each}
 	{#if currentIndex === questions.length}
 		<div
-			class="flex flex-col items-center gap-8 py-6 sm:gap-10"
+			class="flex flex-col items-center gap-8 self-center py-6 sm:gap-10"
 			in:fly={{ y: 750 * direction, duration: 1250, easing: quartInOut }}
 			out:fly={{ y: -750 * direction, duration: 1250, easing: quartInOut }}
 		>
