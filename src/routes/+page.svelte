@@ -43,7 +43,7 @@
 		<a
 			href="/interactive"
 			class="group relative inline-flex items-center overflow-hidden rounded-2xl
-										  bg-black px-12 py-3.5 font-normal text-white shadow-xl
+										   bg-gradient-to-tr from-black to-gray-700 px-12 py-3.5 font-normal text-white shadow-xl
 											transition-all duration-500 hover:shadow-2xl"
 		>
 			<span
