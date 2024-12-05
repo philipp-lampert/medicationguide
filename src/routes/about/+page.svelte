@@ -22,11 +22,11 @@
 </svelte:head>
 
 <section class="section">
-	<article class="container flex flex-col items-center">
-		<h1 class="h1 mb-1">Medication Guide</h1>
-		<h2 class="mb-12 text-lg italic sm:text-xl md:text-2xl">
-			Interactive Tools for Better Health Decisions
-		</h2>
+	<article class="container flex flex-col gap-6 sm:items-center">
+		<div class="flex flex-col gap-1">
+			<h1 class="h1">Medication Guide</h1>
+			<h2 class="italic sm:text-lg md:text-xl">Interactive Tools for Better Health Decisions</h2>
+		</div>
 		<p class="max-w-3xl">
 			Medication Guide is designed to support you in making well-informed decisions about
 			over-the-counter pain medication. Through our interactive guide, educational resources, and
@@ -39,30 +39,30 @@
 <section class="section">
 	<div class="container flex flex-col items-center">
 		<div
-			class="grid w-full grid-cols-1 gap-x-10 gap-y-8 border-y-2 border-black py-8 md:grid-cols-2 lg:grid-cols-4"
+			class="grid w-full grid-cols-1 gap-x-10 gap-y-10 border-y-2 border-black py-8 md:grid-cols-2 lg:grid-cols-4"
 		>
-			<article class=" flex flex-col gap-2 bg-white text-left">
+			<article class=" flex flex-col gap-1 bg-white text-left">
 				<h3 class="h3">Interactive Guide</h3>
 				<p>
 					Designed to give personalized recommendations for the most suitable pain relievers, our
 					interactive guide covers the most important indications and contraindications.
 				</p>
 			</article>
-			<article class=" flex flex-col gap-2 bg-white text-left">
+			<article class=" flex flex-col gap-1 bg-white text-left">
 				<h3 class="h3">Educational Content</h3>
 				<p>
 					Still under development, our knowledge base will offer comparisons of pain relievers,
 					explanations of side effects, and advice for managing common symptoms.
 				</p>
 			</article>
-			<article class=" flex flex-col gap-2 bg-white text-left">
+			<article class=" flex flex-col gap-1 bg-white text-left">
 				<h3 class="h3">Accessible</h3>
 				<p>
 					Our aim is to make reliable health information accessible and understandable for everyone,
 					especially people in regions where access to healthcare professionals is limited.
 				</p>
 			</article>
-			<article class=" flex flex-col gap-2 bg-white text-left">
+			<article class=" flex flex-col gap-1 bg-white text-left">
 				<h3 class="h3">Open Source</h3>
 				<p>
 					The Medication Guide project and its code are fully open-source. If you would like to know
@@ -80,8 +80,8 @@
 </section>
 <section class="section">
 	<article class="container flex flex-col items-center">
-		<div>
-			<h2 class="h2 mb-4">Who is behind the project?</h2>
+		<div class="flex flex-col gap-6">
+			<h2 class="h2">Who is behind the project?</h2>
 			<p class="max-w-3xl">
 				This project was created by Philipp Lampert, final-year medical student from Germany, in
 				collaboration with senior doctors from Berlin's Charité university hospital. For more

@@ -4,7 +4,7 @@
 
 @layer base {
 	html {
-		@apply text-center font-retina font-light;
+		@apply text-left font-retina font-light sm:text-center;
 	}
 
 	body {
@@ -14,14 +14,14 @@
 
 @layer components {
 	.h1 {
-		@apply font-editors text-4xl md:text-5xl lg:text-5.5xl;
+		@apply font-mallory text-4.5xl font-medium tracking-tighter md:text-5xl lg:text-5.5xl;
 	}
 	.h1-legal {
 		@apply mb-2 text-4xl font-medium;
 	}
 
 	.h2 {
-		@apply font-editors text-3xl font-medium;
+		@apply font-mallory text-3xl font-medium tracking-tight;
 	}
 
 	.h2-legal {
@@ -45,7 +45,7 @@
 	}
 
 	.section {
-		@apply my-24 md:my-28 lg:my-32;
+		@apply my-20 md:my-28 lg:my-32;
 	}
 }
 
@@ -82,11 +82,11 @@
 	font-display: swap;
 }
 
-/* Editor's Note */
+/* Mallory */
 @font-face {
-	font-family: 'Editors';
-	src: url('/fonts/editors-note/normal.woff2') format('woff2');
-	font-weight: 400;
+	font-family: 'Mallory';
+	src: url('/fonts/mallory/medium.woff2') format('woff2');
+	font-weight: 500;
 	font-style: normal;
 	font-display: swap;
 }
@@ -109,9 +109,18 @@
 }
 
 @font-face {
-	font-family: 'Arial Fallback';
+	font-family: 'Arial Retina Fallback';
 	src: local('Arial');
 	size-adjust: 98%;
 	ascent-override: 84%;
 	line-gap-override: 19%;
+}
+
+@font-face {
+	font-family: 'Arial Mallory Fallback';
+	src: local(Arial);
+	size-adjust: 101%;
+	ascent-override: 104%;
+	descent-override: normal;
+	line-gap-override: 7%;
 }

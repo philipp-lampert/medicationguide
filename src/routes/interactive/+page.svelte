@@ -206,7 +206,7 @@
 				onsubmit={nextQuestion}
 			>
 				<div class="flex flex-col gap-2">
-					<h1 class="mx-8 font-retina text-3xl font-light leading-8 tracking-tight">
+					<h1 class="mx-8 font-mallory text-3xl font-light leading-8 tracking-tight">
 						{#each question.text as part}
 							{#if typeof part === 'string'}
 								{part}
@@ -309,8 +309,8 @@
 			in:fly={{ y: 750 * direction, duration: 1250, easing: quartInOut }}
 			out:fly={{ y: -750 * direction, duration: 1250, easing: quartInOut }}
 		>
-			<h1 class="h1">Results</h1>
-			<div class="grid w-full grid-cols-1 gap-x-16 gap-y-10 md:grid-cols-2 lg:grid-cols-4">
+			<h1 class="h1 lg:text-5xl">Results</h1>
+			<div class="grid w-full grid-cols-1 gap-x-16 gap-y-12 md:grid-cols-2 lg:grid-cols-4">
 				{#each Object.entries(calculatePercentages()).sort(([, percentageA], [, percentageB]) => percentageB - percentageA) as [medication, percentage]}
 					<div class=" flex flex-col gap-2 bg-white text-left">
 						<h2 class="h3 border-b-2">

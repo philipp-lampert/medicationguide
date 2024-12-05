@@ -25,7 +25,7 @@
 </script>
 
 <table
-	class="w-[650px] table-auto border-collapse rounded-lg bg-white text-left leading-5 md:w-[900px]"
+	class="w-[850px] table-auto border-collapse rounded-lg bg-white text-left leading-5 md:w-[900px]"
 >
 	<tbody>
 		{#each reasons as row, i}

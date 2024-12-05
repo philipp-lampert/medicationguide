@@ -13,9 +13,8 @@ export default {
 				'5.5xl': ['3.375rem', '1']
 			},
 			fontFamily: {
-				retina: ['Retina, Tahoma Fallback, Arial Fallback, sans-serif'],
-				editors: ['Editors, TNR Fallback, serif'],
-				mallory: ['Mallory, sans-serif']
+				retina: ['Retina, Tahoma Fallback, Arial Retina Fallback, sans-serif'],
+				mallory: ['Mallory, Arial Mallory Fallback, sans-serif']
 			},
 			letterSpacing: {
 				'medium-wide': '0.015em'
@@ -28,7 +27,8 @@ export default {
 				'3': '3px'
 			},
 			boxShadow: {
-				'inner-strong': 'inset 0 0px 12px 0px rgb(0 0 0 / 0.25)'
+				'inner-strong': 'inset 0 0px 12px 0px rgb(0 0 0 / 0.25)',
+				'3xl': '0 10px 30px 0px rgb(0 0 0 / 0.25)'
 			},
 			display: ['group-hover']
 		}

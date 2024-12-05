@@ -28,10 +28,10 @@
 </svelte:head>
 
 <section class="section">
-	<div class="container flex flex-col items-center gap-8 md:gap-12">
+	<div class="container flex flex-col items-center gap-10 md:gap-12">
 		<h1 class="h1">Which pain reliever should I use?</h1>
-		<div>
-			<p class="mb-4 max-w-2xl">
+		<div class="flex flex-col gap-y-6">
+			<p class="max-w-2xl">
 				While many analgesics can be purchased without a prescription, not all are effective for
 				every symptom. Side effects also vary and can put individuals with certain health conditions
 				at risk.
@@ -40,23 +40,32 @@
 				Use the interactive guide to find the appropriate medication for you and your symptoms.
 			</p>
 		</div>
-		<a
-			href="/interactive"
-			class="group relative inline-flex items-center overflow-hidden rounded-2xl
-										   bg-gradient-to-tr from-black to-gray-700 px-12 py-3.5 font-normal text-white shadow-xl
-											transition-all duration-500 hover:shadow-2xl"
+		<div
+			class="flex flex-row flex-wrap items-center justify-center gap-x-8 gap-y-4 rounded-2xl border-2 border-gray-200 bg-gray-100 py-4 pl-6 pr-4 sm:text-left"
 		>
-			<span
-				class="ease absolute right-0 flex h-10 w-10 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-2"
+			<p class="text-sm font-normal text-gray-700">
+				Get a personalized recommendation<br />to find the best pain reliever for you.
+			</p>
+			<a
+				href="/interactive"
+				class="group relative inline-flex items-center overflow-hidden rounded-xl bg-gradient-to-tr
+										   from-black to-gray-700 px-12 py-3 text-center font-normal text-white shadow-3xl transition-all
+											duration-500"
 			>
-				<ArrowDoubleRight classes={'h-4 fill-white'} />
-			</span>
-			<span class="relative transform duration-500 group-hover:-translate-x-3">Start Guide</span>
-		</a>
+				<span
+					class="ease absolute right-0 flex h-10 w-10 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-2"
+				>
+					<ArrowDoubleRight classes={'h-4 fill-white'} />
+				</span>
+				<span class="relative w-full transform duration-500 group-hover:-translate-x-2"
+					>Start Guide</span
+				>
+			</a>
+		</div>
 	</div>
 </section>
 <section class="section">
-	<article class="container flex flex-col items-center gap-16 md:gap-20">
+	<article class="container flex flex-col items-center gap-10 md:gap-20">
 		<div class="flex flex-col items-center gap-y-6">
 			<h2 class="h2">Differences between over-the-counter analgesics</h2>
 			<p class="max-w-4xl">
@@ -70,13 +79,13 @@
 			</p>
 		</div>
 		<div class="w-full lg:w-fit">
-			<h3 class="h3 mb-4 lg:mb-6">Effectiveness and indications</h3>
+			<h3 class="h3 mb-4 text-center lg:mb-6">Effectiveness and indications</h3>
 			<div class="w-full overflow-auto rounded-xl lg:w-fit">
 				<Indications />
 			</div>
 		</div>
 		<div class="w-full lg:w-fit">
-			<h3 class="h3 mb-4 lg:mb-6">Contraindications and side effects</h3>
+			<h3 class="h3 mb-4 text-center lg:mb-6">Contraindications and side effects</h3>
 			<div class="w-full overflow-auto rounded-xl lg:w-fit">
 				<Contraindications />
 			</div>
@@ -84,7 +93,7 @@
 	</article>
 </section>
 <section class="section">
-	<article class="container flex flex-col items-center gap-y-10">
+	<article class="container flex flex-col items-center gap-y-6">
 		<h2 class="h2">When should I see a doctor?</h2>
 		<p class="max-w-4xl">
 			While many types of pain can be managed with over-the-counter medications, certain situations
