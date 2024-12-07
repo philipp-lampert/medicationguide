@@ -1,6 +1,6 @@
 <script>
 	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
-	import schemaContent from './Organization.json';
+	import MedicalOrganization from './MedicalOrganization.json';
 	import Schema from '$lib/components/Schema.svelte';
 </script>
 
@@ -18,7 +18,7 @@
 	/>
 	<meta property="og:image" content="https://medicationguide.org/logo-social.jpg" />
 	<meta property="og:url" content="https://medicationguide.org/about" />
-	<Schema json={schemaContent} />
+	<Schema json={MedicalOrganization} />
 </svelte:head>
 
 <section class="section">
