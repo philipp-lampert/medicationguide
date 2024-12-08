@@ -86,9 +86,9 @@ export const questions = [
 				image: lightning,
 				medications: {
 					ibuprofen: { value: 1, reason: '' },
-					paracetamol: { value: 1, reason: 'Lowest risk of side effects' },
+					paracetamol: { value: 1, reason: 'Overall lower risk of side effects' },
 					naproxen: { value: 0.5, reason: 'Slower onset of effect' },
-					aspirin: { value: 0.5, reason: 'Increased risk of side effects' }
+					aspirin: { value: 0.5, reason: 'Overall higher risk of side effects' }
 				}
 			},
 			{
@@ -96,9 +96,9 @@ export const questions = [
 				image: time,
 				medications: {
 					ibuprofen: { value: 0.5, reason: '' },
-					paracetamol: { value: 1, reason: 'Lower risk of side effects' },
+					paracetamol: { value: 1, reason: 'Overall lower risk of side effects' },
 					naproxen: { value: 1, reason: 'Longer duration of effect' },
-					aspirin: { value: 0, reason: 'High risk of side effects' }
+					aspirin: { value: 0, reason: 'Overall higher risk of side effects' }
 				}
 			}
 		]
