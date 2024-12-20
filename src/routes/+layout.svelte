@@ -43,7 +43,7 @@
 
 <div class="flex min-h-screen flex-col">
 	<Header />
-	<main class="relative flex-grow">
+	<main class="relative">
 		{@render children()}
 	</main>
 	<Footer />

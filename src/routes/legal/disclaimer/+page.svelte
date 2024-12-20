@@ -30,7 +30,6 @@
 				<h2 class="h2-legal">Health Content</h2>
 				<p class="font-medium">This website does not provide medical advice.</p>
 				<br />
-
 				<p>
 					Some information on the site is written by health care providers affiliated with
 					Medication Guide and its affiliates, and some content is provided by outside sources.
@@ -43,7 +42,6 @@
 					complete or exhaustive or to be applicable to any specific individual's medical condition.
 				</p>
 				<br />
-
 				<p>
 					Medication Guide assumes no duty to correct or update the website nor to resolve or
 					clarify any inconsistent information that might be a part of the website. This website
@@ -51,7 +49,6 @@
 					If you find these materials offensive, do not use this website.
 				</p>
 				<br />
-
 				<p>
 					This website is not an attempt to practice medicine or provide specific medical advice,
 					and it should not be used to make a diagnosis or to replace or overrule a qualified health
@@ -61,22 +58,13 @@
 					physician or other medical care provider, and follow their advice without delay regardless
 					of anything read on this website.
 				</p>
-				<br />
-
-				<p>
-					Use of programs on the Medication Guide website does not establish a doctor–patient
-					relationship. Should you electronically request an appointment through the website, Mass
-					General will use the information you submit to arrange for care where and when
-					appropriate.
-				</p>
 			</div>
 			<div>
 				<h2 class="h2-legal">Liability</h2>
 				<p>
 					You assume full responsibility for using the information on this site, and you understand
-					and agree that Medication Guide Brigham and its affiliates, including Medication Guide,
-					are not responsible or liable for any claim, loss or damage resulting from its use by you
-					or any user.
+					and agree that Medication Guide and its affiliates are not responsible or liable for any
+					claim, loss or damage resulting from its use by you or any user.
 				</p>
 				<br />
 				<p>

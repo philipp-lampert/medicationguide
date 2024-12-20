@@ -5,13 +5,14 @@
 	import turnAround from '$lib/assets/icons/buttons/arrow-turn-around.svg';
 	import reload from '$lib/assets/icons/buttons/reload.svg';
 	import home from '$lib/assets/icons/buttons/home.svg';
-	import { fly } from 'svelte/transition';
-	import { quartInOut } from 'svelte/easing';
+	import { fade } from 'svelte/transition';
 	import { questions } from './questions';
 	import { capitalizeFirstLetter } from '$lib/functions/utils';
 	import { medicationInfo } from './medication-info';
 	import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
+	import ProgressBar from './ProgressBar.svelte';
 
+	let h: number = $state(0);
 	let currentIndex: number = $state(0);
 	let direction: number = $state(1); // 1: forward, -1: backward
 
@@ -188,21 +189,25 @@
 	/>
 	<meta property="og:title" content="Medication Guide™" />
 	<meta property="og:type" content="website" />
-	<meta
-		property="og:description"
-		content="Personalized recommendations for the best painkiller based on your symptoms and risk profile."
-	/>
+	<meta property="og:description" content="Find the best painkiller for your symptoms." />
 	<meta property="og:image" content="https://medicationguide.org/logo-social.jpg" />
 	<meta property="og:url" content="https://medicationguide.org/interactive" />
 </svelte:head>
 
-<div class="container relative my-12 flex min-h-[500px] flex-grow justify-center">
+<div
+	bind:clientHeight={h}
+	class="container my-10 flex min-h-[525px] flex-grow justify-center sm:my-12 sm:min-h-[500px]"
+>
+	{#if currentIndex < questions.length}
+		<ProgressBar {questions} {selectedAnswers} {currentIndex} />
+	{/if}
 	{#each questions as question, index (index)}
 		{#if index === currentIndex}
 			<form
-				class="absolute inset-x-0 top-[250px] mx-auto flex -translate-y-1/2 flex-col items-center justify-center gap-6 text-center sm:max-w-4xl md:gap-10 md:py-12"
-				in:fly={{ y: 750 * direction, duration: 1250, easing: quartInOut }}
-				out:fly={{ y: -750 * direction, duration: 1250, easing: quartInOut }}
+				style="top: {h / 1.65}px; transform: translateY(-50%)"
+				class="absolute inset-x-0 mx-auto flex flex-col items-center justify-center gap-6 text-center sm:max-w-4xl md:gap-10 md:py-12"
+				out:fade={{ duration: 250 }}
+				in:fade={{ duration: 350, delay: 350 }}
 				onsubmit={nextQuestion}
 			>
 				<div class="flex flex-col gap-2">
@@ -271,18 +276,6 @@
 						</a>
 					{/if}
 
-					{#if questions[currentIndex].type === 'multiple-choice'}
-						<button
-							type="button"
-							onclick={noneOfTheAbove}
-							class="group relative flex flex-row items-center gap-2.5 overflow-hidden whitespace-nowrap bg-white px-0.5 py-0.5 font-medium text-green-800"
-						>
-							None of the above
-							<IconNone classes={'fill-current h-4 pb-0.5'} />
-							<SlidingBottomBorder color={'bg-current'} />
-						</button>
-					{/if}
-
 					{#if selectedAnswers[currentIndex]?.answers.length > 0}
 						<button
 							type="button"
@@ -298,6 +291,16 @@
 								class="animate-span absolute bottom-0 left-0 z-50 h-0.5 w-full scale-x-0 transform bg-black"
 							></span>
 						</button>
+					{:else if questions[currentIndex].type === 'multiple-choice'}
+						<button
+							type="button"
+							onclick={noneOfTheAbove}
+							class="group relative flex flex-row items-center gap-2.5 overflow-hidden whitespace-nowrap bg-white px-0.5 py-0.5 font-medium text-green-800"
+						>
+							None of the above
+							<IconNone classes={'fill-current h-4 pb-0.5'} />
+							<SlidingBottomBorder color={'bg-current'} />
+						</button>
 					{/if}
 				</div>
 			</form>
@@ -306,10 +309,18 @@
 	{#if currentIndex === questions.length}
 		<div
 			class="flex flex-col items-center gap-8 self-center py-6 sm:gap-10"
-			in:fly={{ y: 750 * direction, duration: 1250, easing: quartInOut }}
-			out:fly={{ y: -750 * direction, duration: 1250, easing: quartInOut }}
+			out:fade={{ duration: 250 }}
+			in:fade={{ duration: 350, delay: 350 }}
 		>
-			<h1 class="h1 lg:text-5xl">Results</h1>
+			<div class="flex flex-col gap-4">
+				<h1 class="h1 lg:text-5xl">Results</h1>
+				<p class="group rounded-lg text-sm">
+					This website does not provide medical advice. Please refer to our <a
+						class="text-link"
+						href="/legal/disclaimer">disclaimer<SlidingBottomBorder /></a
+					> for more information.
+				</p>
+			</div>
 			<div class="grid w-full grid-cols-1 gap-x-16 gap-y-12 md:grid-cols-2 lg:grid-cols-4">
 				{#each Object.entries(calculatePercentages()).sort(([, percentageA], [, percentageB]) => percentageB - percentageA) as [medication, percentage]}
 					<div class=" flex flex-col gap-2 bg-white text-left">

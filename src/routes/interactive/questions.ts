@@ -72,17 +72,11 @@ export const questions = [
 	},
 	// Is your paint acute or chronic??
 	{
-		text: [
-			{ content: 'Is your pain ', highlight: false },
-			{ content: 'acute ', highlight: true },
-			{ content: 'or ', highlight: false },
-			{ content: 'chronic', highlight: true },
-			{ content: '?', highlight: false }
-		],
+		text: [{ content: 'Have your symptoms lasted over 2 weeks?', highlight: false }],
 		type: 'single-choice',
 		answers: [
 			{
-				text: 'Acute',
+				text: 'No',
 				image: lightning,
 				medications: {
 					ibuprofen: { value: 1, reason: '' },
@@ -92,7 +86,7 @@ export const questions = [
 				}
 			},
 			{
-				text: 'Chronic',
+				text: 'Yes',
 				image: time,
 				medications: {
 					ibuprofen: { value: 0.5, reason: '' },
@@ -136,13 +130,7 @@ export const questions = [
 	},
 	// Do you have local swelling or inflammation?
 	{
-		text: [
-			{ content: 'Do you have ', highlight: false },
-			{ content: 'local swelling ', highlight: true },
-			{ content: 'or ', highlight: false },
-			{ content: 'inflammation', highlight: true },
-			{ content: '?', highlight: false }
-		],
+		text: [{ content: 'Do you have pain in your joints?', highlight: false }],
 		type: 'single-choice',
 		answers: [
 			{
@@ -243,11 +231,7 @@ export const questions = [
 	},
 	{
 		// Do you currently take anticoagulants?
-		text: [
-			{ content: 'Do you currently take ', highlight: false },
-			{ content: 'anticoagulants', highlight: true },
-			{ content: '?', highlight: false }
-		],
+		text: [{ content: 'Are you taking blood thinners?', highlight: false }],
 		type: 'single-choice',
 		answers: [
 			{
