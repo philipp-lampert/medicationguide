@@ -1,4 +1,4 @@
-const site = 'https://medicationguide.org';
+const site = 'https://www.medicationguide.org';
 const pages: string[] = ['about', 'interactive'];
 
 /** @type {import('./$types').RequestHandler} */

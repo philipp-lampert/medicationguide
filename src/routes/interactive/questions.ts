@@ -90,9 +90,9 @@ export const questions = [
 				image: time,
 				medications: {
 					ibuprofen: { value: 0.5, reason: '' },
-					paracetamol: { value: 1, reason: 'Overall lower risk of side effects' },
+					paracetamol: { value: 1, reason: 'Lower risk of long-term side effects' },
 					naproxen: { value: 1, reason: 'Longer duration of effect' },
-					aspirin: { value: 0, reason: 'Overall higher risk of side effects' }
+					aspirin: { value: 0, reason: 'Higher risk of long-term side effects' }
 				}
 			}
 		]
@@ -130,7 +130,7 @@ export const questions = [
 	},
 	// Do you have local swelling or inflammation?
 	{
-		text: [{ content: 'Do you have pain in your joints?', highlight: false }],
+		text: [{ content: 'Do you have joint pain?', highlight: false }],
 		type: 'single-choice',
 		answers: [
 			{
