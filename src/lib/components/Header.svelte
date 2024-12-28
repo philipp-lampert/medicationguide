@@ -1,22 +1,22 @@
 <script>
 	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
 	import ArrowDoubleRight from '$lib/assets/icons/buttons/ArrowDoubleRight.svelte';
+	import { scrollY } from 'svelte/reactivity/window';
 
-	let yScroll = $state(0);
-	let threshold = 60;
-	let buffer = 50;
+	const threshold = 60;
+	const buffer = 50;
 	let isShrunk = $state(false);
 
 	$effect(() => {
-		if (yScroll >= threshold + buffer) {
-			isShrunk = true;
-		} else if (yScroll <= threshold - buffer) {
-			isShrunk = false;
+		if (scrollY.current !== undefined) {
+			if (scrollY.current >= threshold + buffer) {
+				isShrunk = true;
+			} else if (scrollY.current <= threshold - buffer) {
+				isShrunk = false;
+			}
 		}
 	});
 </script>
-
-<svelte:window bind:scrollY={yScroll} />
 
 <header class="sticky top-0 z-40 bg-white">
 	<div class="mx-auto max-w-[1400px] sm:px-12 md:px-16 lg:px-20">
