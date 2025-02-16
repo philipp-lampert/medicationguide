@@ -39,12 +39,6 @@
 							<SlidingBottomBorder />
 						</a>
 					</li>
-					<li>
-						<a class="group relative p-2" href="/donate"
-							>Donate
-							<SlidingBottomBorder />
-						</a>
-					</li>
 				</ul>
 			</nav>
 			<div

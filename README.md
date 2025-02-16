@@ -14,4 +14,4 @@ We welcome contributions to this project! You can:
 - Improve the design and user experience
 - Help us fix bugs and improve functionality
 
-If you'd like to support the project with a small donation, you can find more details on our [donation page](https://medicationguide.org/donate).
+If you'd like to support the project with a small donation, you can do so on our [donation page](https://medicationguide.org/donate).

@@ -11,8 +11,9 @@
 	import { medicationInfo } from './medication-info';
 	import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
 	import ProgressBar from './ProgressBar.svelte';
+	import HeadContent from './HeadContent.svelte';
 
-	let h: number = $state(0);
+	let clientHeight: number = $state(0);
 	let currentIndex: number = $state(0);
 	let direction: number = $state(1); // 1: forward, -1: backward
 
@@ -44,28 +45,20 @@
 					selectedAnswers[currentIndex].answers.some((a) => a.text === answer.text);
 	}
 
-	function answerSelection(answer: {
-		text: string;
-		image: string;
-		medications: { [K in Medications]: { value: number; reason: string } };
-	}) {
+	function answerSelection(answer: Answer) {
 		if (!selectedAnswers[currentIndex]) {
-			// Initialize index if it doesn't exist
 			selectedAnswers[currentIndex] = { answers: [] };
 		}
-
 		if (questions[currentIndex].type === 'single-choice') {
-			// Replace any existing answer
 			selectedAnswers[currentIndex].answers = [answer];
 			currentIndex++;
 			direction = 1;
 		} else {
-			// For multiple-choice, toggle the answer selection
+			// For multiple-choice, toggle answer selection
 			const existingAnswerIndex = selectedAnswers[currentIndex].answers.findIndex(
 				(existingAnswer) => JSON.stringify(existingAnswer) === JSON.stringify(answer)
 			);
-
-			if (existingAnswerIndex > -1) {
+			if (existingAnswerIndex >= 0) {
 				// If the answer exists, remove it (deselection)
 				selectedAnswers[currentIndex].answers.splice(existingAnswerIndex, 1);
 			} else {
@@ -163,7 +156,6 @@
 
 	function noneOfTheAbove() {
 		if (!selectedAnswers[currentIndex]) {
-			// Initialize index if it doesn't exist
 			selectedAnswers[currentIndex] = { answers: [] };
 		}
 		selectedAnswers[currentIndex].answers = [
@@ -193,20 +185,10 @@
 	function goHome() {
 		window.location.href = '/';
 	}
-	$inspect(currentIndex);
 </script>
 
 <svelte:head>
-	<title>Interactive Pain Reliever Guide | Find The Best Option</title>
-	<meta
-		name="description"
-		content="Use our interactive tool to get personalized painkiller recommendations based on your symptoms and risk profile, helping you find the most effective option with minimal side effects."
-	/>
-	<meta property="og:title" content="Medication Guide™" />
-	<meta property="og:type" content="website" />
-	<meta property="og:description" content="Find the best painkiller for your symptoms." />
-	<meta property="og:image" content="https://medicationguide.org/logo-social.jpg" />
-	<meta property="og:url" content="https://medicationguide.org/interactive" />
+	<HeadContent />
 </svelte:head>
 
 {#snippet navButton(label: string, icon: string, action: () => void)}
@@ -222,7 +204,7 @@
 {/snippet}
 
 <div
-	bind:clientHeight={h}
+	bind:clientHeight
 	class="container my-10 flex min-h-[525px] flex-grow justify-center sm:my-12 sm:min-h-[500px]"
 >
 	{#if currentIndex < questions.length}
@@ -230,7 +212,7 @@
 			{questions}
 			{selectedAnswers}
 			{currentIndex}
-			clickCircle={(index: number) => {
+			onclick={(index: number) => {
 				currentIndex = index;
 			}}
 		/>
@@ -238,7 +220,7 @@
 	{#each questions as question, index (index)}
 		{#if index === currentIndex}
 			<form
-				style="top: {h / 1.65}px; transform: translateY(-50%)"
+				style="top: {clientHeight / 1.65}px; transform: translateY(-50%)"
 				class="absolute inset-x-0 mx-auto flex flex-col items-center justify-center gap-6 text-center sm:max-w-4xl md:gap-10 md:py-12"
 				out:fade={{ duration: 250 }}
 				in:fade={{ duration: 350, delay: 350 }}
@@ -292,7 +274,6 @@
 					{:else}
 						{@render navButton('Exit', turnAround, goHome)}
 					{/if}
-
 					{#if selectedAnswers[currentIndex]?.answers.length > 0}
 						<button
 							type="button"
@@ -323,6 +304,8 @@
 			</form>
 		{/if}
 	{/each}
+
+	<!-- Results -->
 	{#if currentIndex === questions.length}
 		<div
 			class="flex flex-col items-center gap-8 self-center py-6 sm:gap-10"
@@ -376,7 +359,6 @@
 									</div>
 								{/if}
 							{/snippet}
-
 							{@render reasons('positive', 'bg-green-100')}
 							{@render reasons('neutral', 'bg-yellow-100')}
 							{@render reasons('negative', 'bg-red-100')}
@@ -384,8 +366,6 @@
 					</div>
 				{/each}
 			</div>
-
-			<!-- Results Buttons -->
 			<div class="flex flex-row gap-6">
 				{@render navButton('Previous', turnAround, goBack)}
 				{@render navButton('Restart', reload, restart)}

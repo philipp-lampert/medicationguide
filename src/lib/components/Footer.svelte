@@ -23,6 +23,9 @@
 			<div
 				class="ml-auto mr-5 flex flex-col items-end justify-between self-stretch text-right text-sm text-gray-500"
 			>
+				<a class="group relative inline-block w-fit" href="/donate"
+					>Donate<SlidingBottomBorder color="bg-gray-400" />
+				</a>
 				<a class="group relative inline-block w-fit" href="/legal/disclaimer"
 					>Disclaimer<SlidingBottomBorder color="bg-gray-400" />
 				</a>
@@ -31,9 +34,6 @@
 				</a>
 				<a class="group relative inline-block w-fit" href="/legal/privacy"
 					>Privacy Policy<SlidingBottomBorder color="bg-gray-400" />
-				</a>
-				<a class="group relative inline-block w-fit" href="/legal/impressum"
-					>Impressum<SlidingBottomBorder color="bg-gray-400" />
 				</a>
 			</div>
 		</div>

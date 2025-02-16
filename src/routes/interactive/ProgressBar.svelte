@@ -1,6 +1,6 @@
 <script>
 	import { fade } from 'svelte/transition';
-	let { questions, selectedAnswers, currentIndex, clickCircle } = $props();
+	let { questions, selectedAnswers, currentIndex, onclick } = $props();
 </script>
 
 <div
@@ -17,7 +17,7 @@
 					? 'bg-black'
 					: 'bg-gray-300'}
           {currentIndex === index ? 'h-[18px] w-[18px]' : 'h-3 w-3'}"
-				onclick={() => clickCircle(index)}
+				onclick={() => onclick(index)}
 			></button>
 		</div>
 	{/each}

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
-	import { statusColors } from './table-design';
+	import { statusColors } from './status-colors';
 
 	const statusNames: { [key: number]: string } = {
 		1: 'Safe',

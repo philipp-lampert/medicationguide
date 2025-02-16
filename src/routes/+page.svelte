@@ -87,13 +87,13 @@
 			</p>
 		</div>
 		<div class="w-full lg:w-fit">
-			<h3 class="h3 mb-4 text-center lg:mb-6">Effectiveness and indications</h3>
+			<h3 class="h3 mb-4 text-center lg:mb-6">Indications and Effectiveness</h3>
 			<div class="w-full overflow-auto rounded-xl lg:w-fit">
 				<Indications />
 			</div>
 		</div>
 		<div class="w-full lg:w-fit">
-			<h3 class="h3 mb-4 text-center lg:mb-6">Contraindications and side effects</h3>
+			<h3 class="h3 mb-4 text-center lg:mb-6">Contraindications and Side Effects</h3>
 			<div class="w-full overflow-auto rounded-xl lg:w-fit">
 				<Contraindications />
 			</div>

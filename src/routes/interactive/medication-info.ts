@@ -1,4 +1,4 @@
-// Medication information will always be shown in the results section
+// Content will always be shown in the results section
 export const medicationInfo = {
 	ibuprofen: {
 		positive: [],
