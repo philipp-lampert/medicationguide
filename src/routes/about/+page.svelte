@@ -28,11 +28,11 @@
 			<h2 class="italic sm:text-lg md:text-xl">Interactive Tools for Better Health Decisions</h2>
 		</div>
 		<p class="max-w-3xl">
-			Medication Guide is designed to support you in making well-informed decisions about
-			over-the-counter pain medication. Through our interactive guide, educational resources, and
-			expert-backed advice, we aim to provide guidance for selecting the most appropriate treatment
-			for you and your symptoms. While the information on this website has been reviewed by medical
-			professionals, it is not a substitute for professional medical advice.
+			Medication Guide is designed to support well-informed decisions on over-the-counter pain
+			medication. With our interactive guide we aim to provide guidance for selecting the most
+			appropriate treatment for you and your symptoms. While the information on this website has
+			been reviewed by medical professionals, it is not a substitute for professional medical
+			advice.
 		</p>
 	</article>
 </section>
@@ -49,10 +49,15 @@
 				</p>
 			</article>
 			<article class=" flex flex-col gap-1 bg-white text-left">
-				<h3 class="h3">Educational Content</h3>
+				<h3 class="h3">Verified information</h3>
 				<p>
-					Still under development, our knowledge base will offer comparisons of pain relievers,
-					explanations of side effects, and advice for managing common symptoms.
+					All medical information on this website is reviewed by experienced medical professionals.
+					However, please note that we do not provide medical advice as per our <a
+						class="text-link group"
+						href="/legal/disclaimer"
+					>
+						disclaimer<SlidingBottomBorder /></a
+					>.
 				</p>
 			</article>
 			<article class=" flex flex-col gap-1 bg-white text-left">
@@ -82,24 +87,14 @@
 	<article class="container flex flex-col items-center">
 		<div class="flex flex-col gap-6">
 			<h2 class="h2">Who is behind the project?</h2>
-			<p class="max-w-3xl">
-				This project was created by Philipp Lampert, final-year medical student from Germany, in
-				collaboration with senior doctors from Berlin's Charité university hospital. For more
-				information about myself, you can visit my
-				<a
+			<p class="max-w-2xl">
+				This project was created by <a
 					class="text-link group"
 					href="https://www.researchgate.net/profile/Philipp-Lampert"
 					target="_blank"
-					>ResearchGate <SlidingBottomBorder />
-				</a>
-				and
-				<a
-					class="text-link group"
-					href="https://www.linkedin.com/in/philipp-lampert-84aabb1b3"
-					target="_blank"
-					>LinkedIn<SlidingBottomBorder />
-				</a>
-				profiles. Feel free to reach out by sending an email to
+					>Philipp Lampert <SlidingBottomBorder />
+				</a>, final-year medical student from Germany, in collaboration with senior doctors from
+				Berlin's Charité university hospital. Feel free to reach out by sending an email to
 				<a class="text-link group" href="mailto:info@medicationguide.org"
 					>info@medicationguide.org<SlidingBottomBorder /></a
 				>.

@@ -28,16 +28,21 @@
 		}
 	>;
 
+	type Answer = {
+		text: string;
+		image: string;
+		medications: { [K in Medications]: { value: number; reason: string } };
+	};
+
 	// Answer selection
-	let selectedAnswers = $state(
-		[] as {
-			answers: {
-				text: string;
-				image: string;
-				medications: { [K in Medications]: { value: number; reason: string } };
-			}[];
-		}[]
-	);
+	let selectedAnswers = $state([] as { answers: Answer[] }[]);
+
+	function isAnswerSelected(answer: Answer) {
+		return questions[currentIndex].type === 'single-choice'
+			? selectedAnswers[currentIndex]?.answers[0]?.text === answer.text
+			: selectedAnswers[currentIndex] &&
+					selectedAnswers[currentIndex].answers.some((a) => a.text === answer.text);
+	}
 
 	function answerSelection(answer: {
 		text: string;
@@ -264,15 +269,13 @@
 							onclick={() => answerSelection(answer)}
 							class="
 											 flex h-36 w-36 flex-col items-center justify-center gap-2 rounded-2xl border-2
-											 border-gray-200 bg-gray-50 font-medium text-black transition-all
-											duration-300 hover:border-black hover:bg-white
-											hover:drop-shadow-xl sm:h-40 sm:w-40 sm:gap-3
-											sm:text-lg
+											 border-gray-200 bg-gray-50 font-medium text-black [transition:border-color_300ms,background-color_300ms,filter_300ms]
+											hover:border-black hover:bg-white hover:drop-shadow-xl sm:h-40 sm:w-40 sm:gap-3 sm:text-lg
 											{question.answers.length === 3 && index === 2 ? 'col-span-2 sm:col-auto' : ''}
+											{isAnswerSelected(answer)
+								? 'border-3 border-gray-950 bg-white shadow-inner-strong drop-shadow-none'
+								: ''}
 									"
-							class:selected={questions[currentIndex].type === 'single-choice'
-								? selectedAnswers[currentIndex]?.answers[0]?.text === answer.text
-								: selectedAnswers[currentIndex]?.answers.some((a) => a.text === answer.text)}
 						>
 							{answer.text}
 							{#if answer.image}
@@ -393,10 +396,6 @@
 </div>
 
 <style lang="postcss">
-	.selected {
-		@apply border-3 border-black bg-white shadow-inner-strong drop-shadow-none;
-	}
-
 	/* Looping animation to expand and contract underline */
 	@keyframes spanAnimation {
 		0% {

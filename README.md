@@ -1,10 +1,10 @@
 # Medication Guide
 
-An open-source, free-to-use, interactive tool that helps users select the appropriate over-the-counter medication based on their symptoms and needs.
+An open-source, free-to-use, interactive tool assisting you in choosing the appropriate over-the-counter medication based on your individual symptoms and risks.
 
 ## How it works
 
-To understand how the recommendation engine works, start by exploring the `questions.ts` file in the `src/interactive` folder. This file contains all the questions and answer choices used to guide users toward the most suitable medication.
+The recommendation algorithm uses a scoring system defined in the [questions.ts](src/routes/interactive/questions.ts) file. Each answer and medication is assigned a value that reflects its impact: A score of `0` generally suggests the medication may be harmful or ineffective, `0.5` indicates a neutral effect, and `1` signifies that it is both effective and safe. Based on the user's responses, the algorithm calculates a total score and recommends the medication with the highest overall rating.
 
 ## How to contribute
 
