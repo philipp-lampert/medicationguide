@@ -205,7 +205,7 @@
 
 <div
 	bind:clientHeight
-	class="container my-10 flex min-h-[525px] flex-grow justify-center sm:my-12 sm:min-h-[500px]"
+	class="container my-8 flex min-h-[525px] flex-grow justify-center sm:my-12 sm:min-h-[500px]"
 >
 	{#if currentIndex < questions.length}
 		<ProgressBar
@@ -221,7 +221,7 @@
 		{#if index === currentIndex}
 			<form
 				style="top: {clientHeight / 1.65}px; transform: translateY(-50%)"
-				class="absolute inset-x-0 mx-auto flex flex-col items-center justify-center gap-6 text-center sm:max-w-4xl md:gap-10 md:py-12"
+				class="absolute inset-x-0 mx-auto flex flex-col items-center justify-center gap-8 text-center sm:max-w-4xl md:gap-10 md:py-12"
 				out:fade={{ duration: 250 }}
 				in:fade={{ duration: 350, delay: 350 }}
 				onsubmit={nextQuestion}
@@ -246,7 +246,7 @@
 							class="
 											 flex h-36 w-36 flex-col items-center justify-center gap-2 rounded-2xl border-2
 											 border-gray-200 bg-gray-50 font-medium text-black [transition:border-color_300ms,background-color_300ms,filter_300ms]
-											hover:border-black hover:bg-white hover:drop-shadow-xl sm:h-40 sm:w-40 sm:gap-3 sm:text-lg
+											hover:border-black hover:bg-white hover:drop-shadow-xl sm:h-44 sm:w-44 sm:gap-4 sm:text-lg
 											{question.answers.length === 3 && index === 2 ? 'col-span-2 sm:col-auto' : ''}
 											{isAnswerSelected(answer)
 								? 'border-3 border-gray-950 bg-white shadow-inner-strong drop-shadow-none'
@@ -343,9 +343,12 @@
 								{#if medicationReasons[medication as Medications][type].length > 0}
 									<div class="rounded-lg {color} px-4 py-2 text-left text-sm font-normal">
 										<ul>
-											{#each medicationReasons[medication as Medications][type] as reason}
+											{#each [...new Set(medicationReasons[medication as Medications][type])] as reason}
 												<li>
-													{medicationReasons[medication as Medications][type].length > 1 ? '-' : ''}
+													{[...new Set(medicationReasons[medication as Medications][type])].length >
+													1
+														? '-'
+														: ''}
 													{reason}
 												</li>
 											{/each}

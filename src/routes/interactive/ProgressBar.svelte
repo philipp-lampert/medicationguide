@@ -4,7 +4,7 @@
 </script>
 
 <div
-	class="absolute z-10 flex h-4 flex-row gap-5 self-start sm:gap-6"
+	class="absolute z-10 flex h-4 flex-row gap-4 self-start sm:gap-6"
 	out:fade={{ duration: 250 }}
 	in:fade={{ duration: 350, delay: 350 }}
 >

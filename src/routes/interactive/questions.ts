@@ -21,8 +21,15 @@ import liver from '$lib/assets/icons/answers/liver.svg';
 import stomach from '$lib/assets/icons/answers/stomach.svg';
 import stomachPain from '$lib/assets/icons/answers/stomach-pain.svg';
 
+import lung from '$lib/assets/icons/answers/lung.svg';
+import lungFaded from '$lib/assets/icons/answers/lung-faded.svg';
+
+import bleeding from '$lib/assets/icons/answers/bleeding.svg';
+import noBleeding from '$lib/assets/icons/answers/no-bleeding.svg';
+
 import pills from '$lib/assets/icons/answers/pills.svg';
-import noPills from '$lib/assets/icons/answers/no-pills.svg';
+import bloodPressure from '$lib/assets/icons/answers/blood-pressure.svg';
+import depression from '$lib/assets/icons/answers/depression.svg';
 
 import child from '$lib/assets/icons/answers/child.svg';
 import adult from '$lib/assets/icons/answers/adult.svg';
@@ -57,10 +64,10 @@ export const questions = [
 				text: 'Severe',
 				image: severe,
 				medications: {
-					ibuprofen: { value: 0.5, reason: 'See doctor for severe pain' },
-					paracetamol: { value: 0, reason: 'See doctor for severe pain' },
-					naproxen: { value: 0.5, reason: 'See doctor for severe pain' },
-					aspirin: { value: 0.5, reason: 'See doctor for severe pain' }
+					ibuprofen: { value: 0.5, reason: 'Severe pain needs evaluation' },
+					paracetamol: { value: 0, reason: 'Severe pain needs evaluation' },
+					naproxen: { value: 0.5, reason: 'Severe pain needs evaluation' },
+					aspirin: { value: 0.5, reason: 'Severe pain needs evaluation' }
 				}
 			}
 		]
@@ -136,9 +143,9 @@ export const questions = [
 				image: inflammation,
 				medications: {
 					ibuprofen: { value: 1, reason: 'Anti-inflammatory' },
-					paracetamol: { value: 0.5, reason: 'Does not reduce inflammation' },
+					paracetamol: { value: 0, reason: 'Does not reduce inflammation' },
 					naproxen: { value: 1, reason: 'Anti-inflammatory' },
-					aspirin: { value: 0.5, reason: 'Does not reduce inflammation' }
+					aspirin: { value: 0.5, reason: 'Less effective in reducing inflammation' }
 				}
 			}
 		]
@@ -198,7 +205,7 @@ export const questions = [
 				image: liver,
 				medications: {
 					ibuprofen: { value: 0.5, reason: 'Avoid in liver failure' },
-					paracetamol: { value: 0.5, reason: 'Lower dosage in liver failure' },
+					paracetamol: { value: 0, reason: 'Contraindicated in liver failure' },
 					naproxen: { value: 0.5, reason: 'Avoid in liver failure' },
 					aspirin: { value: 0.5, reason: 'Avoid in liver failure' }
 				}
@@ -206,12 +213,48 @@ export const questions = [
 		]
 	},
 	{
-		text: 'Do you currently take blood thinners?',
+		text: 'Do you take any of these medications?',
+		type: 'multiple-choice',
+		answers: [
+			{
+				text: 'BP medication',
+				image: bloodPressure,
+				medications: {
+					ibuprofen: { value: 0.5, reason: 'May affect blood pressure' },
+					paracetamol: { value: 1, reason: '' },
+					naproxen: { value: 0.5, reason: 'May affect blood pressure' },
+					aspirin: { value: 0.5, reason: 'May affect blood pressure' }
+				}
+			},
+			{
+				text: 'Antidepressants',
+				image: depression,
+				medications: {
+					ibuprofen: { value: 0.5, reason: 'Increases bleeding risk' },
+					paracetamol: { value: 1, reason: '' },
+					naproxen: { value: 0.5, reason: 'Increases bleeding risk' },
+					aspirin: { value: 0, reason: 'High risk of serious bleeding' }
+				}
+			},
+			{
+				text: 'Steroids',
+				image: pills,
+				medications: {
+					ibuprofen: { value: 0, reason: 'High ulcer risk with steroids' },
+					paracetamol: { value: 1, reason: '' },
+					naproxen: { value: 0, reason: 'High ulcer risk with steroids' },
+					aspirin: { value: 0, reason: 'High ulcer risk with steroids' }
+				}
+			}
+		]
+	},
+	{
+		text: 'Do you bruise easily or have prolonged bleeding?',
 		type: 'single-choice',
 		answers: [
 			{
 				text: 'No',
-				image: noPills,
+				image: noBleeding,
 				medications: {
 					ibuprofen: { value: 1, reason: '' },
 					paracetamol: { value: 1, reason: '' },
@@ -221,12 +264,12 @@ export const questions = [
 			},
 			{
 				text: 'Yes',
-				image: pills,
+				image: bleeding,
 				medications: {
-					ibuprofen: { value: 0.5, reason: 'May increase bleeding risk' },
+					ibuprofen: { value: 0.5, reason: 'Increases bleeding risk' },
 					paracetamol: { value: 1, reason: '' },
-					naproxen: { value: 0.5, reason: 'May increase bleeding risk' },
-					aspirin: { value: 0, reason: 'Increases bleeding risk' }
+					naproxen: { value: 0.5, reason: 'Increases bleeding risk' },
+					aspirin: { value: 0, reason: 'High risk of serious bleeding' }
 				}
 			}
 		]
@@ -253,6 +296,32 @@ export const questions = [
 					paracetamol: { value: 1, reason: 'Does not affect stomach' },
 					naproxen: { value: 0, reason: 'May further damage stomach' },
 					aspirin: { value: 0, reason: 'May further damage stomach' }
+				}
+			}
+		]
+	},
+	{
+		text: 'Do you have asthma?',
+		type: 'single-choice',
+		answers: [
+			{
+				text: 'No',
+				image: lungFaded,
+				medications: {
+					ibuprofen: { value: 1, reason: '' },
+					paracetamol: { value: 1, reason: '' },
+					naproxen: { value: 1, reason: '' },
+					aspirin: { value: 1, reason: '' }
+				}
+			},
+			{
+				text: 'Yes',
+				image: lung,
+				medications: {
+					ibuprofen: { value: 0, reason: 'Risk of severe asthma attack' },
+					paracetamol: { value: 1, reason: 'Safe with asthma' },
+					naproxen: { value: 0, reason: 'Risk of severe asthma attack' },
+					aspirin: { value: 0, reason: 'Risk of severe asthma attack' }
 				}
 			}
 		]
