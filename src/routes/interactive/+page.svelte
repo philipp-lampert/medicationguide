@@ -228,13 +228,7 @@
 			>
 				<div class="flex flex-col gap-2">
 					<h1 class="mx-8 font-mallory text-3xl font-light leading-8 tracking-tight">
-						{#each question.text as part}
-							{#if typeof part === 'string'}
-								{part}
-							{:else}
-								<span class:font-medium={part.highlight}>{part.content}</span>
-							{/if}
-						{/each}
+						{question.text}
 					</h1>
 					{#if questions[currentIndex].type === 'multiple-choice'}
 						<span class="text-lg italic">Select all that apply.</span>

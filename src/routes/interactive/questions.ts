@@ -29,13 +29,8 @@ import adult from '$lib/assets/icons/answers/adult.svg';
 
 // 1: positive, 0.5: neutral, 0: negative
 export const questions = [
-	// How strong is your pain?
 	{
-		text: [
-			{ content: 'How strong is your ', highlight: false },
-			{ content: 'pain', highlight: true },
-			{ content: '?', highlight: false }
-		],
+		text: 'How strong is your pain?',
 		type: 'single-choice',
 		answers: [
 			{
@@ -70,9 +65,8 @@ export const questions = [
 			}
 		]
 	},
-	// Is your paint acute or chronic??
 	{
-		text: [{ content: 'Have your symptoms lasted over 2 weeks?', highlight: false }],
+		text: 'Have your symptoms lasted over 2 weeks?',
 		type: 'single-choice',
 		answers: [
 			{
@@ -97,13 +91,8 @@ export const questions = [
 			}
 		]
 	},
-	// Do you have a fever?
 	{
-		text: [
-			{ content: 'Do you have a ', highlight: false },
-			{ content: 'fever', highlight: true },
-			{ content: '?', highlight: false }
-		],
+		text: 'Do you have a fever?',
 		type: 'single-choice',
 		answers: [
 			{
@@ -128,9 +117,8 @@ export const questions = [
 			}
 		]
 	},
-	// Do you have local swelling or inflammation?
 	{
-		text: [{ content: 'Do you have joint pain?', highlight: false }],
+		text: 'Do you have joint pain or inflammation?',
 		type: 'single-choice',
 		answers: [
 			{
@@ -156,14 +144,7 @@ export const questions = [
 		]
 	},
 	{
-		// Are you pregnant in the 3rd trimester?
-		text: [
-			{ content: 'Are you ', highlight: false },
-			{ content: 'pregnant ', highlight: true },
-			{ content: 'in the ', highlight: false },
-			{ content: '3rd trimester', highlight: true },
-			{ content: '?', highlight: false }
-		],
+		text: 'Are you pregnant in the 3rd trimester?',
 		type: 'single-choice',
 		answers: [
 			{
@@ -189,12 +170,7 @@ export const questions = [
 		]
 	},
 	{
-		// Do you have any of the following?
-		text: [
-			{ content: 'Do you suffer from ', highlight: false },
-			{ content: 'any of the following', highlight: true },
-			{ content: '?', highlight: false }
-		],
+		text: 'Do you suffer from any of the below?',
 		type: 'multiple-choice',
 		answers: [
 			{
@@ -230,8 +206,7 @@ export const questions = [
 		]
 	},
 	{
-		// Do you currently take anticoagulants?
-		text: [{ content: 'Are you taking blood thinners?', highlight: false }],
+		text: 'Do you currently take blood thinners?',
 		type: 'single-choice',
 		answers: [
 			{
@@ -257,14 +232,7 @@ export const questions = [
 		]
 	},
 	{
-		// Do you have heartburn or stomach problems?
-		text: [
-			{ content: 'Do you have ', highlight: false },
-			{ content: 'heartburn ', highlight: true },
-			{ content: 'or ', highlight: false },
-			{ content: 'stomach problems', highlight: true },
-			{ content: '?', highlight: false }
-		],
+		text: 'Do you have heartburn or stomach problems?',
 		type: 'single-choice',
 		answers: [
 			{
@@ -290,12 +258,7 @@ export const questions = [
 		]
 	},
 	{
-		// Are you older than 16 years?
-		text: [
-			{ content: 'Are you older than ', highlight: false },
-			{ content: '16 years', highlight: true },
-			{ content: '?', highlight: false }
-		],
+		text: 'Are you older than 16 years?',
 		type: 'single-choice',
 		answers: [
 			{
