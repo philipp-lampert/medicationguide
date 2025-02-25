@@ -2,8 +2,8 @@
 	import Indications from '../lib/components/tables/Indications.svelte';
 	import Contraindications from '$lib/components/tables/Contraindications.svelte';
 	import SeeDoctor from '$lib/components/tables/SeeDoctor.svelte';
-	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
-	import ArrowDoubleRight from '$lib/assets/icons/buttons/ArrowDoubleRight.svelte';
+	import AnimatedUnderline from '$lib/components/AnimatedUnderline.svelte';
+	import ArrowDoubleRight from '$lib/icons/buttons/ArrowDoubleRight.svelte';
 	import Schema from '$lib/components/Schema.svelte';
 	import MedicalWebPage from './MedicalWebPage.json';
 	import MedicalScholarlyArticle from './MedicalScholarlyArticle.json';
@@ -83,7 +83,7 @@
 				tends to have a lower risk of side effects and is ideal for children and during pregnancy. Keep
 				in mind that many manufacturers use brand names, so always check the ingredients listed on the
 				packaging. For a personalized recommendation, have a look at our
-				<a class="text-link group" href="/interactive">interactive quiz<SlidingBottomBorder /></a>.
+				<a class="text-link group" href="/interactive">interactive quiz<AnimatedUnderline /></a>.
 			</p>
 		</div>
 		<div class="w-full lg:w-fit">

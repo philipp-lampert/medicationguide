@@ -1,5 +1,5 @@
 <script>
-	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
+	import AnimatedUnderline from '$lib/components/AnimatedUnderline.svelte';
 </script>
 
 <svelte:head>
@@ -69,7 +69,7 @@
 					Medication Guide may modify these Terms from time to time, posting notice on the website.
 					You can review the current version of these Terms by clicking on the website’s “Terms of
 					Use” link, available at <a href="/legal/terms" class="text-link group"
-						>medicationguide.org/legal/terms<SlidingBottomBorder /></a
+						>medicationguide.org/legal/terms<AnimatedUnderline /></a
 					>. All modifications are effective immediately when we post them and will be prospective
 					only. You agree that your use of the website after a modification will be treated as
 					acceptance of the modified Terms. We recommend that you check these Terms periodically for
@@ -160,7 +160,7 @@
 				<p>
 					If you have any questions about our Privacy Policy or practices, please contact us at
 					<a class="text-link group" href="mailto:info@medicationguide.org"
-						>info@medicationguide.org<SlidingBottomBorder /></a
+						>info@medicationguide.org<AnimatedUnderline /></a
 					>.
 				</p>
 			</div>

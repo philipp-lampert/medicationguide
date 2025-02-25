@@ -1,5 +1,5 @@
 <script>
-	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
+	import AnimatedUnderline from '$lib/components/AnimatedUnderline.svelte';
 </script>
 
 <svelte:head>
@@ -21,7 +21,7 @@
 				<p>
 					E-Mail: <a class="text-link group" href="mailto:info@medicationguide.org"
 						>info@medicationguide.org
-						<SlidingBottomBorder />
+						<AnimatedUnderline />
 					</a>
 				</p>
 			</div>
@@ -39,7 +39,7 @@
 						href="https://ec.europa.eu/consumers/odr/"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="text-link group">Plattform zur Online-Streitbeilegung<SlidingBottomBorder /></a
+						class="text-link group">Plattform zur Online-Streitbeilegung<AnimatedUnderline /></a
 					>
 					bereit.
 				</p>
