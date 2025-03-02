@@ -3,7 +3,6 @@ import noInflammation from '$lib/icons/answers/no-inflammation.svg';
 
 export const inflammation = {
 	label: 'Do you have joint pain or inflammation?',
-	type: 'singleChoice',
 	multipleChoice: false,
 	answers: [
 		{

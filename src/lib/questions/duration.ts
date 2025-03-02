@@ -3,7 +3,6 @@ import time from '$lib/icons/answers/time.svg';
 
 export const duration = {
 	label: 'Have your symptoms lasted over 2 weeks?',
-	type: 'singleChoice',
 	multipleChoice: false,
 	answers: [
 		{

@@ -4,7 +4,6 @@ import severe from '$lib/icons/answers/severe.svg';
 
 export const painSeverity = {
 	label: 'How strong is your pain?',
-	type: 'singleChoice',
 	multipleChoice: false,
 	answers: [
 		{
@@ -64,7 +63,7 @@ export const painSeverity = {
 					value: 0,
 					explanation: {
 						short: 'Likely insufficient for severe pain',
-						long: 'Paracetamol is not strong enough for severe pain. See a doctor for stronger pain relief.',
+						long: '',
 						sources: [{ label: '', url: '' }]
 					}
 				},

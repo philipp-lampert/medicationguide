@@ -3,7 +3,6 @@ import temperatureLow from '$lib/icons/answers/temperature-low.svg';
 
 export const fever = {
 	label: 'Do you have a fever?',
-	type: 'singleChoice',
 	multipleChoice: false,
 	answers: [
 		{

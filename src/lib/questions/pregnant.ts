@@ -34,7 +34,7 @@ export const pregnant = {
 						long: 'NSAIDs including ibuprofen are contraindicated during the third trimester as they may cause premature closure of the ductus arteriosus and other fetal complications.',
 						sources: [
 							{
-								label: 'FDA guidance on NSAID use in pregnancy',
+								label: 'FDA: NSAID use in pregnancy',
 								url: 'https://www.fda.gov/drugs/drug-safety-and-availability/fda-recommends-avoiding-use-nsaids-pregnancy-20-weeks-or-later-because-they-can-result-low-amniotic'
 							}
 						]
@@ -43,12 +43,12 @@ export const pregnant = {
 				paracetamol: {
 					value: 1,
 					explanation: {
-						short: 'Safe in pregnancy',
-						long: 'Paracetamol (acetaminophen) is considered the first-line analgesic for pregnant women throughout all trimesters when used at recommended doses.',
+						short: 'Considered safe in pregnancy',
+						long: '',
 						sources: [
 							{
-								label: 'NIH guidance on acetaminophen in pregnancy',
-								url: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6492207/'
+								label: '',
+								url: ''
 							}
 						]
 					}
@@ -60,7 +60,7 @@ export const pregnant = {
 						long: 'NSAIDs including naproxen are contraindicated during the third trimester due to risk of premature ductal closure and potential fetal renal complications.',
 						sources: [
 							{
-								label: 'FDA guidance on NSAID use in pregnancy',
+								label: 'FDA: NSAID use in pregnancy',
 								url: 'https://www.fda.gov/drugs/drug-safety-and-availability/fda-recommends-avoiding-use-nsaids-pregnancy-20-weeks-or-later-because-they-can-result-low-amniotic'
 							}
 						]
@@ -73,7 +73,7 @@ export const pregnant = {
 						long: 'Aspirin is contraindicated during the third trimester as it may increase the risk of maternal and fetal bleeding, and may cause premature closure of the ductus arteriosus.',
 						sources: [
 							{
-								label: 'ACOG recommendations on aspirin in pregnancy',
+								label: 'ACOG: aspirin in pregnancy',
 								url: 'https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2018/07/low-dose-aspirin-use-during-pregnancy'
 							}
 						]

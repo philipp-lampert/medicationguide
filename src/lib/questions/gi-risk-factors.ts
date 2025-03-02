@@ -3,7 +3,6 @@ import stomachPain from '$lib/icons/answers/stomach-pain.svg';
 
 export const giRiskFactors = {
 	label: 'Do you have heartburn or stomach problems?',
-	type: 'singleChoice',
 	multipleChoice: false,
 	answers: [
 		{

@@ -224,17 +224,6 @@
 	function goHome(): void {
 		window.location.href = '/';
 	}
-
-	function getUniqueReasons(explanation: Explanation[]): Explanation[] {
-		// Create a map to store unique reasons by their short text
-		const uniqueReasonsMap = new Map<string, Explanation>();
-		explanation.forEach((explanation) => {
-			if (explanation?.short) {
-				uniqueReasonsMap.set(explanation.short, explanation);
-			}
-		});
-		return Array.from(uniqueReasonsMap.values());
-	}
 </script>
 
 <svelte:head>
@@ -393,7 +382,7 @@
 								{#if medicationReasons[medication as Medication][type].length > 0}
 									<div class="rounded-lg {color} px-1.5 py-1.5 text-left text-sm font-normal">
 										<ul class="flex flex-col gap-1.5">
-											{#each getUniqueReasons(medicationReasons[medication as Medication][type]) as reasonInfo}
+											{#each medicationReasons[medication as Medication][type] as reasonInfo}
 												<li
 													class="rounded-md {insetColor} flex flex-row items-center justify-between gap-2 py-1 pl-2 pr-1"
 												>
@@ -436,10 +425,10 @@
 			<p class="text-left">
 				{currentLongExplanation}
 			</p>
-			<ul class="flex flex-row gap-2 text-xs text-gray-500">
+			<ul class="flex flex-row flex-wrap gap-x-2 gap-y-1.5 text-xs text-gray-500">
 				{#each currentSources as source}
-					<li>
-						<a class="text-link group relative" href={source.url}
+					<li class="flex-shrink-0">
+						<a class="text-link group relative text-nowrap" href={source.url} target="_blank"
 							>{source.label}<AnimatedUnderline color={'bg-current'} /></a
 						>
 					</li>

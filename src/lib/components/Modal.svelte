@@ -41,7 +41,7 @@
 		role="presentation"
 	>
 		<div
-			class="flex max-h-screen w-full max-w-lg flex-col rounded-lg bg-white p-3 shadow-lg"
+			class="mx-3 flex max-h-screen w-full max-w-2xl flex-col rounded-2xl bg-white p-4 shadow-lg"
 			bind:this={dialog}
 			role="dialog"
 			aria-modal="true"
@@ -54,7 +54,7 @@
 					</svg>
 				</button>
 			</div>
-			<div class="mx-3 flex-grow overflow-y-auto">
+			<div class="mx-3 mb-2 flex-grow overflow-y-auto sm:mx-5 sm:mb-3">
 				{@render children()}
 			</div>
 		</div>

@@ -4,7 +4,6 @@ import liver from '$lib/icons/answers/liver.svg';
 
 export const comorbidities = {
 	label: 'Do you suffer from any of the below?',
-	type: 'multipleChoice',
 	multipleChoice: true,
 	answers: [
 		{
