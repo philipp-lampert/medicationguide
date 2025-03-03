@@ -1,5 +1,5 @@
 <script>
-	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
+	import AnimatedUnderline from '$lib/components/AnimatedUnderline.svelte';
 	import MedicalOrganization from './MedicalOrganization.json';
 	import Schema from '$lib/components/Schema.svelte';
 </script>
@@ -56,7 +56,7 @@
 						class="text-link group"
 						href="/legal/disclaimer"
 					>
-						disclaimer<SlidingBottomBorder /></a
+						disclaimer<AnimatedUnderline /></a
 					>.
 				</p>
 			</article>
@@ -76,7 +76,7 @@
 						class="text-link group"
 						target="_blank"
 						>repository
-						<SlidingBottomBorder /></a
+						<AnimatedUnderline /></a
 					>.
 				</p>
 			</article>
@@ -92,11 +92,11 @@
 					class="text-link group"
 					href="https://www.researchgate.net/profile/Philipp-Lampert"
 					target="_blank"
-					>Philipp Lampert <SlidingBottomBorder />
+					>Philipp Lampert <AnimatedUnderline />
 				</a>, final-year medical student from Germany, in collaboration with senior doctors from
 				Berlin's Charité university hospital. Feel free to reach out by sending an email to
 				<a class="text-link group" href="mailto:info@medicationguide.org"
-					>info@medicationguide.org<SlidingBottomBorder /></a
+					>info@medicationguide.org<AnimatedUnderline /></a
 				>.
 			</p>
 		</div>

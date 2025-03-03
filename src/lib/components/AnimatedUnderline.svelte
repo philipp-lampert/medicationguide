@@ -1,5 +1,7 @@
 <script lang="ts">
-	const { color = 'bg-black' } = $props();
+	let { color = 'bg-black' } = $props<{
+		color?: string;
+	}>();
 </script>
 
 <span

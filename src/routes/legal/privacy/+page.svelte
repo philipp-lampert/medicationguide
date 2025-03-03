@@ -1,5 +1,5 @@
 <script>
-	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
+	import AnimatedUnderline from '$lib/components/AnimatedUnderline.svelte';
 </script>
 
 <svelte:head>
@@ -106,10 +106,10 @@
 						Analytics, you can install the <a
 							class="text-link group"
 							href="https://tools.google.com/dlpage/gaoptout?hl=en"
-							>Google Analytics Opt-Out Browser Add-On<SlidingBottomBorder /></a
+							>Google Analytics Opt-Out Browser Add-On<AnimatedUnderline /></a
 						>. For further information, see Google’s
 						<a class="text-link group" href="https://policies.google.com/privacy"
-							>privacy policy<SlidingBottomBorder /></a
+							>privacy policy<AnimatedUnderline /></a
 						>.
 					</li>
 					<br />
@@ -118,11 +118,11 @@
 						website. Stripe optimizes and operates their services using cookies for authentication,
 						fraud detection & prevention and more. For further information, see Stripe’s <a
 							href="https://stripe.com/us/privacy"
-							class="text-link group">privacy policy <SlidingBottomBorder /></a
+							class="text-link group">privacy policy <AnimatedUnderline /></a
 						>
 						and
 						<a href="https://stripe.com/cookies-policy/legal" class="text-link group"
-							>cookie policy<SlidingBottomBorder /></a
+							>cookie policy<AnimatedUnderline /></a
 						>.
 					</li>
 					<br />
@@ -131,7 +131,7 @@
 						cookies as part of its security and threat detection measures. For further information,
 						see Cloudflare’s <a
 							href="https://www.cloudflare.com/privacypolicy/"
-							class="text-link group">privacy policy<SlidingBottomBorder /></a
+							class="text-link group">privacy policy<AnimatedUnderline /></a
 						>.
 					</li>
 				</ul>
@@ -170,7 +170,7 @@
 					Medication Guide may modify this Privacy Policy from time to time. You can review the
 					current version of the Privacy Policy by clicking on the website’s Privacy Policy link,
 					available at <a class="text-link group" href="/legal/privacy"
-						>medicationguide.org/legal/privacy<SlidingBottomBorder /></a
+						>medicationguide.org/legal/privacy<AnimatedUnderline /></a
 					>. All modifications are effective immediately when we post them and will be prospective
 					only. You agree that your use of the website after a modification will be treated as
 					acceptance of the modified Privacy Policy. We recommend that you check this Privacy Policy
@@ -183,7 +183,7 @@
 				<p>
 					If you have any questions about our Privacy Policy or practices, please contact us at
 					<a class="text-link group" href="mailto:info@medicationguide.org"
-						>info@medicationguide.org<SlidingBottomBorder /></a
+						>info@medicationguide.org<AnimatedUnderline /></a
 					>.
 				</p>
 			</div>

@@ -1,10 +1,11 @@
 <script lang="ts">
-	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
-	import ArrowDoubleRight from '$lib/assets/icons/buttons/ArrowDoubleRight.svelte';
-	import IconNone from '$lib/assets/icons/buttons/IconNone.svelte';
-	import turnAround from '$lib/assets/icons/buttons/arrow-turn-around.svg';
-	import reload from '$lib/assets/icons/buttons/reload.svg';
-	import home from '$lib/assets/icons/buttons/home.svg';
+	import AnimatedUnderline from '$lib/components/AnimatedUnderline.svelte';
+	import ArrowDoubleRight from '$lib/icons/buttons/ArrowDoubleRight.svelte';
+	import IconNone from '$lib/icons/buttons/IconNone.svelte';
+	import turnAround from '$lib/icons/buttons/arrow-turn-around.svg';
+	import reload from '$lib/icons/buttons/reload.svg';
+	import home from '$lib/icons/buttons/home.svg';
+	import Info from '$lib/icons/buttons/Info.svelte';
 	import { fade } from 'svelte/transition';
 	import { questions } from './questions';
 	import { capitalizeFirstLetter } from '$lib/functions/utils';
@@ -13,43 +14,57 @@
 	import ProgressBar from './ProgressBar.svelte';
 	import HeadContent from './HeadContent.svelte';
 
+	import { MEDICATIONS } from './questions';
+	import type { Answer, Explanation, Medication, ValueExplanation } from './questions.ts';
+
+	// Modal
+	import Modal from '$lib/components/Modal.svelte';
+	let modalOpen = $state(false);
+	function openModal() {
+		modalOpen = true;
+	}
+	function closeModal() {
+		modalOpen = false;
+	}
+	let currentLongExplanation: string = $state('');
+	let currentSources: { label: string; url: string }[] = $state([]);
+
+	function setCurrentExplanationSources(
+		longExplanation: string,
+		sources: {
+			label: string;
+			url: string;
+		}[]
+	) {
+		currentLongExplanation = longExplanation;
+		currentSources = sources;
+	}
+
 	let clientHeight: number = $state(0);
 	let currentIndex: number = $state(0);
 	let direction: number = $state(1); // 1: forward, -1: backward
 
-	const MEDICATIONS = ['ibuprofen', 'paracetamol', 'naproxen', 'aspirin'] as const;
+	type RecommendationCategory = 'positive' | 'neutral' | 'negative';
+	type MedicationRecommendation = Record<RecommendationCategory, Explanation[]>;
+	type MedicationReasons = Record<Medication, MedicationRecommendation>;
 
-	type Medications = (typeof MEDICATIONS)[number];
-	type MedicationReasons = Record<
-		Medications,
-		{
-			positive: string[];
-			neutral: string[];
-			negative: string[];
-		}
-	>;
+	// State management
+	let selectedAnswers: { answers: Answer[] }[] = $state([]);
 
-	type Answer = {
-		text: string;
-		image: string;
-		medications: { [K in Medications]: { value: number; reason: string } };
-	};
-
-	// Answer selection
-	let selectedAnswers = $state([] as { answers: Answer[] }[]);
-
-	function isAnswerSelected(answer: Answer) {
-		return questions[currentIndex].type === 'single-choice'
-			? selectedAnswers[currentIndex]?.answers[0]?.text === answer.text
+	// Assessment determination functions
+	function isAnswerSelected(answer: Answer): boolean {
+		return questions[currentIndex].multipleChoice === false
+			? selectedAnswers[currentIndex]?.answers[0]?.label === answer.label
 			: selectedAnswers[currentIndex] &&
-					selectedAnswers[currentIndex].answers.some((a) => a.text === answer.text);
+					selectedAnswers[currentIndex].answers.some((a) => a.label === answer.label);
 	}
 
-	function answerSelection(answer: Answer) {
+	function answerSelection(answer: Answer): void {
 		if (!selectedAnswers[currentIndex]) {
 			selectedAnswers[currentIndex] = { answers: [] };
 		}
-		if (questions[currentIndex].type === 'single-choice') {
+
+		if (questions[currentIndex].multipleChoice === false) {
 			selectedAnswers[currentIndex].answers = [answer];
 			currentIndex++;
 			direction = 1;
@@ -58,6 +73,7 @@
 			const existingAnswerIndex = selectedAnswers[currentIndex].answers.findIndex(
 				(existingAnswer) => JSON.stringify(existingAnswer) === JSON.stringify(answer)
 			);
+
 			if (existingAnswerIndex >= 0) {
 				// If the answer exists, remove it (deselection)
 				selectedAnswers[currentIndex].answers.splice(existingAnswerIndex, 1);
@@ -68,35 +84,36 @@
 		}
 	}
 
-	// Medication reasons
+	// Therapeutic recommendation generation
 	let medicationReasons: MedicationReasons = $derived(
 		MEDICATIONS.reduce((acc, medication) => {
-			const userReasons: { positive: string[]; neutral: string[]; negative: string[] } = {
+			// Initialize structure for categorized clinical evidence
+			const userReasons: Record<RecommendationCategory, Explanation[]> = {
 				positive: [],
 				neutral: [],
 				negative: []
 			};
 
+			// Process user's selected answers
 			selectedAnswers.forEach((question) => {
 				question.answers.forEach((answer) => {
 					const medicationData = answer.medications[medication];
 
-					if (medicationData?.reason) {
-						const categorizeReason = (value: number) => {
-							if (value === 1) return 'positive';
-							if (value === 0.5) return 'neutral';
-							if (value === 0) return 'negative';
-							return null;
-						};
+					if (medicationData) {
+						const category = categorizeMedicationEffect(medicationData.value);
 
-						const category = categorizeReason(medicationData.value);
-						if (category) {
-							userReasons[category].push(medicationData.reason);
+						if (category && medicationData.explanation?.short) {
+							userReasons[category].push({
+								short: medicationData.explanation.short,
+								long: medicationData.explanation.long,
+								sources: medicationData.explanation.sources
+							});
 						}
 					}
 				});
 			});
 
+			// Combine with base medication information
 			return {
 				...acc,
 				[medication]: {
@@ -108,35 +125,42 @@
 		}, {} as MedicationReasons)
 	);
 
-	// CALCULATE MATCHING PERCENTAGES
-	// Medication scores based on selected answers
-	let medicationScores: Record<Medications, number> = $derived(
+	// Classification utility for therapeutic recommendation
+	function categorizeMedicationEffect(value: number): RecommendationCategory | null {
+		if (value === 1) return 'positive';
+		if (value === 0.5) return 'neutral';
+		if (value === 0) return 'negative';
+		return null;
+	}
+
+	// Medication efficacy scoring algorithm
+	let medicationScores: Record<Medication, number> = $derived(
 		MEDICATIONS.reduce(
 			(acc, name) => ({
 				...acc,
 				[name]: selectedAnswers
 					.flatMap((question) =>
-						question.answers.map((answer) => answer.medications[name as Medications]?.value || 0)
+						question.answers.map((answer) => answer.medications[name]?.value || 0)
 					)
 					.reduce((sum, value) => sum + value, 0)
 			}),
-			{} as Record<Medications, number>
+			{} as Record<Medication, number>
 		)
 	);
 
-	// Number of selected answers
+	// Assessment quantification
 	let numSelectedAnswers = $derived(
 		selectedAnswers.reduce((total, question) => total + (question.answers?.length || 0), 0)
 	);
 
-	// Calculate percentages
-	export function calculatePercentages() {
+	// Therapeutic recommendation quantification
+	export function calculatePercentages(): Record<string, number> {
 		const totalScores = Object.entries(medicationScores).reduce(
 			(scores, [medication, score]) => {
 				scores[medication] = score;
 				return scores;
 			},
-			{} as { [key: string]: number }
+			{} as Record<string, number>
 		);
 
 		return Object.entries(totalScores).reduce(
@@ -144,45 +168,60 @@
 				percentages[medication] = (totalScore / numSelectedAnswers) * 100;
 				return percentages;
 			},
-			{} as { [key: string]: number }
+			{} as Record<string, number>
 		);
 	}
 
-	// Navigation
-	function nextQuestion() {
+	// Assessment navigation functions
+	function nextQuestion(): void {
 		currentIndex++;
 		direction = 1;
 	}
 
-	function noneOfTheAbove() {
+	function noneOfTheAbove(): void {
 		if (!selectedAnswers[currentIndex]) {
 			selectedAnswers[currentIndex] = { answers: [] };
 		}
+
+		// Create default neutral assessment
+		const defaultAssessment: ValueExplanation = {
+			value: 1,
+			explanation: {
+				short: '',
+				long: '',
+				sources: [{ label: '', url: '' }]
+			}
+		};
+
+		// Generate record for all medications
+		const medicationAssessments = Object.fromEntries(
+			MEDICATIONS.map((med) => [med, defaultAssessment])
+		) as Record<Medication, ValueExplanation>;
+
 		selectedAnswers[currentIndex].answers = [
 			{
-				text: 'None of the above',
+				label: 'None of the above',
 				image: '',
-				medications: Object.fromEntries(
-					MEDICATIONS.map((med) => [med, { value: 1, reason: '' }])
-				) as Record<Medications, { value: number; reason: string }>
+				medications: medicationAssessments
 			}
 		];
+
 		nextQuestion();
 	}
 
-	function goBack() {
+	function goBack(): void {
 		if (currentIndex > 0) {
 			direction = -1;
 			currentIndex--;
 		}
 	}
 
-	function restart() {
+	function restart(): void {
 		currentIndex = 0;
 		selectedAnswers = [];
 	}
 
-	function goHome() {
+	function goHome(): void {
 		window.location.href = '/';
 	}
 </script>
@@ -199,7 +238,7 @@
 	>
 		<img src={icon} alt={label} class="h-4 pb-0.5" />
 		{label}
-		<SlidingBottomBorder />
+		<AnimatedUnderline />
 	</button>
 {/snippet}
 
@@ -228,9 +267,9 @@
 			>
 				<div class="flex flex-col gap-2">
 					<h1 class="mx-8 font-mallory text-3xl font-light leading-8 tracking-tight">
-						{question.text}
+						{question.label}
 					</h1>
-					{#if questions[currentIndex].type === 'multiple-choice'}
+					{#if questions[currentIndex].label === 'multiple-choice'}
 						<span class="text-lg italic">Select all that apply.</span>
 					{/if}
 				</div>
@@ -253,9 +292,9 @@
 								: ''}
 									"
 						>
-							{answer.text}
+							{answer.label}
 							{#if answer.image}
-								<img src={answer.image} alt={answer.text} class="h-16" />
+								<img src={answer.image} alt={answer.label} class="h-16" />
 							{/if}
 						</button>
 					{/each}
@@ -283,7 +322,7 @@
 								class="animate-span absolute bottom-0 left-0 z-50 h-0.5 w-full scale-x-0 transform bg-black"
 							></span>
 						</button>
-					{:else if questions[currentIndex].type === 'multiple-choice'}
+					{:else if questions[currentIndex].multipleChoice === true}
 						<button
 							type="button"
 							onclick={noneOfTheAbove}
@@ -291,7 +330,7 @@
 						>
 							None of the above
 							<IconNone classes={'fill-current h-4 pb-0.5'} />
-							<SlidingBottomBorder color={'bg-current'} />
+							<AnimatedUnderline color={'bg-current'} />
 						</button>
 					{/if}
 				</div>
@@ -311,7 +350,7 @@
 				<p class="group rounded-lg text-sm">
 					This website does not provide medical advice. Please refer to our <a
 						class="text-link"
-						href="/legal/disclaimer">disclaimer<SlidingBottomBorder /></a
+						href="/legal/disclaimer">disclaimer<AnimatedUnderline /></a
 					> for more information.
 				</p>
 			</div>
@@ -339,26 +378,36 @@
 							</div>
 
 							<!-- Reasons -->
-							{#snippet reasons(type: 'positive' | 'neutral' | 'negative', color: string)}
-								{#if medicationReasons[medication as Medications][type].length > 0}
-									<div class="rounded-lg {color} px-4 py-2 text-left text-sm font-normal">
-										<ul>
-											{#each [...new Set(medicationReasons[medication as Medications][type])] as reason}
-												<li>
-													{[...new Set(medicationReasons[medication as Medications][type])].length >
-													1
-														? '-'
-														: ''}
-													{reason}
+							{#snippet reasons(type: RecommendationCategory, color: string, insetColor: string)}
+								{#if medicationReasons[medication as Medication][type].length > 0}
+									<div class="rounded-lg {color} px-1.5 py-1.5 text-left text-sm font-normal">
+										<ul class="flex flex-col gap-1.5">
+											{#each medicationReasons[medication as Medication][type] as reasonInfo}
+												<li
+													class="rounded-md {insetColor} flex flex-row items-center justify-between gap-2 py-1 pl-2 pr-1"
+												>
+													{reasonInfo.short}
+													{#if reasonInfo.long && reasonInfo.sources.length > 0}
+														<button
+															onclick={() => {
+																setCurrentExplanationSources(
+																	reasonInfo.long || '',
+																	reasonInfo.sources || []
+																);
+																openModal();
+															}}><Info classes="h-4 opacity-50" /></button
+														>
+													{/if}
 												</li>
 											{/each}
 										</ul>
 									</div>
 								{/if}
 							{/snippet}
-							{@render reasons('positive', 'bg-green-100')}
-							{@render reasons('neutral', 'bg-yellow-100')}
-							{@render reasons('negative', 'bg-red-100')}
+
+							{@render reasons('positive', 'bg-green-200', 'bg-green-100')}
+							{@render reasons('neutral', 'bg-yellow-200', 'bg-yellow-100')}
+							{@render reasons('negative', 'bg-red-200', 'bg-red-100')}
 						</div>
 					</div>
 				{/each}
@@ -370,6 +419,23 @@
 			</div>
 		</div>
 	{/if}
+
+	<Modal isOpen={modalOpen} {closeModal}>
+		<div class="flex flex-col gap-2">
+			<p class="text-left">
+				{currentLongExplanation}
+			</p>
+			<ul class="flex flex-row flex-wrap gap-x-2 gap-y-1.5 text-xs text-gray-500">
+				{#each currentSources as source}
+					<li class="flex-shrink-0">
+						<a class="text-link group relative text-nowrap" href={source.url} target="_blank"
+							>{source.label}<AnimatedUnderline color={'bg-current'} /></a
+						>
+					</li>
+				{/each}
+			</ul>
+		</div>
+	</Modal>
 </div>
 
 <style lang="postcss">

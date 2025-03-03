@@ -1,6 +1,6 @@
 <script>
-	import SlidingBottomBorder from '$lib/animations/SlidingBottomBorder.svelte';
-	import ArrowDoubleRight from '$lib/assets/icons/buttons/ArrowDoubleRight.svelte';
+	import AnimatedUnderline from '$lib/components/AnimatedUnderline.svelte';
+	import ArrowDoubleRight from '$lib/icons/buttons/ArrowDoubleRight.svelte';
 	import { scrollY } from 'svelte/reactivity/window';
 
 	const threshold = 60;
@@ -30,13 +30,13 @@
 					<li>
 						<a class="group relative p-2" href="/"
 							>Home
-							<SlidingBottomBorder />
+							<AnimatedUnderline />
 						</a>
 					</li>
 					<li>
 						<a class="group relative p-2" href="/about"
 							>About
-							<SlidingBottomBorder />
+							<AnimatedUnderline />
 						</a>
 					</li>
 				</ul>
@@ -69,7 +69,7 @@
 					>
 						Start Quiz
 						<ArrowDoubleRight classes={'h-3'} />
-						<SlidingBottomBorder />
+						<AnimatedUnderline />
 					</a>
 				</div>
 			</div>
