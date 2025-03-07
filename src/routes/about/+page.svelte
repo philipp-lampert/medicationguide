@@ -93,8 +93,9 @@
 					href="https://www.researchgate.net/profile/Philipp-Lampert"
 					target="_blank"
 					>Philipp Lampert <AnimatedUnderline />
-				</a>, final-year medical student from Germany, in collaboration with senior doctors from
-				Berlin's Charité university hospital. Feel free to reach out by sending an email to
+				</a>
+				in collaboration with senior doctors from Berlin's Charité university hospital and the
+				Hospital General de Querétaro in Mexico. Feel free to reach out by sending an email to
 				<a class="text-link group" href="mailto:info@medicationguide.org"
 					>info@medicationguide.org<AnimatedUnderline /></a
 				>.

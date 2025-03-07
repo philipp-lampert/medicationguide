@@ -32,7 +32,13 @@ export const fever = {
 					explanation: {
 						short: 'Reduces fever effectively',
 						long: '',
-						sources: [{ label: '', url: '' }]
+						sources: [
+							{ label: 'Charde et al., 2023', url: 'https://doi.org/10.7759/cureus.46907' },
+							{
+								label: 'Alaje et al., 2022',
+								url: 'https://doi.org/10.11604/pamj.2020.36.350.21393'
+							}
+						]
 					}
 				},
 				paracetamol: {
@@ -40,7 +46,13 @@ export const fever = {
 					explanation: {
 						short: 'Reduces fever effectively',
 						long: '',
-						sources: [{ label: '', url: '' }]
+						sources: [
+							{ label: 'Charde et al., 2023', url: 'https://doi.org/10.7759/cureus.46907' },
+							{
+								label: 'Alaje et al., 2022',
+								url: 'https://doi.org/10.11604/pamj.2020.36.350.21393'
+							}
+						]
 					}
 				},
 				naproxen: {

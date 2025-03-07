@@ -1,5 +1,6 @@
 import lung from '$lib/icons/answers/lung.svg';
 import lungFaded from '$lib/icons/answers/lung-faded.svg';
+import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
 
 export const asthma = {
 	label: 'Do you have asthma?',
@@ -49,7 +50,7 @@ export const asthma = {
 					value: 0,
 					explanation: {
 						short: 'May trigger asthma attacks',
-						long: 'The safety of paracetamol in asthma remains a subject of debate in current research. While it has traditionally been considered safer than NSAIDs due to its different mechanism of action, recent studies have raised concerns about possible associations between paracetamol use and increased risk of asthma exacerbations. Some research suggests up to 60% of asthmatic patients may show sensitivity to analgesics, including paracetamol. Due to these conflicting findings, patients with asthma should consult their healthcare provider before using any pain medication, including paracetamol, particularly if they have a history of drug-induced respiratory symptoms.',
+						long: `The safety of ${paracetamolAcetaminophen()} in asthma remains a subject of debate in current research. While it has traditionally been considered safer than NSAIDs due to its different mechanism of action, recent studies have raised concerns about possible associations between paracetamol use and increased risk of asthma exacerbations. Some research suggests up to 60% of asthmatic patients may show sensitivity to analgesics, including ${paracetamolAcetaminophen()}. Due to these conflicting findings, patients with asthma should consult their healthcare provider before using any pain medication, particularly if they have a history of drug-induced respiratory symptoms.`,
 						sources: [
 							{
 								label: 'Levy & Volans, 2012',

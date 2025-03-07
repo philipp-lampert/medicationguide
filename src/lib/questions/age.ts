@@ -35,7 +35,7 @@ export const age = {
 					value: 1,
 					explanation: {
 						short: 'Safe for children',
-						long: `${paracetamolAcetaminophen()} is considered a first-choice analgesic for pediatric patients due to its established safety profile. It has historically been preferred over NSAIDs for children, though evidence now supports that Ibuprofen is equally safe when used appropriately in pediatric populations.`,
+						long: `${paracetamolAcetaminophen(true)} is considered a first-choice analgesic for pediatric patients due to its established safety profile. It has historically been preferred over NSAIDs for children, though evidence now supports that Ibuprofen is equally safe when used appropriately in pediatric populations.`,
 						sources: [
 							{
 								label: 'NHS: Paracetamol for children',

@@ -1,8 +1,9 @@
 import bleedingIcon from '$lib/icons/answers/bleeding.svg';
 import noBleeding from '$lib/icons/answers/no-bleeding.svg';
+import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
 
 export const bleeding = {
-	label: 'Do you bruise easily or have prolonged bleeding?',
+	label: 'Do you bruise/bleed easily or take anticoagulants?',
 	multipleChoice: false,
 	answers: [
 		{
@@ -28,7 +29,7 @@ export const bleeding = {
 			image: bleedingIcon,
 			medications: {
 				ibuprofen: {
-					value: 0.5,
+					value: 0,
 					explanation: {
 						short: 'Increases bleeding risk',
 						long: 'Ibuprofen significantly increases bleeding risk by inhibiting platelet function and prolonging bleeding time. This effect persists throughout the dosing interval and substantially elevates hemorrhage risk in patients with bleeding disorders, history of gastrointestinal bleeding, or concurrent use of anticoagulants. Clinical studies show increased incidence of both minor and major bleeding events in susceptible populations. Ibuprofen is contraindicated in patients with bleeding disorders or high risk for hemorrhagic complications. All patients with bleeding tendencies should consult their healthcare provider before using this medication.',
@@ -52,7 +53,7 @@ export const bleeding = {
 					value: 0.5,
 					explanation: {
 						short: 'Slightly increases bleeding risk',
-						long: "Evidence regarding paracetamol's effect on bleeding risk is mixed. Most studies show no significant increase, making it the preferred analgesic for patients with bleeding disorders or on anticoagulants. While some recent research suggests a slight increase in bleeding risk at therapeutic doses, this effect is substantially weaker than with NSAIDs. Paracetamol remains the safest analgesic option for patients with bleeding disorders or hemorrhage history, though healthcare provider consultation is still recommended for those with severe bleeding risk factors.",
+						long: `Evidence regarding ${paracetamolAcetaminophen()}'s effect on bleeding risk is mixed. Most studies show no significant increase, making it the preferred analgesic for patients with bleeding disorders or on anticoagulants. While some recent research suggests a slight increase in bleeding risk at therapeutic doses, this effect is substantially weaker than with NSAIDs. ${paracetamolAcetaminophen(true)} remains the safest analgesic option for patients with bleeding disorders or hemorrhage history, though healthcare provider consultation is still recommended for those with severe bleeding risk factors.`,
 						sources: [
 							{
 								label: 'Mahé et al., 2012',
@@ -63,7 +64,7 @@ export const bleeding = {
 								url: 'https://accp1.onlinelibrary.wiley.com/doi/full/10.1002/jcph.2003'
 							},
 							{
-								label: 'Angel et al., 2003',
+								label: 'Lanas et al., 2003',
 								url: 'https://journals.lww.com/eurojgh/fulltext/2003/02000/Risk_of_upper_gastrointestinal_bleeding_associated.11.aspx'
 							}
 						]

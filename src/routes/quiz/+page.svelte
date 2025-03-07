@@ -359,7 +359,7 @@
 					<div class=" flex flex-col gap-2 bg-white text-left">
 						<h2 class="h3 border-b-2">
 							{#if medication === 'paracetamol'}
-								{paracetamolAcetaminophen()}
+								{paracetamolAcetaminophen(true)}
 							{:else}
 								{capitalizeFirstLetter(medication)}
 							{/if}

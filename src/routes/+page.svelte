@@ -76,9 +76,9 @@
 				Non-prescription analgesics fall into four main categories:
 				<strong class="font-medium">Ibuprofen</strong>,
 				<strong class="font-medium">Aspirin</strong>,
-				<strong class="font-medium">{paracetamolAcetaminophen()}</strong>, and
+				<strong class="font-medium">{paracetamolAcetaminophen(true)}</strong>, and
 				<strong class="font-medium">Naproxen</strong>. Each of these medications has distinct
-				characteristics. For example, Ibuprofen and Naproxen belong to the class of nonsteroidal
+				characteristics. For example, ibuprofen and naproxen belong to the class of nonsteroidal
 				anti-inflammatory drugs (NSAIDs) and are effective at reducing inflammation, while {paracetamolAcetaminophen()}
 				tends to have a lower risk of side effects and is ideal for children and during pregnancy. Keep
 				in mind that many manufacturers use brand names, so always check the ingredients listed on the

@@ -1,3 +1,5 @@
+import { capitalizeFirstLetter } from './utils';
+
 const acetaminophenTimezones = [
 	// United States (US)
 	'America/New_York',
@@ -65,6 +67,7 @@ const acetaminophenTimezones = [
 
 const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-export const paracetamolAcetaminophen = (): string => {
-	return acetaminophenTimezones.includes(timezone) ? 'Acetaminophen' : 'Paracetamol';
-};
+export function paracetamolAcetaminophen(capitalized: boolean = false) {
+	const term = acetaminophenTimezones.includes(timezone) ? 'acetaminophen' : 'paracetamol';
+	return capitalized ? capitalizeFirstLetter(term) : term;
+}
