@@ -13,7 +13,6 @@
 	import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
 	import ProgressBar from './ProgressBar.svelte';
 	import HeadContent from './HeadContent.svelte';
-
 	import { MEDICATIONS } from './questions';
 	import type { Answer, Explanation, Medication, ValueExplanation } from './questions.ts';
 
@@ -257,12 +256,12 @@
 		/>
 	{/if}
 	{#each questions as question, index (index)}
-		{#if index === currentIndex}
+		{#if index === currentIndex && clientHeight > 0}
 			<form
 				style="top: {clientHeight / 1.65}px; transform: translateY(-50%)"
 				class="absolute inset-x-0 mx-auto flex flex-col items-center justify-center gap-8 text-center sm:max-w-4xl md:gap-10 md:py-12"
-				out:fade={{ duration: 250 }}
-				in:fade={{ duration: 350, delay: 350 }}
+				out:fade={{ duration: 150 }}
+				in:fade={{ duration: 250, delay: 250 }}
 				onsubmit={nextQuestion}
 			>
 				<div class="flex flex-col gap-2">
@@ -274,9 +273,7 @@
 					{/if}
 				</div>
 				<div
-					class="grid grid-cols-2 justify-items-center gap-4 {question.answers.length === 3
-						? 'sm:grid-cols-3'
-						: 'sm:grid-cols-2'}"
+					class="grid grid-cols-2 justify-items-center gap-4 {`sm:grid-cols-${question.answers.length}`}"
 				>
 					{#each question.answers as answer, index}
 						<button
@@ -285,7 +282,7 @@
 							class="
 											 flex h-36 w-36 flex-col items-center justify-center gap-2 rounded-2xl border-2
 											 border-gray-200 bg-gray-50 font-medium text-black [transition:border-color_300ms,background-color_300ms,filter_300ms]
-											hover:border-black hover:bg-white hover:drop-shadow-xl sm:h-44 sm:w-44 sm:gap-4 sm:text-lg
+											hover:border-black hover:bg-white hover:drop-shadow-xl sm:gap-4 md:h-44 md:w-44 md:text-lg
 											{question.answers.length === 3 && index === 2 ? 'col-span-2 sm:col-auto' : ''}
 											{isAnswerSelected(answer)
 								? 'border-3 border-gray-950 bg-white shadow-inner-strong drop-shadow-none'

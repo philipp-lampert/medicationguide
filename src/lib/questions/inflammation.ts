@@ -32,7 +32,9 @@ export const inflammation = {
 					explanation: {
 						short: 'Strong anti-inflammatory',
 						long: '',
-						sources: [{ label: '', url: '' }]
+						sources: [
+							{ label: 'Schiff & Minic, 2004', url: 'https://www.jrheum.org/content/31/7/1373' } // DOI not found
+						]
 					}
 				},
 				paracetamol: {
@@ -40,7 +42,9 @@ export const inflammation = {
 					explanation: {
 						short: 'Not anti-inflammatory',
 						long: '',
-						sources: [{ label: '', url: '' }]
+						sources: [
+							{ label: 'Graham et al., 2013', url: 'https://doi.org/10.1007/s10787-013-0172-x' }
+						]
 					}
 				},
 				naproxen: {
@@ -48,7 +52,14 @@ export const inflammation = {
 					explanation: {
 						short: 'Strong anti-inflammatory',
 						long: '',
-						sources: [{ label: '', url: '' }]
+						sources: [
+							{ label: 'Schiff & Minic, 2004', url: 'https://www.jrheum.org/content/31/7/1373' }, // DOI not found
+							{
+								label: 'The Manchester General Practitioner Group, 1983',
+								url: 'https://doi.org/10.1185/03007998409109557'
+							},
+							{ label: 'Segre, 1975', url: 'https://doi.org/10.1002/j.1552-4604.1975.tb01458.x' }
+						]
 					}
 				},
 				aspirin: {
@@ -56,7 +67,12 @@ export const inflammation = {
 					explanation: {
 						short: 'Moderate anti-inflammatory',
 						long: '',
-						sources: [{ label: '', url: '' }]
+						sources: [
+							{
+								label: 'Amann & Peskar, 2002',
+								url: 'https://doi.org/10.1016/S0014-2999(02)01828-9'
+							}
+						]
 					}
 				}
 			}

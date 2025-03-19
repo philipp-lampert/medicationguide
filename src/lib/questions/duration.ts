@@ -10,16 +10,57 @@ export const duration = {
 			image: lightning,
 			medications: {
 				ibuprofen: {
-					value: 1
+					value: 1,
+					explanation: {
+						short: 'Short time to effect',
+						long: '',
+						sources: [{ label: 'Li et al., 2012', url: 'https://doi.org/10.1177/0091270010389470' }]
+					}
 				},
 				paracetamol: {
-					value: 1
+					value: 1,
+					explanation: {
+						short: 'Short time to effect',
+						long: '',
+						sources: [
+							{ label: 'Yue et al., 2013', url: 'https://doi.org/10.1016/j.clinthera.2013.07.422' }
+						]
+					}
 				},
 				naproxen: {
-					value: 1
+					value: 0.5,
+					explanation: {
+						short: 'Slower time to effect',
+						long: '',
+						sources: [
+							{ label: 'Ong et al., 2007', url: 'https://doi.org/10.3121/cmr.2007.698' },
+							{
+								label: 'Davies & Anderson, 1997',
+								url: 'https://doi.org/10.2165/00003088-199732040-00002'
+							},
+							{
+								label: 'Valentovic, 2007',
+								url: 'https://doi.org/10.1016/B978-008055232-3.62246-9'
+							}
+						]
+					}
 				},
 				aspirin: {
-					value: 1
+					value: 1,
+					explanation: {
+						short: 'Short time to effect',
+						long: '',
+						sources: [
+							{
+								label: 'Ratchford et al., 1985',
+								url: 'https://doi.org/10.1152/japplphysiol.01119.2016'
+							},
+							{
+								label: 'Mejaj et al., 2015',
+								url: 'https://doi.org/10.2147/TCRM.S92222'
+							}
+						]
+					}
 				}
 			}
 		},

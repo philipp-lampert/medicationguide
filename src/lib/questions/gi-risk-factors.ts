@@ -14,18 +14,46 @@ export const giRiskFactors = {
 					explanation: {
 						short: 'Can cause stomach ulcers',
 						long: '',
-						sources: [{ label: '', url: '' }]
+						sources: [
+							{
+								label: 'Henry et al., 1996',
+								url: 'https://doi.org/10.1136/bmj.312.7046.1563'
+							},
+							{
+								label: 'Drini, 2017',
+								url: 'https://doi.org/10.18773/austprescr.2017.037'
+							}
+						]
 					}
 				},
 				paracetamol: {
-					value: 1
+					value: 1,
+					explanation: {
+						short: 'Safe for stomach',
+						long: '',
+						sources: [
+							{
+								label: 'González-Pérez & García Rodríguez, 2006',
+								url: 'https://doi.org/10.1111/j.1742-7843.2006.pto_248.x'
+							}
+						]
+					}
 				},
 				naproxen: {
 					value: 0.5,
 					explanation: {
 						short: 'Can cause stomach ulcers',
 						long: '',
-						sources: [{ label: '', url: '' }]
+						sources: [
+							{
+								label: 'Henry et al., 1996',
+								url: 'https://doi.org/10.1136/bmj.312.7046.1563'
+							},
+							{
+								label: 'Drini, 2017',
+								url: 'https://doi.org/10.18773/austprescr.2017.037'
+							}
+						]
 					}
 				},
 				aspirin: {
@@ -33,7 +61,17 @@ export const giRiskFactors = {
 					explanation: {
 						short: 'Can cause stomach ulcers',
 						long: '',
-						sources: [{ label: '', url: '' }]
+						sources: [
+							{
+								label: 'Henry et al., 1996',
+								url: 'https://doi.org/10.1136/bmj.312.7046.1563'
+							},
+							{
+								label: 'Drini, 2017',
+								url: 'https://doi.org/10.18773/austprescr.2017.037'
+							},
+							{ label: 'Cryer & Mahaffey, 2014', url: 'https://doi.org/10.2147/JMDH.S54324' }
+						]
 					}
 				}
 			}
@@ -47,15 +85,29 @@ export const giRiskFactors = {
 					explanation: {
 						short: 'May further damage stomach',
 						long: '',
-						sources: [{ label: '', url: '' }]
+						sources: [
+							{
+								label: 'Henry et al., 1996',
+								url: 'https://doi.org/10.1136/bmj.312.7046.1563'
+							},
+							{
+								label: 'Drini, 2017',
+								url: 'https://doi.org/10.18773/austprescr.2017.037'
+							}
+						]
 					}
 				},
 				paracetamol: {
-					value: 1,
+					value: 0.5,
 					explanation: {
-						short: 'Does not affect stomach',
+						short: 'Can cause stomach ulcers',
 						long: '',
-						sources: [{ label: '', url: '' }]
+						sources: [
+							{
+								label: 'González-Pérez & García Rodríguez, 2006',
+								url: 'https://doi.org/10.1111/j.1742-7843.2006.pto_248.x'
+							}
+						]
 					}
 				},
 				naproxen: {
@@ -63,7 +115,16 @@ export const giRiskFactors = {
 					explanation: {
 						short: 'May further damage stomach',
 						long: '',
-						sources: [{ label: '', url: '' }]
+						sources: [
+							{
+								label: 'Henry et al., 1996',
+								url: 'https://doi.org/10.1136/bmj.312.7046.1563'
+							},
+							{
+								label: 'Drini, 2017',
+								url: 'https://doi.org/10.18773/austprescr.2017.037'
+							}
+						]
 					}
 				},
 				aspirin: {
@@ -71,7 +132,17 @@ export const giRiskFactors = {
 					explanation: {
 						short: 'May further damage stomach',
 						long: '',
-						sources: [{ label: '', url: '' }]
+						sources: [
+							{
+								label: 'Henry et al., 1996',
+								url: 'https://doi.org/10.1136/bmj.312.7046.1563'
+							},
+							{
+								label: 'Drini, 2017',
+								url: 'https://doi.org/10.18773/austprescr.2017.037'
+							},
+							{ label: 'Cryer & Mahaffey, 2014', url: 'https://doi.org/10.2147/JMDH.S54324' }
+						]
 					}
 				}
 			}

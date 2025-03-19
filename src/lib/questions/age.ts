@@ -14,7 +14,7 @@ export const age = {
 					value: 1,
 					explanation: {
 						short: 'Safe for children',
-						long: `Ibuprofen and ${paracetamolAcetaminophen()} are the first-choice analgesics for treatment of pain and fever in children. Ibuprofen is more effective for treatment of inflammation. However, it is contraindicated in neonates and children with asthma or during varicella. In addition, it poses a risk of dehydration and should therefore not be given during episodes of diarrhea or vomiting.`,
+						long: `Recent studies have shown comparable safety profiles of ibuprofen and ${paracetamolAcetaminophen()} for children. While ibuprofen remains more effective for treatment of inflammation, it is contraindicated in neonates and children with asthma or during varicella. In addition, it poses a risk of dehydration and should therefore not be given during episodes of diarrhea or vomiting.`,
 						sources: [
 							{
 								label: 'de Martino et al., 2017',
@@ -35,7 +35,7 @@ export const age = {
 					value: 1,
 					explanation: {
 						short: 'Safe for children',
-						long: `${paracetamolAcetaminophen(true)} is considered a first-choice analgesic for pediatric patients due to its established safety profile. It has historically been preferred over NSAIDs for children, though evidence now supports that Ibuprofen is equally safe when used appropriately in pediatric populations.`,
+						long: `${paracetamolAcetaminophen(true)} is considered a first-choice analgesic for children due to its established safety profile. It has historically been preferred over NSAIDs for children, though evidence now supports that ibuprofen is equally safe when used appropriately.`,
 						sources: [
 							{
 								label: 'NHS: Paracetamol for children',
@@ -52,7 +52,7 @@ export const age = {
 					value: 0.5,
 					explanation: {
 						short: 'Missing safety data for children',
-						long: 'Naproxen is not recommended in pediatric patients primarily due to limited safety data and lack of approved indications for children, not because of specific toxicity concerns. While paracetamol and ibuprofen have well-established safety profiles in pediatric populations and are considered first-line OTC analgesics for children, naproxen has not been studied as extensively in this age group, resulting in more conservative recommendations against its use in patients under 16 years of age.',
+						long: `Naproxen is not recommended for use in children primarily due to limited safety data, not because of specific toxicity concerns. While ${paracetamolAcetaminophen()} and ibuprofen have well-established safety profiles for children, naproxen has not been studied as extensively in this age group, resulting in more conservative recommendations against its use in patients under 16 years of age.`,
 						sources: [
 							{
 								label: 'Mathiesen & Jørgensen, 2022',
@@ -69,7 +69,7 @@ export const age = {
 					value: 0,
 					explanation: {
 						short: 'Not safe for children < 16',
-						long: "Aspirin is contraindicated in children under 16 years of age due to its association with Reye's syndrome. This rare but potentially fatal condition affects the brain and liver, typically following viral infections. Epidemiological studies in the 1980s established this connection. The incidence of Reye's syndrome declined dramatically after warnings against pediatric aspirin use were implemented. Alternative analgesics such as paracetamol offer comparable efficacy without this serious risk.",
+						long: `Aspirin is contraindicated in children under 16 years of age due to its association with Reye's syndrome. This rare but potentially fatal condition affects the brain and liver, typically following viral infections. After epidemiological studies in the 1980s established this connection, the incidence of Reye's syndrome declined dramatically. Alternative analgesics such as ${paracetamolAcetaminophen()} or ibuprofen offer comparable efficacy without this serious risk.`,
 						sources: [
 							{
 								label: "NHS: Reye's syndrome",
