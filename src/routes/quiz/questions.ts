@@ -1,16 +1,14 @@
 import { painSeverity } from '$lib/questions/pain-severity';
 import { duration } from '$lib/questions/duration';
-import { fever } from '$lib/questions/fever';
 import { inflammation } from '$lib/questions/inflammation';
 import { pregnant } from '$lib/questions/pregnant';
 import { comorbidities } from '$lib/questions/comorbidities';
-import { coMedications } from '$lib/questions/co-medications';
+import { coMedications } from '$lib/questions/comedications';
 import { bleeding } from '$lib/questions/bleeding';
 import { giRiskFactors } from '$lib/questions/gi-risk-factors';
-import { asthma } from '$lib/questions/asthma';
 import { age } from '$lib/questions/age';
 
-export const MEDICATIONS = ['ibuprofen', 'paracetamol', 'naproxen', 'aspirin'] as const;
+export const MEDICATIONS = ['paracetamol', 'ibuprofen', 'naproxen', 'aspirin'] as const;
 export type Medication = (typeof MEDICATIONS)[number];
 
 export type Explanation = {
@@ -41,14 +39,12 @@ export type Question = {
 
 export const questions: Question[] = [
 	painSeverity,
-	duration,
-	fever,
 	inflammation,
-	pregnant,
+	duration,
 	comorbidities,
-	coMedications,
-	bleeding,
 	giRiskFactors,
-	asthma,
-	age
+	bleeding,
+	coMedications,
+	age,
+	pregnant
 ];

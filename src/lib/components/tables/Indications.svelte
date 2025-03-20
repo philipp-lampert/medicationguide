@@ -72,7 +72,7 @@
 	<thead>
 		<tr class="bg-gray-100">
 			<th class="w-1/4"></th>
-			<th class="px-4 py-3 font-medium">{paracetamolAcetaminophen()}</th>
+			<th class="px-4 py-3 font-medium">{paracetamolAcetaminophen(true)}</th>
 			<th class="px-4 py-3 font-medium">Ibuprofen</th>
 			<th class="px-4 py-3 font-medium">Naproxen</th>
 			<th class="px-4 py-3 font-medium">Aspirin</th>

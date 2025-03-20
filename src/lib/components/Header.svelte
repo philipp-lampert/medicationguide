@@ -55,13 +55,13 @@
 				<div class="relative flex items-center">
 					<span
 						class="duration-50 absolute left-0 top-0 block text-left text-sm font-normal leading-4 transition-all duration-200 md:text-base md:leading-5 {isShrunk
-							? 'opacity-0'
-							: 'opacity-100 delay-200'}"
+							? 'pointer-events-none opacity-0'
+							: 'pointer-events-auto opacity-100 delay-200'}"
 					>
 						Medication<br />Guide
 					</span>
 					<a
-						href="/interactive"
+						href={isShrunk ? '/quiz' : null}
 						data-sa-link-event="start_quiz_header"
 						class="group relative z-50 flex flex-row items-center gap-1 text-sm font-medium transition-all duration-200 sm:gap-2 {isShrunk
 							? 'opacity-100 delay-200'
