@@ -353,7 +353,9 @@
 					> for more information.
 				</p>
 			</div>
-			<div class="grid w-full grid-cols-1 gap-x-16 gap-y-12 md:grid-cols-2 lg:grid-cols-4">
+			<div
+				class="grid w-full grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-2 lg:grid-cols-4 xl:gap-x-12"
+			>
 				{#each Object.entries(calculatePercentages()).sort(([, percentageA], [, percentageB]) => percentageB - percentageA) as [medication, percentage]}
 					<div class=" flex flex-col gap-2 bg-white text-left">
 						<h2 class="h3 border-b-2">
@@ -379,8 +381,8 @@
 							<!-- Reasons -->
 							{#snippet reasons(type: RecommendationCategory, color: string, insetColor: string)}
 								{#if medicationReasons[medication as Medication][type].length > 0}
-									<div class="rounded-lg {color} px-1.5 py-1.5 text-left text-sm font-normal">
-										<ul class="flex flex-col gap-1.5">
+									<div class="rounded-lg {color} p-1 text-left text-sm font-normal">
+										<ul class="flex flex-col gap-1">
 											{#each medicationReasons[medication as Medication][type] as reasonInfo}
 												<li
 													class="rounded-md {insetColor} flex flex-row items-center justify-between gap-2 py-1 pl-2 pr-1"
