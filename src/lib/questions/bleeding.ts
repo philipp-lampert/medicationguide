@@ -10,10 +10,10 @@ export const bleeding = {
 			label: 'No',
 			image: noBleeding,
 			medications: {
-				ibuprofen: {
+				paracetamol: {
 					value: 1
 				},
-				paracetamol: {
+				ibuprofen: {
 					value: 1
 				},
 				naproxen: {
@@ -28,32 +28,11 @@ export const bleeding = {
 			label: 'Yes',
 			image: bleedingIcon,
 			medications: {
-				ibuprofen: {
-					value: 0,
-					explanation: {
-						short: 'Increases bleeding risk',
-						long: 'Ibuprofen significantly increases bleeding risk by inhibiting platelet function and prolonging bleeding time. This effect persists throughout the dosing interval and substantially elevates hemorrhage risk in patients with bleeding disorders, history of gastrointestinal bleeding, or concurrent use of anticoagulants. Clinical studies show increased incidence of both minor and major bleeding events in susceptible populations. Ibuprofen is contraindicated in patients with bleeding disorders or high risk for hemorrhagic complications. All patients with bleeding tendencies should consult their healthcare provider before using this medication.',
-						sources: [
-							{
-								label: 'Olsen et al., 2015',
-								url: 'https://jamanetwork.com/journals/jama/fullarticle/2130316'
-							},
-							{
-								label: 'Straube et al., 2009',
-								url: 'https://link.springer.com/article/10.1186/1471-230X-9-41'
-							},
-							{
-								label: 'Zapata et al., 2020',
-								url: 'https://www.thieme-connect.com/products/ejournals/html/10.1055/s-0040-1710592'
-							}
-						]
-					}
-				},
 				paracetamol: {
 					value: 0.5,
 					explanation: {
-						short: 'Slightly increases bleeding risk',
-						long: `Evidence regarding ${paracetamolAcetaminophen()}'s effect on bleeding risk is mixed. Most studies show no significant increase, making it the preferred analgesic for patients with bleeding disorders or on anticoagulants. While some recent research suggests a slight increase in bleeding risk at therapeutic doses, this effect is substantially weaker than with NSAIDs. ${paracetamolAcetaminophen(true)} remains the safest analgesic option for patients with bleeding disorders or hemorrhage history, though healthcare provider consultation is still recommended for those with severe bleeding risk factors.`,
+						short: 'May slightly increases bleeding risk',
+						long: `Evidence regarding ${paracetamolAcetaminophen()}'s effect on bleeding risk is mixed. Most studies show no significant increase, making it the preferred analgesic for patients with bleeding disorders or on anticoagulants. While some recent research suggests a slight increase in bleeding risk at therapeutic doses, this effect is substantially weaker than with NSAIDs (e.g., ibuprofen). ${paracetamolAcetaminophen(true)} remains the safest analgesic option for patients with bleeding disorders or hemorrhage history, though healthcare provider consultation is still recommended for those with severe bleeding risk factors.`,
 						sources: [
 							{
 								label: 'Mahé et al., 2012',
@@ -70,11 +49,32 @@ export const bleeding = {
 						]
 					}
 				},
+				ibuprofen: {
+					value: 0,
+					explanation: {
+						short: 'Increases bleeding risk',
+						long: 'Ibuprofen significantly increases bleeding risk by impairing platelet function and prolonging bleeding time. Patients with bleeding disorders, hemorrhage history, or those on anticoagulant therapy face an increased risk for serious bleeding complications.',
+						sources: [
+							{
+								label: 'Olsen et al., 2015',
+								url: 'https://jamanetwork.com/journals/jama/fullarticle/2130316'
+							},
+							{
+								label: 'Straube et al., 2009',
+								url: 'https://link.springer.com/article/10.1186/1471-230X-9-41'
+							},
+							{
+								label: 'Zapata et al., 2020',
+								url: 'https://www.thieme-connect.com/products/ejournals/html/10.1055/s-0040-1710592'
+							}
+						]
+					}
+				},
 				naproxen: {
 					value: 0,
 					explanation: {
 						short: 'Increases bleeding risk',
-						long: 'Naproxen significantly increases bleeding risk by impairing platelet function and prolonging bleeding time. Its long half-life (12-17 hours) results in sustained effects, potentially increasing bleeding risk compared to shorter-acting NSAIDs. Patients with bleeding disorders, hemorrhage history, or those on anticoagulant therapy face high risk for serious bleeding complications. Clinical evidence shows increased rates of gastrointestinal hemorrhage and other bleeding events in susceptible populations. Naproxen is contraindicated in patients with bleeding disorders or significant bleeding risk factors. Healthcare provider consultation is essential before use.',
+						long: 'Naproxen significantly increases bleeding risk by impairing platelet function and prolonging bleeding time. In addition, its longer half-life (11-20 hours) results in sustained effects, potentially increasing bleeding risk compared to shorter-acting NSAIDs like ibuprofen. Patients with bleeding disorders, hemorrhage history, or those on anticoagulant therapy face an increased risk for serious bleeding complications.',
 						sources: [
 							{
 								label: 'Olsen et al., 2015',
@@ -99,7 +99,7 @@ export const bleeding = {
 					value: 0,
 					explanation: {
 						short: 'High risk of serious bleeding',
-						long: "Aspirin carries the highest bleeding risk among common analgesics due to its irreversible effect on platelet function, which persists for the platelets' entire 7-10 day lifespan. This makes aspirin particularly hazardous for patients with bleeding disorders, hemorrhage history, or those on anticoagulants. Clinical evidence demonstrates substantially increased rates of gastrointestinal, intracranial, and surgical site bleeding in vulnerable populations. Even low doses significantly increase bleeding risk. Aspirin is strictly contraindicated in patients with bleeding disorders or high bleeding risk. Healthcare provider consultation is essential before use.",
+						long: "Aspirin carries the highest bleeding risk among OTC analgesics due to its irreversible effect on platelet function, which persists for the platelets' entire 7–10-day lifespan. This makes aspirin particularly dangerous for patients with bleeding disorders, hemorrhage history, or those on anticoagulants, with clinical evidence demonstrating substantially increased rates. Aspirin is therefore strictly contraindicated in patients with a high bleeding risk.",
 						sources: [
 							{
 								label: 'Olsen et al., 2015',

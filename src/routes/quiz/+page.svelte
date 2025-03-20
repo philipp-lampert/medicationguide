@@ -273,7 +273,9 @@
 					{/if}
 				</div>
 				<div
-					class="grid grid-cols-2 justify-items-center gap-4 {`sm:grid-cols-${question.answers.length}`}"
+					class="grid grid-cols-2 justify-items-center gap-4"
+					class:sm:grid-cols-3={question.answers.length === 3}
+					class:sm:grid-cols-4={question.answers.length === 4}
 				>
 					{#each question.answers as answer, index}
 						<button

@@ -24,10 +24,10 @@ export const giRiskFactors = {
 					}
 				},
 				ibuprofen: {
-					value: 1,
+					value: 0.5,
 					explanation: {
 						short: 'May affect stomach',
-						long: "While ibuprofen slightly increases the risk of gastrointestinal complications by inhibiting protective prostaglandins that maintain the stomach's mucosal barrier and regulate acid production, it has a lower risk of causing bleeding than naproxen.",
+						long: "While ibuprofen slightly increases the risk of gastrointestinal complications by inhibiting protective prostaglandins that maintain the stomach's mucosal barrier and regulate acid production, it has a lower risk of causing bleeding than naproxen and aspirin.",
 						sources: [
 							{
 								label: 'Henry et al., 1996',
@@ -98,7 +98,7 @@ export const giRiskFactors = {
 					value: 0.5,
 					explanation: {
 						short: 'May damage stomach',
-						long: "Ibuprofen increases the risk of gastrointestinal bleeding, especially in patients with a history of ulcers or other conditions affecting the stomach lining. This occurs because ibuprofen inhibits protective prostaglandins that maintain the stomach's mucosal barrier and regulate acid production. While it generally has a lower risk than naproxen, it still carries a moderate risk of gastrointestinal bleeding, particularly with higher doses or prolonged use.",
+						long: "Ibuprofen increases the risk of gastrointestinal bleeding, especially in patients with a history of ulcers or other conditions affecting the stomach lining. This occurs because ibuprofen inhibits protective prostaglandins that maintain the stomach's mucosal barrier and regulate acid production. While it generally has a lower risk than naproxen and aspirin, it still carries a moderate risk of gastrointestinal bleeding, particularly with higher doses or prolonged use.",
 						sources: [
 							{
 								label: 'Henry et al., 1996',

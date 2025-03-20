@@ -10,27 +10,6 @@ export const age = {
 			label: 'No',
 			image: child,
 			medications: {
-				ibuprofen: {
-					value: 1,
-					explanation: {
-						short: 'Safe for children',
-						long: `Recent studies have shown comparable safety profiles of ibuprofen and ${paracetamolAcetaminophen()} for children. While ibuprofen remains more effective for treatment of inflammation, it is contraindicated in neonates and children with asthma or during varicella. In addition, it poses a risk of dehydration and should therefore not be given during episodes of diarrhea or vomiting.`,
-						sources: [
-							{
-								label: 'de Martino et al., 2017',
-								url: 'https://link.springer.com/article/10.1007/s40265-017-0751-z'
-							},
-							{
-								label: 'Poddighe et al., 2019',
-								url: 'https://journals.lww.com/pec-online/abstract/2019/06000/ibuprofen_for_pain_control_in_children__new_value.14.aspx'
-							},
-							{
-								label: 'Kanabar, 2017',
-								url: 'https://link.springer.com/article/10.1007/s10787-016-0302-3'
-							}
-						]
-					}
-				},
 				paracetamol: {
 					value: 1,
 					explanation: {
@@ -44,6 +23,27 @@ export const age = {
 							{
 								label: 'Southey et al., 2009',
 								url: 'https://www.tandfonline.com/doi/full/10.1185/03007990903116255'
+							}
+						]
+					}
+				},
+				ibuprofen: {
+					value: 1,
+					explanation: {
+						short: 'Safe for children',
+						long: `Recent studies have shown comparable safety profiles of ibuprofen and ${paracetamolAcetaminophen()} for children, recommending both as first-line medications. While ibuprofen remains more effective for treatment of inflammation, it is contraindicated in neonates and children with asthma or during varicella. In addition, it poses a risk of dehydration and should therefore not be given during episodes of diarrhea or vomiting.`,
+						sources: [
+							{
+								label: 'de Martino et al., 2017',
+								url: 'https://link.springer.com/article/10.1007/s40265-017-0751-z'
+							},
+							{
+								label: 'Poddighe et al., 2019',
+								url: 'https://journals.lww.com/pec-online/abstract/2019/06000/ibuprofen_for_pain_control_in_children__new_value.14.aspx'
+							},
+							{
+								label: 'Kanabar, 2017',
+								url: 'https://link.springer.com/article/10.1007/s10787-016-0302-3'
 							}
 						]
 					}
@@ -69,7 +69,7 @@ export const age = {
 					value: 0,
 					explanation: {
 						short: 'Not safe for children < 16',
-						long: `Aspirin is contraindicated in children under 16 years of age due to its association with Reye's syndrome. This rare but potentially fatal condition affects the brain and liver, typically following viral infections. After epidemiological studies in the 1980s established this connection, the incidence of Reye's syndrome declined dramatically. Alternative analgesics such as ${paracetamolAcetaminophen()} or ibuprofen offer comparable efficacy without this serious risk.`,
+						long: `Aspirin is contraindicated in children under 16 years of age due to its association with Reye's syndrome. This rare but potentially fatal condition affects the brain and liver, typically following viral infections. Although the incidence of Reye's syndrome declined dramatically after epidemiological studies in the 1980s established this connection, alternative analgesics such as ${paracetamolAcetaminophen()} or ibuprofen offer comparable efficacy without this serious risk.`,
 						sources: [
 							{
 								label: "NHS: Reye's syndrome",
@@ -92,10 +92,10 @@ export const age = {
 			label: 'Yes',
 			image: adult,
 			medications: {
-				ibuprofen: {
+				paracetamol: {
 					value: 1
 				},
-				paracetamol: {
+				ibuprofen: {
 					value: 1
 				},
 				naproxen: {

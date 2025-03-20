@@ -3,7 +3,7 @@ import { duration } from '$lib/questions/duration';
 import { inflammation } from '$lib/questions/inflammation';
 import { pregnant } from '$lib/questions/pregnant';
 import { comorbidities } from '$lib/questions/comorbidities';
-import { coMedications } from '$lib/questions/co-medications';
+import { coMedications } from '$lib/questions/comedications';
 import { bleeding } from '$lib/questions/bleeding';
 import { giRiskFactors } from '$lib/questions/gi-risk-factors';
 import { age } from '$lib/questions/age';
