@@ -5,16 +5,16 @@
 </script>
 
 <svelte:head>
-	<title>About Medication Guide™ | Personalized Recommendations</title>
+	<title>About Medication Guide™ | Evidence-Based OTC Pain Relief Tool</title>
 	<meta
 		name="description"
-		content="Medication Guide is designed to support you in making informed decisions about over-the-counter pain medication. As a free and open-source project, we aim to make reliable health information accessible for everyone."
+		content="Our evidence-based algorithm helps prevent analgesic misuse by providing personalized recommendations for safer over-the-counter pain relief options."
 	/>
 	<meta property="og:title" content="About Medication Guide™" />
 	<meta property="og:type" content="website" />
 	<meta
 		property="og:description"
-		content="An interactive guide for selecting the most appropriate pain reliever based on your symptoms and risk profile."
+		content="Evidence-based tool designed to prevent analgesic misuse and guide safer OTC pain relief choices."
 	/>
 	<meta property="og:image" content="https://medicationguide.org/logo-social.jpg" />
 	<meta property="og:url" content="https://medicationguide.org/about" />
@@ -94,8 +94,8 @@
 					target="_blank"
 					>Philipp Lampert <AnimatedUnderline />
 				</a>
-				in collaboration with senior doctors from Berlin's Charité university hospital and the
-				Hospital General de Querétaro in Mexico. Feel free to reach out by sending an email to
+				in collaboration with senior doctors from Berlin's Charité university hospital and the Hospital
+				General de Querétaro in Mexico. Feel free to reach out by sending an email to
 				<a class="text-link group" href="mailto:info@medicationguide.org"
 					>info@medicationguide.org<AnimatedUnderline /></a
 				>.

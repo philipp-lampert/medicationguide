@@ -11,16 +11,16 @@
 </script>
 
 <svelte:head>
-	<title>Find the best pain reliever for your symptoms | Medication Guide™</title>
+	<title>Personalized Pain Relief Recommendations | Medication Guide™</title>
 	<meta
 		name="description"
-		content="Use our interactive quiz to get a personalized recommendation based on your symptoms and risk profile. Choose the most effective option while minimizing side effects."
+		content="Free and personalized OTC pain medication recommendations based on your symptoms and risk factors. Our evidence-based algorithm helps you choose safely between paracetamol, ibuprofen, naproxen, and aspirin."
 	/>
-	<meta property="og:title" content="Find the best pain reliever for your symptoms" />
+	<meta property="og:title" content="Personalized Pain Relief Recommendations" />
 	<meta property="og:type" content="website" />
 	<meta
 		property="og:description"
-		content="Use our interactive quiz to get a personalized recommendation."
+		content="Use our interactive quiz to find the best pain reliever."
 	/>
 	<meta property="og:image" content="https://medicationguide.org/logo-social.jpg" />
 	<meta property="og:url" content="https://medicationguide.org" />

@@ -1,10 +1,13 @@
-<title>Interactive Pain Reliever Guide | Find The Best Option</title>
+<title>Take the OTC Pain Reliever Quiz | Find Your Best Option</title>
 <meta
 	name="description"
-	content="Use our interactive tool to get personalized painkiller recommendations based on your symptoms and risk profile, helping you find the most effective option with minimal side effects."
+	content="Answer simple health questions to receive personalized OTC pain medication recommendations based on your symptoms and risk factors. Find the safest, most effective option for your specific needs."
 />
-<meta property="og:title" content="Medication Guide™" />
+<meta property="og:title" content="OTC Pain Reliever Quiz" />
 <meta property="og:type" content="website" />
-<meta property="og:description" content="Find the best painkiller for your symptoms." />
+<meta
+	property="og:description"
+	content="Find the best pain killer for your symptoms and risk factors."
+/>
 <meta property="og:image" content="https://medicationguide.org/logo-social.jpg" />
-<meta property="og:url" content="https://medicationguide.org/interactive" />
+<meta property="og:url" content="https://medicationguide.org/quiz" />

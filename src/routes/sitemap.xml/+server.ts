@@ -1,5 +1,5 @@
 const site = 'https://www.medicationguide.org';
-const pages: string[] = ['about', 'interactive'];
+const pages: string[] = ['about', 'quiz'];
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET({ url }) {
@@ -24,7 +24,7 @@ const sitemap = (pages: string[]) => `<?xml version="1.0" encoding="UTF-8" ?>
 			(page) => `
   <url>
     <loc>${site}/${page}</loc>
-    <lastmod>2024-12-01</lastmod>
+    <lastmod>2025-03-20</lastmod>
   </url>
   `
 		)
