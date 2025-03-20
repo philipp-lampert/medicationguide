@@ -1,5 +1,5 @@
 const site = 'https://www.medicationguide.org';
-const pages: string[] = ['about', 'quiz'];
+const pages: string[] = ['quiz'];
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET({ url }) {

@@ -29,7 +29,7 @@
 	}
 
 	.h3 {
-		@apply text-lg font-medium lg:text-xl;
+		@apply text-xl font-medium;
 	}
 
 	.h3-legal {
