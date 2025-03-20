@@ -50,7 +50,7 @@
 				Get a personalized recommendation<br />by taking the anonymous quiz.
 			</p>
 			<a
-				href="/interactive"
+				href="/quiz"
 				data-sa-link-event="start_quiz_main"
 				class="group relative inline-flex items-center overflow-hidden rounded-xl bg-gradient-to-tr
 										   from-black to-gray-700 px-12 py-3 text-center font-normal text-white shadow-3xl transition-all
@@ -83,7 +83,7 @@
 				tends to have a lower risk of side effects and is ideal for children and during pregnancy. Keep
 				in mind that many manufacturers use brand names, so always check the ingredients listed on the
 				packaging. For a personalized recommendation, have a look at our
-				<a class="text-link group" href="/interactive">interactive quiz<AnimatedUnderline /></a>.
+				<a class="text-link group" href="/quiz">interactive quiz<AnimatedUnderline /></a>.
 			</p>
 		</div>
 		<div class="w-full lg:w-fit">
