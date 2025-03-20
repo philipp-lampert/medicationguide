@@ -1,5 +1,6 @@
 import inflammationIcon from '$lib/icons/answers/inflammation.svg';
 import noInflammation from '$lib/icons/answers/no-inflammation.svg';
+import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
 
 export const inflammation = {
 	label: 'Do you have joint pain or inflammation?',
@@ -9,10 +10,10 @@ export const inflammation = {
 			label: 'No',
 			image: noInflammation,
 			medications: {
-				ibuprofen: {
+				paracetamol: {
 					value: 1
 				},
-				paracetamol: {
+				ibuprofen: {
 					value: 1
 				},
 				naproxen: {
@@ -27,31 +28,31 @@ export const inflammation = {
 			label: 'Yes',
 			image: inflammationIcon,
 			medications: {
-				ibuprofen: {
-					value: 1,
-					explanation: {
-						short: 'Strong anti-inflammatory',
-						long: '',
-						sources: [
-							{ label: 'Schiff & Minic, 2004', url: 'https://www.jrheum.org/content/31/7/1373' } // DOI not found
-						]
-					}
-				},
 				paracetamol: {
 					value: 0,
 					explanation: {
 						short: 'Not anti-inflammatory',
-						long: '',
+						long: `${paracetamolAcetaminophen(true)} provides only minimal anti-inflammatory benefit due to its weak peripheral action. While effective for pain relief through central nervous system mechanisms, it does not significantly reduce tissue inflammation, swelling, or redness. This makes ${paracetamolAcetaminophen()} ineffective for conditions where inflammation is the primary symptom.`,
 						sources: [
 							{ label: 'Graham et al., 2013', url: 'https://doi.org/10.1007/s10787-013-0172-x' }
+						]
+					}
+				},
+				ibuprofen: {
+					value: 1,
+					explanation: {
+						short: 'Anti-inflammatory',
+						long: 'Ibuprofen is anti-inflammatory as it inhibits the production of pro-inflammatory prostaglandins. This mechanism reduces swelling, redness, and pain at the inflammation site. It works directly at the site of inflammation, making it appropriate for conditions like joint pain, muscle injuries, and inflammatory disorders. Its rapid onset and good tissue penetration provide efficient symptom control when used appropriately.',
+						sources: [
+							{ label: 'Schiff & Minic, 2004', url: 'https://www.jrheum.org/content/31/7/1373' } // DOI not found
 						]
 					}
 				},
 				naproxen: {
 					value: 1,
 					explanation: {
-						short: 'Strong anti-inflammatory',
-						long: '',
+						short: 'Anti-inflammatory',
+						long: 'Naproxen is anti-inflammatory as it inhibits the production of pro-inflammatory prostaglandins. This mechanism reduces swelling, redness, and pain at the inflammation site. It works directly at the site of inflammation, making it appropriate for conditions like joint pain, muscle injuries, and inflammatory disorders. Naproxen’s longer half-life (11-20 hours) makes it particularly suitable for persistent inflammatory conditions, with clinical studies demonstrating comparable or superior anti-inflammatory efficacy to ibuprofen.',
 						sources: [
 							{ label: 'Schiff & Minic, 2004', url: 'https://www.jrheum.org/content/31/7/1373' }, // DOI not found
 							{
@@ -63,10 +64,10 @@ export const inflammation = {
 					}
 				},
 				aspirin: {
-					value: 0.5,
+					value: 1,
 					explanation: {
-						short: 'Moderate anti-inflammatory',
-						long: '',
+						short: 'Anti-inflammatory',
+						long: 'Aspirin is anti-inflammatory as it inhibits the production of pro-inflammatory prostaglandins. This mechanism reduces swelling, redness, and pain at the inflammation site. It works directly at the site of inflammation, making it appropriate for conditions like joint pain, muscle injuries, and inflammatory disorders. Its rapid onset and good tissue penetration provide efficient symptom control when used appropriately.',
 						sources: [
 							{
 								label: 'Amann & Peskar, 2002',
