@@ -55,11 +55,11 @@
 						Medication<br />Guide
 					</span>
 					<a
-						href={isShrunk ? '/quiz' : null}
+						href="/quiz"
 						data-sa-link-event="start_quiz_header"
 						class="group relative z-50 flex flex-row items-center gap-1 text-sm font-medium transition-all duration-200 sm:gap-2 {isShrunk
 							? 'opacity-100 delay-200'
-							: 'opacity-0'}"
+							: 'pointer-events-none opacity-0'}"
 					>
 						Start Quiz
 						<ArrowDoubleRight classes={'h-3'} />

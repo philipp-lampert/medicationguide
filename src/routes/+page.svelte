@@ -108,7 +108,7 @@
 	<div class="container flex flex-col items-center">
 		<div class="flex w-full flex-col py-8 lg:flex-row lg:flex-nowrap">
 			<article class="flex flex-col gap-1 bg-white text-left lg:w-1/3">
-				<h3 class="h3">1. Answer 9 Questions</h3>
+				<h2 class="h3">1. Answer 9 Questions</h2>
 				<p>
 					Answer clinical questions about your symptoms and risk factors. This helps identify which
 					medications are most effective for your specific symptoms as well as potential
@@ -119,7 +119,7 @@
 				class="my-6 h-[2px] w-full flex-shrink-0 bg-black lg:mx-12 lg:my-0 lg:h-28 lg:w-[2px] lg:self-center"
 			></div>
 			<article class="flex flex-col gap-1 bg-white text-left lg:w-1/3">
-				<h3 class="h3">2. Algorithmic Analysis</h3>
+				<h2 class="h3">2. Algorithmic Analysis</h2>
 				<p>
 					Our evidence-based algorithm processes your responses, weighing both effectiveness and
 					safety considerations based on your symptoms and risk profile to generate personalized
@@ -130,7 +130,7 @@
 				class="my-6 h-[2px] w-full flex-shrink-0 bg-black lg:mx-12 lg:my-0 lg:h-28 lg:w-[2px] lg:self-center"
 			></div>
 			<article class="flex flex-col gap-1 bg-white text-left lg:w-1/3">
-				<h3 class="h3">3. Personalized Results</h3>
+				<h2 class="h3">3. Personalized Results</h2>
 				<p>
 					Receive a detailed analysis of which OTC pain medications are most appropriate for you,
 					including percentage matches, specific reasons for recommendations, and scientific

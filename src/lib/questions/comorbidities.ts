@@ -193,7 +193,7 @@ export const comorbidities = {
 				ibuprofen: {
 					value: 0,
 					explanation: {
-						short: 'Avoid in liver failure',
+						short: 'Contraindicated in liver disease',
 						long: "Ibuprofen should be avoided in patients with liver disease. While direct hepatotoxicity is uncommon at standard doses, ibuprofen's primary risk stems from its effects on kidney function rather than the liver itself. In cirrhosis, the body relies on prostaglandins to maintain kidney perfusion, which ibuprofen inhibits, potentially triggering rapid renal deterioration. This risk increases with disease severity and is especially concerning in patients with ascites. Additionally, liver disease can lead to higher drug concentrations, while impaired clotting function simultaneously increases bleeding risk. Though patients with mild, stable liver disease may tolerate short courses of ibuprofen, it should be completely avoided in cirrhosis as even brief use can destabilize compensated patients. ",
 						sources: [
 							{
@@ -206,7 +206,7 @@ export const comorbidities = {
 				naproxen: {
 					value: 0,
 					explanation: {
-						short: 'Avoid in liver failure',
+						short: 'Contraindicated in liver disease',
 						long: 'Naproxen should be avoided in patients with liver disease. While direct hepatotoxicity is uncommon at standard doses, naproxen’s primary risk stems from its effects on kidney function rather than the liver itself. In cirrhosis, the body relies on prostaglandins to maintain kidney perfusion, which naproxen inhibits, potentially triggering rapid renal deterioration. This risk increases with disease severity and is especially concerning in patients with ascites. Additionally, liver disease can lead to higher drug concentrations, while impaired clotting function simultaneously increases bleeding risk. Though patients with mild, stable liver disease may tolerate short courses of naproxen, it should be completely avoided in cirrhosis as even brief use can destabilize compensated patients.',
 						sources: [
 							{
@@ -219,7 +219,7 @@ export const comorbidities = {
 				aspirin: {
 					value: 0.5,
 					explanation: {
-						short: 'Avoid in liver failure',
+						short: 'Caution in liver disease',
 						long: 'Aspirin should be used with caution in patients with liver disease. While recent research has identified potential hepatoprotective effects including a reduced risk for hepatocellular carcinoma (HCC), these findings have minimal relevance when using aspirin as a short-term pain reliever. Moreover, liver disease can significantly alter drug metabolism and increase bleeding risk due to potential coagulopathy and portal hypertension. For patients with compensated, stable liver disease, low-dose aspirin may be considered for short-term pain relief with appropriate monitoring. However, in advanced cirrhosis, alternative pain management strategies are generally preferred.',
 						sources: [
 							{
