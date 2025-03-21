@@ -7,7 +7,7 @@
 	"about": {
 		"@type": "Thing",
 		"name": "Medication Guide",
-		"description": "Medication Guide offers an interactive, evidence-based quiz that helps patients quickly identify the best OTC pain reliever based on their symptoms and individual risk profile. Unlike traditional methods that require reading long articles, our personalized approach provides a fast, engaging way to make informed decisions.",
+		"description": "Medication Guide is an interactive, evidence-based quiz that helps patients quickly identify the best OTC pain reliever based on their symptoms and individual risk profile. Unlike traditional methods that require reading long articles, our personalized approach provides a fast, engaging way to make informed decisions.",
 		"url": "https://www.medicationguide.org"
 	},
 	"isAccessibleForFree": "true"

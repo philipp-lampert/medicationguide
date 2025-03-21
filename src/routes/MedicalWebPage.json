@@ -28,8 +28,8 @@
 				"@type": "ListItem",
 				"position": 3,
 				"item": {
-					"@id": "https://www.medicationguide.org/about",
-					"name": "About"
+					"@id": "https://www.medicationguide.org/donate",
+					"name": "Donate"
 				}
 			}
 		]
