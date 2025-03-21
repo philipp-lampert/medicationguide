@@ -1,10 +1,10 @@
 # Medication Guide
 
-An open-source, free-to-use, interactive tool assisting you in choosing the appropriate over-the-counter medication based on your individual symptoms and risks.
+An open-source tool providing free and personalized OTC pain medication recommendations based on symptoms and risk factors.
 
 ## How it works
 
-The recommendation algorithm uses a scoring system defined in the [questions.ts](src/routes/interactive/questions.ts) file. Each answer and medication is assigned a value that reflects its impact: A score of `0` generally suggests the medication may be harmful or ineffective, `0.5` indicates a neutral effect, and `1` signifies that it is both effective and safe. Based on the user's responses, the algorithm calculates a total score and recommends the medication with the highest overall rating.
+The recommendation algorithm uses a scoring system defined in the [questions](src/lib/questions) folder. Each response is associated with a numeric value for each of the four drugs, contributing to a cumulative score that determines each medication’s suitability: A score of `0` indicates the medication may be harmful or ineffective, `0.5` indicates a neutral effect, and `1` that it is both effective and safe. Based on the user's responses, the algorithm calculates a total score and recommends the medication with the highest suitability score. This score is presented as a percentage match on the results page, accompanied by detailed explanations and scientific references, accessible through individual modal windows for each response.
 
 ## How to contribute
 
