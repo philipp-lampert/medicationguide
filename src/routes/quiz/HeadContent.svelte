@@ -1,4 +1,4 @@
-<title>Take the OTC Pain Reliever Quiz | Find Your Best Option</title>
+<title>Match Your Symptoms to the Right Pain Reliever | MedGuide™</title>
 <meta
 	name="description"
 	content="Answer simple health questions to receive personalized OTC pain medication recommendations based on your symptoms and risk factors. Find the safest, most effective option for your specific needs."
