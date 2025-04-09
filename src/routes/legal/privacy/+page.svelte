@@ -10,23 +10,25 @@
 	<div class="container">
 		<div class="mb-12">
 			<h1 class="h1-legal">Privacy Policy</h1>
-			<p>Last updated: November 30, 2024</p>
+			<p>Last updated: April 09, 2025</p>
 		</div>
 		<div class="mx-auto flex max-w-xl flex-col gap-12 text-left">
 			<div>
 				<p>
-					Protecting your privacy is important to Medication Guide. We do not collect your personal
-					information, such as names and mailing or e-mail addresses, while you visit this website
-					unless you knowingly provide this information to us. By using this website, you consent to
-					this Privacy Policy and our Terms of Use.
+					Protecting your privacy is important to us. We do not collect your personal information,
+					such as names and mailing or e-mail addresses, while you visit this website unless you
+					knowingly provide this information to us. By using this website, you consent to this
+					Privacy Policy and our Terms of Use.
 				</p>
 			</div>
 			<div>
 				<h2 class="h2-legal">What Information Do We Collect From You?</h2>
 				<p>
 					You can use our website without registering for an account or submitting any personal
-					information. You will be asked to provide us with personal information linked to you
-					specifically if you engage in the following activities on the website:
+					information. No health-related information is sent to our servers at any point, as it is
+					processed entirely on your device through client-side rendering. You will only be asked to
+					provide us with personal information, if you engage in the following activities on the
+					website:
 				</p>
 				<br />
 				<ul class="list-inside list-disc">
@@ -39,8 +41,7 @@
 					includes name, e-mail address and billing address. If you donate to the project through
 					our website, we will require your credit card information. Credit card transactions on the
 					website are processed by Stripe, our third-party payment vendor. Medication Guide does not
-					collect or store credit card information and all payments are handled by Stripe. Please
-					consult Stripe’s Privacy Policy here.
+					collect or store credit card information and all payments are handled by Stripe.
 				</p>
 			</div>
 			<div>
@@ -82,59 +83,12 @@
 			<div>
 				<h2 class="h2-legal">Cookies</h2>
 				<p>
-					A cookie is a small piece of data that is transferred to your browser by a server and
-					stored on your computer’s hard drive. Cookies are widely used by websites in order to help
-					them work better and more efficiently, as well as to provide analytical information.
+					We respect your privacy and do not use third-party cookies or tracking technologies. Our
+					website uses privacy-friendly analytics that collect only anonymous, non-personal data
+					without storing cookies. No information is tracked across sessions or devices. You can
+					browse our website without needing to accept cookies or provide consent, and all essential
+					features will function as expected.
 				</p>
-				<br />
-				<p>
-					We use cookies to help us improve the website experience and deliver more personalized
-					service to our customers. For instance, cookies enable our website to remember unique
-					information about your visit such as your shopping cart contents. Most web browsers
-					automatically accept cookies, but you can set your browser preferences to block cookies
-					and delete existing cookies from your browser. We recommend that you accept cookies so
-					that all of the features of the website function properly.
-				</p>
-				<br />
-				<p>We also use the following third party cookies on the website:</p>
-				<br />
-				<ul class="list-inside list-disc">
-					<li>
-						Like many website providers, we use Google Analytics to monitor and analyze traffic to
-						the website. This service collects information about browsers and users and their
-						activity on our website. To opt out and prevent your data being used by Google
-						Analytics, you can install the <a
-							class="text-link group"
-							href="https://tools.google.com/dlpage/gaoptout?hl=en"
-							>Google Analytics Opt-Out Browser Add-On<AnimatedUnderline /></a
-						>. For further information, see Google’s
-						<a class="text-link group" href="https://policies.google.com/privacy"
-							>privacy policy<AnimatedUnderline /></a
-						>.
-					</li>
-					<br />
-					<li>
-						Stripe is the online payment vendor we use to process credit card transactions on the
-						website. Stripe optimizes and operates their services using cookies for authentication,
-						fraud detection & prevention and more. For further information, see Stripe’s <a
-							href="https://stripe.com/us/privacy"
-							class="text-link group">privacy policy <AnimatedUnderline /></a
-						>
-						and
-						<a href="https://stripe.com/cookies-policy/legal" class="text-link group"
-							>cookie policy<AnimatedUnderline /></a
-						>.
-					</li>
-					<br />
-					<li>
-						We use Cloudflare’s CDN services for content delivery optimization. Cloudflare uses
-						cookies as part of its security and threat detection measures. For further information,
-						see Cloudflare’s <a
-							href="https://www.cloudflare.com/privacypolicy/"
-							class="text-link group">privacy policy<AnimatedUnderline /></a
-						>.
-					</li>
-				</ul>
 			</div>
 			<div>
 				<h2 class="h2-legal">Is My Information Secure?</h2>
