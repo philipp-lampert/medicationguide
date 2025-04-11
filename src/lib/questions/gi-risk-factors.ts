@@ -3,7 +3,7 @@ import stomachPain from '$lib/icons/answers/stomach-pain.svg';
 import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
 
 export const giRiskFactors = {
-	label: 'Do you have heartburn or stomach problems?',
+	label: 'Have you ever had ulcers, bleeding, or pain in your stomach?',
 	multipleChoice: false,
 	answers: [
 		{

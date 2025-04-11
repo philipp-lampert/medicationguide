@@ -347,9 +347,9 @@
 			<div class="flex flex-col gap-4">
 				<h1 class="h1 lg:text-5xl">Results</h1>
 				<p class="group rounded-lg text-sm">
-					This website does not provide medical advice. Please refer to our <a
-						class="text-link"
-						href="/legal/disclaimer">disclaimer<AnimatedUnderline /></a
+					This website does not provide medical advice and is not a substitute for consulting with a
+					physician. Please refer to our <a class="text-link" href="/legal/disclaimer"
+						>disclaimer<AnimatedUnderline /></a
 					> for more information.
 				</p>
 			</div>
