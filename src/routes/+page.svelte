@@ -187,7 +187,7 @@
 				<p>
 					The Medication Guide project and its code are fully open-source under an AGPL license. We
 					invite you to explore our <a
-						href="https://github.com/philipp-lampert/medication-guide"
+						href="https://github.com/philipp-lampert/medicationguide"
 						class="text-link group"
 						target="_blank"
 						>repository
