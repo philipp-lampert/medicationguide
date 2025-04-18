@@ -9,7 +9,6 @@
 	import { fade } from 'svelte/transition';
 	import { questions } from './questions';
 	import { capitalizeFirstLetter } from '$lib/functions/utils';
-	import { medicationInfo } from './medication-info';
 	import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
 	import ProgressBar from './ProgressBar.svelte';
 	import HeadContent from './HeadContent.svelte';
@@ -116,9 +115,9 @@
 			return {
 				...acc,
 				[medication]: {
-					positive: [...medicationInfo[medication].positive, ...userReasons.positive],
-					neutral: [...medicationInfo[medication].neutral, ...userReasons.neutral],
-					negative: [...medicationInfo[medication].negative, ...userReasons.negative]
+					positive: [...userReasons.positive],
+					neutral: [...userReasons.neutral],
+					negative: [...userReasons.negative]
 				}
 			};
 		}, {} as MedicationReasons)

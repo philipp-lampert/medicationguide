@@ -1,13 +1,14 @@
 import child from '$lib/icons/answers/child.svg';
-import adult from '$lib/icons/answers/adult.svg';
+import adults from '$lib/icons/answers/adults.svg';
+import elderly from '$lib/icons/answers/elderly.svg';
 import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
 
 export const age = {
-	label: 'Are you older than 16 years?',
+	label: 'How old are you?',
 	multipleChoice: false,
 	answers: [
 		{
-			label: 'No',
+			label: '< 12 years',
 			image: child,
 			medications: {
 				paracetamol: {
@@ -17,7 +18,7 @@ export const age = {
 						long: `${paracetamolAcetaminophen(true)} is considered a first-choice analgesic for children due to its established safety profile. It has historically been preferred over NSAIDs for children, though evidence now supports that ibuprofen is equally safe when used appropriately.`,
 						sources: [
 							{
-								label: 'NHS: Paracetamol for children',
+								label: `NHS: ${paracetamolAcetaminophen(true)} for children`,
 								url: 'https://www.nhs.uk/medicines/paracetamol-for-children/about-paracetamol-for-children/'
 							},
 							{
@@ -52,7 +53,7 @@ export const age = {
 					value: 0.5,
 					explanation: {
 						short: 'Missing safety data for children',
-						long: `Naproxen is not recommended for use in children primarily due to limited safety data, not because of specific toxicity concerns. While ${paracetamolAcetaminophen()} and ibuprofen have well-established safety profiles for children, naproxen has not been studied as extensively in this age group, resulting in more conservative recommendations against its use in patients under 16 years of age.`,
+						long: `Naproxen is not recommended for use in children primarily due to limited safety data, not because of specific toxicity concerns. While ${paracetamolAcetaminophen()} and ibuprofen have well-established safety profiles for children, naproxen has not been studied as extensively in this age group, resulting in more conservative recommendations against its use in patients under 12 years of age.`,
 						sources: [
 							{
 								label: 'Mathiesen & Jørgensen, 2022',
@@ -68,13 +69,9 @@ export const age = {
 				aspirin: {
 					value: 0,
 					explanation: {
-						short: 'Not safe for children < 16',
-						long: `Aspirin is contraindicated in children under 16 years of age due to its association with Reye's syndrome. This rare but potentially fatal condition affects the brain and liver, typically following viral infections. Although the incidence of Reye's syndrome declined dramatically after epidemiological studies in the 1980s established this connection, alternative analgesics such as ${paracetamolAcetaminophen()} or ibuprofen offer comparable efficacy without this serious risk.`,
+						short: 'Not safe for children',
+						long: `Aspirin is contraindicated in children under 12 years of age due to its association with Reye's syndrome. This rare but potentially fatal condition affects the brain and liver, typically following viral infections. Although the incidence of Reye's syndrome declined dramatically after epidemiological studies in the 1980s established this connection, alternative analgesics such as ${paracetamolAcetaminophen()} or ibuprofen offer comparable efficacy without this serious risk.`,
 						sources: [
-							{
-								label: "NHS: Reye's syndrome",
-								url: 'https://www.nhs.uk/conditions/reyes-syndrome/'
-							},
 							{
 								label: 'Glasgow, 2012',
 								url: 'https://link.springer.com/article/10.2165/00002018-200629120-00003'
@@ -89,8 +86,8 @@ export const age = {
 			}
 		},
 		{
-			label: 'Yes',
-			image: adult,
+			label: '12 - 80 years',
+			image: adults,
 			medications: {
 				paracetamol: {
 					value: 1
@@ -103,6 +100,80 @@ export const age = {
 				},
 				aspirin: {
 					value: 1
+				}
+			}
+		},
+		{
+			label: '> 80 years',
+			image: elderly,
+			medications: {
+				paracetamol: {
+					value: 1,
+					explanation: {
+						short: 'Recommended for older adults',
+						long: `${paracetamolAcetaminophen(true)} is recommended as a first-line analgesic for older adults due to its favorable safety profile and minimal gastrointestinal, renal, or cardiovascular side effects. Given that polypharmacy is common in the elderly, ${paracetamolAcetaminophen(true)}’s low risk of drug-drug interactions makes it especially suitable. Unlike NSAIDs (e.g. ibuprofen), it does not increase the risk of gastrointestinal bleeding or exacerbate hypertension and chronic kidney disease, which are prevalent concerns in older patients. However, caution is advised in cases of severe liver impairment or chronic alcohol use, as hepatotoxicity remains a risk at high or cumulative doses.`,
+						sources: [
+							{
+								label: 'The FORTA List 2021',
+								url: 'https://doi.org/10.1007/s40266-022-00922-5'
+							},
+							{
+								label: 'Schneider et al., 2021',
+								url: 'https://doi.org/10.3389/fphar.2021.686990'
+							}
+						]
+					}
+				},
+				ibuprofen: {
+					value: 0,
+					explanation: {
+						short: 'Not recommended for older adults',
+						long: 'Ibuprofen should be avoided in older adults due to its increased risk of gastrointestinal bleeding, renal impairment, and cardiovascular events. With polypharmacy being common among the elderly, the likelihood of adverse drug-drug interactions, especially with anticoagulants or corticosteroids, further limits its safety. Although effective for inflammatory pain, its safety concerns outweigh its benefits in the elderly, especially in patients with pre-existing hypertension, chronic kidney disease, or heart failure.',
+						sources: [
+							{
+								label: 'The FORTA List 2021',
+								url: 'https://doi.org/10.1007/s40266-022-00922-5'
+							},
+							{
+								label: 'Schneider et al., 2021',
+								url: 'https://doi.org/10.3389/fphar.2021.686990'
+							}
+						]
+					}
+				},
+				naproxen: {
+					value: 0,
+					explanation: {
+						short: 'Not recommended for older adults',
+						long: `Naproxen is not recommended for use in older adults due to its gastrointestinal and renal risks. With polypharmacy being common among the elderly, the likelihood of adverse drug-drug interactions, especially with anticoagulants or corticosteroids, further limits its safety. While it may offer stronger anti-inflammatory effects than ${paracetamolAcetaminophen()}, its longer half-life increases the potential for accumulation and toxicity. Naproxen may also worsen renal function and elevate blood pressure.`,
+						sources: [
+							{
+								label: 'The FORTA List 2021',
+								url: 'https://doi.org/10.1007/s40266-022-00922-5'
+							},
+							{
+								label: 'Schneider et al., 2021',
+								url: 'https://doi.org/10.3389/fphar.2021.686990'
+							}
+						]
+					}
+				},
+				aspirin: {
+					value: 0,
+					explanation: {
+						short: 'Not recommended for older adults',
+						long: `Aspirin is no longer recommended for analgesic use in older adults. Its use significantly increases the risk of gastrointestinal bleeding and hemorrhagic stroke, particularly in frail or polymorbid elderly patients. With polypharmacy being common among the elderly, the likelihood of adverse drug-drug interactions, especially with anticoagulants or corticosteroids, further limits its safety. While low-dose aspirin may be indicated for prevention of cardiovascular events, its analgesic role is discouraged due to safer and equally effective alternatives such as ${paracetamolAcetaminophen()}.`,
+						sources: [
+							{
+								label: 'The FORTA List 2021',
+								url: 'https://doi.org/10.1007/s40266-022-00922-5'
+							},
+							{
+								label: 'Schneider et al., 2021',
+								url: 'https://doi.org/10.3389/fphar.2021.686990'
+							}
+						]
+					}
 				}
 			}
 		}

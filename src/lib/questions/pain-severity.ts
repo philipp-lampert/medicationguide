@@ -1,6 +1,6 @@
-import mild from '$lib/icons/answers/mild.svg';
-import moderate from '$lib/icons/answers/moderate.svg';
-import severe from '$lib/icons/answers/severe.svg';
+import emojiHappy from '$lib/icons/answers/emoji-happy.svg';
+import emojiMedium from '$lib/icons/answers/emoji-medium.svg';
+import emojiSad from '$lib/icons/answers/emoji-sad.svg';
 import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
 
 export const painSeverity = {
@@ -9,7 +9,7 @@ export const painSeverity = {
 	answers: [
 		{
 			label: 'Mild',
-			image: mild,
+			image: emojiHappy,
 			medications: {
 				paracetamol: {
 					value: 1
@@ -27,7 +27,7 @@ export const painSeverity = {
 		},
 		{
 			label: 'Moderate',
-			image: moderate,
+			image: emojiMedium,
 			medications: {
 				paracetamol: {
 					value: 0.5,
@@ -80,7 +80,7 @@ export const painSeverity = {
 		},
 		{
 			label: 'Severe',
-			image: severe,
+			image: emojiSad,
 			medications: {
 				paracetamol: {
 					value: 0,

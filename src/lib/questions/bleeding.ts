@@ -1,5 +1,5 @@
 import bleedingIcon from '$lib/icons/answers/bleeding.svg';
-import noBleeding from '$lib/icons/answers/no-bleeding.svg';
+import no from '$lib/icons/answers/no.svg';
 import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
 
 export const bleeding = {
@@ -8,7 +8,7 @@ export const bleeding = {
 	answers: [
 		{
 			label: 'No',
-			image: noBleeding,
+			image: no,
 			medications: {
 				paracetamol: {
 					value: 1
@@ -31,7 +31,7 @@ export const bleeding = {
 				paracetamol: {
 					value: 0.5,
 					explanation: {
-						short: 'May slightly increases bleeding risk',
+						short: 'May slightly increase bleeding risk',
 						long: `Evidence regarding ${paracetamolAcetaminophen()}'s effect on bleeding risk is mixed. Most studies show no significant increase, making it the preferred analgesic for patients with bleeding disorders or on anticoagulants. While some recent research suggests a slight increase in bleeding risk at therapeutic doses, this effect is substantially weaker than with NSAIDs (e.g., ibuprofen). ${paracetamolAcetaminophen(true)} remains the safest analgesic option for patients with bleeding disorders or hemorrhage history, though healthcare provider consultation is still recommended for those with severe bleeding risk factors.`,
 						sources: [
 							{

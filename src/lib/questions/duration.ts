@@ -1,5 +1,5 @@
 import lightning from '$lib/icons/answers/lightning.svg';
-import time from '$lib/icons/answers/time.svg';
+import calendar from '$lib/icons/answers/calendar.svg';
 import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
 
 export const duration = {
@@ -67,7 +67,7 @@ export const duration = {
 		},
 		{
 			label: 'Yes',
-			image: time,
+			image: calendar,
 			medications: {
 				paracetamol: {
 					value: 1,

@@ -1,14 +1,14 @@
 import stomach from '$lib/icons/answers/stomach.svg';
-import stomachPain from '$lib/icons/answers/stomach-pain.svg';
+import no from '$lib/icons/answers/no.svg';
 import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
 
 export const giRiskFactors = {
-	label: 'Have you ever had ulcers, bleeding, or pain in your stomach?',
+	label: 'Have you ever had ulcers or bleeding in your stomach?',
 	multipleChoice: false,
 	answers: [
 		{
 			label: 'No',
-			image: stomach,
+			image: no,
 			medications: {
 				paracetamol: {
 					value: 1,
@@ -26,7 +26,7 @@ export const giRiskFactors = {
 				ibuprofen: {
 					value: 0.5,
 					explanation: {
-						short: 'May affect stomach',
+						short: 'May damage stomach',
 						long: "While ibuprofen slightly increases the risk of gastrointestinal complications by inhibiting protective prostaglandins that maintain the stomach's mucosal barrier and regulate acid production, it has a lower risk of causing bleeding than naproxen and aspirin.",
 						sources: [
 							{
@@ -79,7 +79,7 @@ export const giRiskFactors = {
 		},
 		{
 			label: 'Yes',
-			image: stomachPain,
+			image: stomach,
 			medications: {
 				paracetamol: {
 					value: 1,
@@ -114,7 +114,7 @@ export const giRiskFactors = {
 				naproxen: {
 					value: 0,
 					explanation: {
-						short: 'Risk of GI bleeding',
+						short: 'Risk of gastrointestinal bleeding',
 						long: "Naproxen increases the risk of gastrointestinal bleeding, especially in patients with a history of peptic ulcer disease or other conditions affecting the stomach lining. This occurs because naproxen inhibits protective prostaglandins that maintain the stomach's mucosal barrier and regulate acid production. Naproxen is associated with an even higher risk compared to other NSAIDs like ibuprofen, and should not be used in patients with risk factors.",
 						sources: [
 							{
@@ -131,7 +131,7 @@ export const giRiskFactors = {
 				aspirin: {
 					value: 0,
 					explanation: {
-						short: 'Risk of GI bleeding',
+						short: 'Risk of gastrointestinal bleeding',
 						long: "Aspirin significantly increases the risk of gastrointestinal bleeding, especially in patients with a history of peptic ulcer disease or other conditions affecting the stomach lining. This occurs because aspirin inhibits protective prostaglandins that maintain the stomach's mucosal barrier and regulate acid production, while simultaneously inhibiting blood clotting. Therefore, aspirin is strictly contraindicated in patients with gastrointestinal risk factors.",
 						sources: [
 							{

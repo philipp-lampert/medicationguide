@@ -1,5 +1,5 @@
 import pregnantIcon from '$lib/icons/answers/pregnant.svg';
-import person from '$lib/icons/answers/person.svg';
+import adults from '$lib/icons/answers/adults.svg';
 import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
 
 export const pregnant = {
@@ -8,7 +8,7 @@ export const pregnant = {
 	answers: [
 		{
 			label: 'No',
-			image: person,
+			image: adults,
 			medications: {
 				paracetamol: {
 					value: 1

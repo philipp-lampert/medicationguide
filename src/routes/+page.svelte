@@ -203,15 +203,17 @@
 	<article class="container flex flex-col items-center">
 		<div class="flex flex-col gap-6">
 			<h2 class="h2">Who is behind the project?</h2>
-			<p class="max-w-2xl">
-				This project was created by <a
+			<p class="max-w-3xl">
+				The project was created by <a
 					class="text-link group"
 					href="https://www.researchgate.net/profile/Philipp-Lampert"
 					target="_blank"
 					>Philipp Lampert <AnimatedUnderline />
 				</a>
-				in collaboration with senior doctors from Berlin's Charité University Hospital and the Hospital
-				General de Querétaro in Mexico. Feel free to reach out by sending an email to
+				in collaboration with the Institute of Clinical Pharmacology and Toxicology at the Charité University
+				Hospital in Berlin, Germany. Senior doctors from Belgium's Institut Jules Bordet and Mexico's
+				Hospital General de Querétaro reviewed and contributed to the project. Feel free to reach out
+				by sending an email to
 				<a class="text-link group" href="mailto:info@medicationguide.org"
 					>info@medicationguide.org<AnimatedUnderline /></a
 				>.

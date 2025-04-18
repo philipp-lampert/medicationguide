@@ -1,6 +1,6 @@
 import pills from '$lib/icons/answers/pills.svg';
 import bloodPressure from '$lib/icons/answers/blood-pressure.svg';
-import depression from '$lib/icons/answers/depression.svg';
+import emojiMedium from '$lib/icons/answers/emoji-medium.svg';
 import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
 
 export const coMedications = {
@@ -8,7 +8,7 @@ export const coMedications = {
 	multipleChoice: true,
 	answers: [
 		{
-			label: 'Antihypertensives',
+			label: 'Blood Pressure',
 			image: bloodPressure,
 			medications: {
 				paracetamol: {
@@ -107,7 +107,7 @@ export const coMedications = {
 		},
 		{
 			label: 'Antidepressants',
-			image: depression,
+			image: emojiMedium,
 			medications: {
 				paracetamol: {
 					value: 1,
@@ -195,7 +195,7 @@ export const coMedications = {
 					value: 1,
 					explanation: {
 						short: 'Safe with steroids',
-						long: `${paracetamolAcetaminophen(true)} is generally considered safe to use alongside steroids, as it does not significantly increase the risk of gastrointestinal complications associated with steroid use. While limited research specifically examines paracetamol-steroid interactions, extensive clinical experience suggests this combination is well-tolerated. ${paracetamolAcetaminophen(true)} has not been shown to induce gastric mucosal damage or hemorrhage when taken as directed, making it the preferred analgesic for patients taking steroids, especially those with existing gastrointestinal pathology or ulceration risk factors.`,
+						long: `${paracetamolAcetaminophen(true)} is generally considered safe to use alongside steroids (glucocorticoids), as it does not significantly increase the risk of gastrointestinal complications associated with steroid use. While limited research specifically examines paracetamol-steroid interactions, extensive clinical experience suggests this combination is well-tolerated. ${paracetamolAcetaminophen(true)} has not been shown to induce gastric mucosal damage or hemorrhage when taken as directed, making it the preferred analgesic for patients taking steroids, especially those with existing gastrointestinal pathology or ulceration risk factors.`,
 						sources: [
 							{
 								label: 'García Rodríguez & Hernández Díaz, 2001',
@@ -212,7 +212,7 @@ export const coMedications = {
 					value: 0,
 					explanation: {
 						short: 'High ulcer risk with steroids',
-						long: "Ibuprofen and steroids should not be used taken concurrently due to an up to 12-times higher risk of gastrointestinal ulcer formation and bleeding. This is due to the synergistic effects of ibuprofen reducing protective substances that maintain stomach integrity (prostaglandins) and steroids impairing the stomach's healing mechanisms, while simultaneously increasing acid production.",
+						long: "Ibuprofen and steroids (glucocorticoids) should not be taken concurrently due to an up to 12-times higher risk of gastrointestinal ulcer formation and bleeding. This is due to the synergistic effects of ibuprofen reducing protective substances that maintain stomach integrity (prostaglandins) and steroids impairing the stomach's healing mechanisms, while simultaneously increasing acid production.",
 						sources: [
 							{
 								label: 'Tseng et al., 2015',
@@ -233,7 +233,7 @@ export const coMedications = {
 					value: 0,
 					explanation: {
 						short: 'High ulcer risk with steroids',
-						long: "Naproxen and steroids should not be used taken concurrently due to an up to 12-times higher risk of gastrointestinal ulcer formation and bleeding. This is due to the synergistic effects of naproxen reducing protective substances that maintain stomach integrity (prostaglandins) and steroids impairing the stomach's healing mechanisms, while simultaneously increasing acid production.",
+						long: "Naproxen and steroids (glucocorticoids) should not be taken concurrently due to an up to 12-times higher risk of gastrointestinal ulcer formation and bleeding. This is due to the synergistic effects of naproxen reducing protective substances that maintain stomach integrity (prostaglandins) and steroids impairing the stomach's healing mechanisms, while simultaneously increasing acid production.",
 						sources: [
 							{
 								label: 'Tseng et al., 2015',
@@ -254,7 +254,7 @@ export const coMedications = {
 					value: 0,
 					explanation: {
 						short: 'High ulcer risk with steroids',
-						long: "Aspirin and steroids should not be used taken concurrently due to an up to 12-times higher risk of gastrointestinal ulcer formation and bleeding. This is due to the synergistic effects of aspirin reducing protective substances that maintain stomach integrity (prostaglandins) and steroids impairing the stomach's healing mechanisms, while simultaneously increasing acid production. Furthermore, aspirin impairs blood clotting function for the entire 7–10-day lifespan of affected platelets. This significantly enhances the risk of serious bleeding complications from any ulcers that do develop, making this combination particularly dangerous for vulnerable patients.",
+						long: "Aspirin and steroids (glucocorticoids) should not be taken concurrently due to an up to 12-times higher risk of gastrointestinal ulcer formation and bleeding. This is due to the synergistic effects of aspirin reducing protective substances that maintain stomach integrity (prostaglandins) and steroids impairing the stomach's healing mechanisms, while simultaneously increasing acid production. Furthermore, aspirin impairs blood clotting function for the entire 7–10-day lifespan of affected platelets. This significantly enhances the risk of serious bleeding complications from any ulcers that do develop, making this combination particularly dangerous for vulnerable patients.",
 						sources: [
 							{
 								label: 'Tseng et al., 2015',

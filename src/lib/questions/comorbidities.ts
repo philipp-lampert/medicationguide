@@ -88,13 +88,13 @@ export const comorbidities = {
 			}
 		},
 		{
-			label: 'Heart failure',
+			label: 'Heart disease',
 			image: heart,
 			medications: {
 				paracetamol: {
 					value: 0.5,
 					explanation: {
-						short: 'Caution in heart failure',
+						short: 'Caution in heart disease',
 						long: `${paracetamolAcetaminophen(true)} is recommended with caution in heart failure patients as it presents a more favorable safety profile compared to NSAIDs. It has minimal effects on prostaglandin synthesis, resulting in less impact on fluid retention and vascular resistance. While ${paracetamolAcetaminophen()} does not significantly interfere with heart failure medications, recent evidence suggests it may still be associated with increased risk of heart failure exacerbation and rehospitalization. Importantly, studies indicate that ${paracetamolAcetaminophen()} use does not appear to increase mortality in heart failure patients, making it the preferred analgesic option when pain relief is necessary.`,
 						sources: [
 							{
@@ -107,8 +107,8 @@ export const comorbidities = {
 				ibuprofen: {
 					value: 0,
 					explanation: {
-						short: 'Contraindicated in heart failure',
-						long: 'Ibuprofen is contraindicated in patients with heart failure due to its potential to significantly worsen cardiac function when taken in higher doses. Through inhibition of prostaglandin synthesis, it promotes sodium and water retention while simultaneously reducing the effectiveness of some heart failure medications. While low-dose, occasional use does not seem to affect mortality, the potential for adverse cardiovascular effects remains significant enough that current clinical guidelines recommend against using ibuprofen in patients with established heart failure. ',
+						short: 'Contraindicated in heart disease',
+						long: 'Ibuprofen is contraindicated in patients with heart disease due to its potential to significantly worsen cardiac function when taken in higher doses. Through inhibition of prostaglandin synthesis, it promotes sodium and water retention while simultaneously reducing the effectiveness of some heart failure medications. While low-dose, occasional use does not seem to affect mortality, the potential for adverse cardiovascular effects remains significant enough that current clinical guidelines recommend against using ibuprofen in patients with established heart failure. ',
 						sources: [
 							{
 								label: 'European Society of Cardiology, 2005',
@@ -128,8 +128,8 @@ export const comorbidities = {
 				naproxen: {
 					value: 0,
 					explanation: {
-						short: 'Contraindicated in heart failure',
-						long: 'Naproxen is contraindicated in patients with heart failure due to its potential to significantly worsen cardiac function when taken in higher doses. Through inhibition of prostaglandin synthesis, it promotes sodium and water retention while simultaneously reducing the effectiveness of some heart failure medications. While low-dose, occasional use does not seem to affect mortality, the potential for adverse cardiovascular effects remains significant enough that current clinical guidelines recommend against using naproxen in patients with established heart failure.',
+						short: 'Contraindicated in heart disease',
+						long: 'Naproxen is contraindicated in patients with heart disease due to its potential to significantly worsen cardiac function when taken in higher doses. Through inhibition of prostaglandin synthesis, it promotes sodium and water retention while simultaneously reducing the effectiveness of some heart failure medications. While low-dose, occasional use does not seem to affect mortality, the potential for adverse cardiovascular effects remains significant enough that current clinical guidelines recommend against using naproxen in patients with established heart failure.',
 						sources: [
 							{
 								label: 'European Society of Cardiology, 2005',
@@ -149,8 +149,8 @@ export const comorbidities = {
 				aspirin: {
 					value: 0.5,
 					explanation: {
-						short: 'Caution in heart failure',
-						long: "Aspirin should be used with caution in heart failure patients due to its complex risk-benefit profile. Unlike ibuprofen or naproxen, aspirin has less pronounced effects on renal function and fluid retention, particularly at lower doses. However, clinical evidence suggests that aspirin may still increase the frequency of heart failure exacerbations and hospitalizations. While aspirin's impact on major cardiovascular events appears neutral in heart failure populations, it does not demonstrate clear benefit either, even in patients with established coronary artery disease.",
+						short: 'Caution in heart disease',
+						long: "Aspirin should be used with caution in heart disease patients due to its complex risk-benefit profile. Unlike ibuprofen or naproxen, aspirin has less pronounced effects on renal function and fluid retention, particularly at lower doses. However, clinical evidence suggests that aspirin may still increase the frequency of heart failure exacerbations and hospitalizations. While aspirin's impact on major cardiovascular events appears neutral in heart failure populations, it does not demonstrate clear benefit either, even in patients with established coronary artery disease.",
 						sources: [
 							{
 								label: 'Massie, 2005',
@@ -217,10 +217,10 @@ export const comorbidities = {
 					}
 				},
 				aspirin: {
-					value: 0.5,
+					value: 0,
 					explanation: {
-						short: 'Caution in liver disease',
-						long: 'Aspirin should be used with caution in patients with liver disease. While recent research has identified potential hepatoprotective effects including a reduced risk for hepatocellular carcinoma (HCC), these findings have minimal relevance when using aspirin as a short-term pain reliever. Moreover, liver disease can significantly alter drug metabolism and increase bleeding risk due to potential coagulopathy and portal hypertension. For patients with compensated, stable liver disease, low-dose aspirin may be considered for short-term pain relief with appropriate monitoring. However, in advanced cirrhosis, alternative pain management strategies are generally preferred.',
+						short: 'Contraindicated in liver disease',
+						long: 'Aspirin should not be used in patients with liver disease. While recent research has identified potential hepatoprotective effects including a reduced risk for hepatocellular carcinoma (HCC), these findings have minimal relevance when using aspirin as a short-term pain reliever. Moreover, liver disease can significantly alter drug metabolism and increase bleeding risk due to potential coagulopathy and portal hypertension. When combined with aspirin’s antithrombotic effects, the bleeding risk becomes even more pronounced.  Though patients with mild, stable liver disease may tolerate short courses of aspirin, it should be completely avoided in cirrhosis as even brief use can destabilize compensated patients.',
 						sources: [
 							{
 								label: 'Elshaer & Lizaola-Mayo, 2024',

@@ -1,5 +1,5 @@
 import inflammationIcon from '$lib/icons/answers/inflammation.svg';
-import noInflammation from '$lib/icons/answers/no-inflammation.svg';
+import no from '$lib/icons/answers/no.svg';
 import { paracetamolAcetaminophen } from '$lib/functions/paracetamol-acetaminophen';
 
 export const inflammation = {
@@ -8,7 +8,7 @@ export const inflammation = {
 	answers: [
 		{
 			label: 'No',
-			image: noInflammation,
+			image: no,
 			medications: {
 				paracetamol: {
 					value: 1
