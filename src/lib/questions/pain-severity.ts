@@ -48,7 +48,7 @@ export const painSeverity = {
 				naproxen: {
 					value: 1,
 					explanation: {
-						short: 'Likely insufficient for severe pain',
+						short: 'Effective pain relief',
 						long: 'Some studies suggest naproxen may provide slightly more effective pain relief than ibuprofen, though evidence remains inconclusive. Its longer half-life offers more sustained effects with less frequent dosing. For moderate pain, naproxen likely provides sufficient pain relief.',
 						sources: [
 							{
