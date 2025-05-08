@@ -7,7 +7,7 @@
 <meta property="og:type" content="website" />
 <meta
 	property="og:description"
-	content="Find the best pain killer for your symptoms and risk factors."
+	content="Find the best pain reliever for your symptoms and risk factors."
 />
 <meta property="og:image" content="https://medicationguide.org/logo-social.jpg" />
 <meta property="og:url" content="https://medicationguide.org/quiz" />
