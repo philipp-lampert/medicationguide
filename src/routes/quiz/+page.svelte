@@ -14,9 +14,9 @@
 	import HeadContent from './HeadContent.svelte';
 	import { MEDICATIONS } from './questions';
 	import type { Answer, Explanation, Medication, ValueExplanation } from './questions.ts';
-
-	// Modal
 	import Modal from '$lib/components/Modal.svelte';
+
+	// Modal window state and controls for detailed explanations
 	let modalOpen = $state(false);
 	function openModal() {
 		modalOpen = true;
@@ -24,6 +24,8 @@
 	function closeModal() {
 		modalOpen = false;
 	}
+
+	// State for displaying content within the modal
 	let currentLongExplanation: string = $state('');
 	let currentSources: { label: string; url: string }[] = $state([]);
 
@@ -38,18 +40,20 @@
 		currentSources = sources;
 	}
 
+	// Core quiz progression state
 	let clientHeight: number = $state(0);
 	let currentIndex: number = $state(0);
-	let direction: number = $state(1); // 1: forward, -1: backward
+	let direction: number = $state(1); // Animation direction for question transitions (1: forward, -1: backward)
 
+	// --- Type definitions for structuring medication recommendation data ---
 	type RecommendationCategory = 'positive' | 'neutral' | 'negative';
 	type MedicationRecommendation = Record<RecommendationCategory, Explanation[]>;
 	type MedicationReasons = Record<Medication, MedicationRecommendation>;
 
-	// State management
+	// Stores the user's selected answers for each question
 	let selectedAnswers: { answers: Answer[] }[] = $state([]);
 
-	// Assessment determination functions
+	// --- Answer selection logic ---
 	function isAnswerSelected(answer: Answer): boolean {
 		return questions[currentIndex].multipleChoice === false
 			? selectedAnswers[currentIndex]?.answers[0]?.label === answer.label
@@ -58,6 +62,7 @@
 	}
 
 	function answerSelection(answer: Answer): void {
+		// Handles user answer selection and navigation for single-choice
 		if (!selectedAnswers[currentIndex]) {
 			selectedAnswers[currentIndex] = { answers: [] };
 		}
@@ -69,37 +74,32 @@
 		} else {
 			// For multiple-choice, toggle answer selection
 			const existingAnswerIndex = selectedAnswers[currentIndex].answers.findIndex(
-				(existingAnswer) => JSON.stringify(existingAnswer) === JSON.stringify(answer)
+				(existingAnswer) => existingAnswer.label === answer.label
 			);
 
 			if (existingAnswerIndex >= 0) {
-				// If the answer exists, remove it (deselection)
 				selectedAnswers[currentIndex].answers.splice(existingAnswerIndex, 1);
 			} else {
-				// If the answer does not exist, add it to the array
 				selectedAnswers[currentIndex].answers.push(answer);
 			}
 		}
 	}
 
-	// Therapeutic recommendation generation
+	// --- Derived state: Calculations based on user answers ---
+	// Computes categorized reasons (positive, neutral, negative) for each medication
 	let medicationReasons: MedicationReasons = $derived(
 		MEDICATIONS.reduce((acc, medication) => {
-			// Initialize structure for categorized clinical evidence
 			const userReasons: Record<RecommendationCategory, Explanation[]> = {
 				positive: [],
 				neutral: [],
 				negative: []
 			};
 
-			// Process user's selected answers
 			selectedAnswers.forEach((question) => {
 				question.answers.forEach((answer) => {
 					const medicationData = answer.medications[medication];
-
 					if (medicationData) {
 						const category = categorizeMedicationEffect(medicationData.value);
-
 						if (category && medicationData.explanation?.short) {
 							userReasons[category].push({
 								short: medicationData.explanation.short,
@@ -111,7 +111,6 @@
 				});
 			});
 
-			// Combine with base medication information
 			return {
 				...acc,
 				[medication]: {
@@ -123,15 +122,15 @@
 		}, {} as MedicationReasons)
 	);
 
-	// Classification utility for therapeutic recommendation
 	function categorizeMedicationEffect(value: number): RecommendationCategory | null {
+		// Helper to map score value to a category
 		if (value === 1) return 'positive';
 		if (value === 0.5) return 'neutral';
 		if (value === 0) return 'negative';
 		return null;
 	}
 
-	// Medication efficacy scoring algorithm
+	// Calculates raw scores for each medication based on selected answers
 	let medicationScores: Record<Medication, number> = $derived(
 		MEDICATIONS.reduce(
 			(acc, name) => ({
@@ -146,64 +145,43 @@
 		)
 	);
 
-	// Assessment quantification
 	let numSelectedAnswers = $derived(
 		selectedAnswers.reduce((total, question) => total + (question.answers?.length || 0), 0)
 	);
 
-	// Therapeutic recommendation quantification
-	export function calculatePercentages(): Record<string, number> {
-		const totalScores = Object.entries(medicationScores).reduce(
-			(scores, [medication, score]) => {
-				scores[medication] = score;
-				return scores;
+	// Calculates percentage match for each medication based on scores and number of answers
+	let percentages: Record<string, number> = $derived(
+		MEDICATIONS.reduce(
+			(acc, medication) => {
+				const score = medicationScores[medication] || 0;
+				acc[medication] = numSelectedAnswers > 0 ? (score / numSelectedAnswers) * 100 : 0;
+				return acc;
 			},
 			{} as Record<string, number>
-		);
+		)
+	);
 
-		return Object.entries(totalScores).reduce(
-			(percentages, [medication, totalScore]) => {
-				percentages[medication] = (totalScore / numSelectedAnswers) * 100;
-				return percentages;
-			},
-			{} as Record<string, number>
-		);
-	}
-
-	// Assessment navigation functions
+	// --- Navigation and Quiz Flow Control Functions ---
 	function nextQuestion(): void {
 		currentIndex++;
 		direction = 1;
 	}
 
 	function noneOfTheAbove(): void {
+		// Handles 'None of the above' selection, assigning a default assessment
 		if (!selectedAnswers[currentIndex]) {
 			selectedAnswers[currentIndex] = { answers: [] };
 		}
-
-		// Create default neutral assessment
 		const defaultAssessment: ValueExplanation = {
 			value: 1,
-			explanation: {
-				short: '',
-				long: '',
-				sources: [{ label: '', url: '' }]
-			}
+			explanation: { short: '', long: '', sources: [{ label: '', url: '' }] }
 		};
-
-		// Generate record for all medications
 		const medicationAssessments = Object.fromEntries(
 			MEDICATIONS.map((med) => [med, defaultAssessment])
 		) as Record<Medication, ValueExplanation>;
-
 		selectedAnswers[currentIndex].answers = [
-			{
-				label: 'None of the above',
-				image: '',
-				medications: medicationAssessments
-			}
+			{ label: 'None of the above', image: '', medications: medicationAssessments }
 		];
-
 		nextQuestion();
 	}
 
@@ -255,7 +233,7 @@
 		/>
 	{/if}
 	{#each questions as question, index (index)}
-		{#if index === currentIndex && clientHeight > 0}
+		{#if index === currentIndex}
 			<form
 				style="top: {clientHeight / 1.65}px; transform: translateY(-50%)"
 				class="absolute inset-x-0 mx-auto flex flex-col items-center justify-center gap-8 text-center sm:max-w-4xl md:gap-10 md:py-12"
@@ -276,19 +254,19 @@
 					class:sm:grid-cols-3={question.answers.length === 3}
 					class:sm:grid-cols-4={question.answers.length === 4}
 				>
-					{#each question.answers as answer, index}
+					{#each question.answers as answer, i}
 						<button
 							type="button"
 							onclick={() => answerSelection(answer)}
 							class="
-											 flex h-36 w-36 flex-col items-center justify-center gap-2 rounded-2xl border-2
-											 border-gray-200 bg-gray-50 font-medium text-black [transition:border-color_300ms,background-color_300ms,filter_300ms]
-											hover:border-black hover:bg-white hover:drop-shadow-xl sm:gap-4 md:h-44 md:w-44 md:text-lg
-											{question.answers.length === 3 && index === 2 ? 'col-span-2 sm:col-auto' : ''}
-											{isAnswerSelected(answer)
+                       flex h-36 w-36 flex-col items-center justify-center gap-2 rounded-2xl border-2
+                       border-gray-200 bg-gray-50 font-medium text-black [transition:border-color_300ms,background-color_300ms,filter_300ms]
+                      hover:border-black hover:bg-white hover:drop-shadow-xl sm:gap-4 md:h-44 md:w-44 md:text-lg
+                      {question.answers.length === 3 && i === 2 ? 'col-span-2 sm:col-auto' : ''}
+                      {isAnswerSelected(answer)
 								? 'border-3 border-gray-950 bg-white shadow-inner-strong drop-shadow-none'
 								: ''}
-									"
+                  "
 						>
 							{answer.label}
 							{#if answer.image}
@@ -298,7 +276,6 @@
 					{/each}
 				</div>
 
-				<!-- Navigation Buttons -->
 				<div class="mx-10 flex flex-wrap justify-center gap-x-6 gap-y-1">
 					{#if currentIndex > 0}
 						{@render navButton('Previous', turnAround, goBack)}
@@ -336,7 +313,6 @@
 		{/if}
 	{/each}
 
-	<!-- Results -->
 	{#if currentIndex === questions.length}
 		<div
 			class="flex flex-col items-center gap-8 self-center py-6 sm:gap-10"
@@ -355,7 +331,7 @@
 			<div
 				class="grid w-full grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-2 lg:grid-cols-4 xl:gap-x-12"
 			>
-				{#each Object.entries(calculatePercentages()).sort(([, percentageA], [, percentageB]) => percentageB - percentageA) as [medication, percentage]}
+				{#each Object.entries(percentages).sort(([, percentageA], [, percentageB]) => percentageB - percentageA) as [medication, percentage]}
 					<div class=" flex flex-col gap-2 bg-white text-left">
 						<h2 class="h3 border-b-2">
 							{#if medication === 'paracetamol'}
@@ -368,16 +344,14 @@
 							{(percentage as number).toFixed(0)}% match
 						</div>
 						<div class="flex flex-col gap-2">
-							<!-- Progress Bar -->
 							<div class="h-2 w-full rounded bg-gray-200">
 								<div
 									class="h-full rounded"
 									style="width: {(percentage as number).toFixed(0)}%; 
-						 background-color: hsl({(percentage as number) * 1.2}, 70%, 50%)"
+             background-color: hsl({(percentage as number) * 1.2}, 70%, 50%)"
 								></div>
 							</div>
 
-							<!-- Reasons -->
 							{#snippet reasons(type: RecommendationCategory, color: string, insetColor: string)}
 								{#if medicationReasons[medication as Medication][type].length > 0}
 									<div class="rounded-lg {color} p-1 text-left text-sm font-normal">
