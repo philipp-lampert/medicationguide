@@ -1,5 +1,5 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15368124.svg)](https://doi.org/10.5281/zenodo.15368124)
-[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/philipp-lampert/medicationguide/releases)
+[![Version](https://img.shields.io/badge/version-1.0.1-blue)](https://github.com/philipp-lampert/medicationguide/releases)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 # Medication Guide
