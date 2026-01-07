@@ -43,7 +43,7 @@
 	// Core quiz progression state
 	let clientHeight: number = $state(0);
 	let currentIndex: number = $state(0);
-	let direction: number = $state(1); // Animation direction for question transitions (1: forward, -1: backward)
+	// Animation direction for question transitions (1: forward, -1: backward) - reserved for future use
 
 	// --- Type definitions for structuring medication recommendation data ---
 	type RecommendationCategory = 'positive' | 'neutral' | 'negative';
@@ -70,7 +70,6 @@
 		if (questions[currentIndex].multipleChoice === false) {
 			selectedAnswers[currentIndex].answers = [answer];
 			currentIndex++;
-			direction = 1;
 		} else {
 			// For multiple-choice, toggle answer selection
 			const existingAnswerIndex = selectedAnswers[currentIndex].answers.findIndex(
@@ -164,7 +163,6 @@
 	// --- Navigation and Quiz Flow Control Functions ---
 	function nextQuestion(): void {
 		currentIndex++;
-		direction = 1;
 	}
 
 	function noneOfTheAbove(): void {
@@ -187,7 +185,6 @@
 
 	function goBack(): void {
 		if (currentIndex > 0) {
-			direction = -1;
 			currentIndex--;
 		}
 	}
@@ -210,7 +207,7 @@
 	<button
 		type="button"
 		onclick={action}
-		class="group relative flex flex-row items-center gap-2.5 overflow-hidden bg-white px-0.5 py-0.5 font-medium"
+		class="group relative flex cursor-pointer flex-row items-center gap-2.5 overflow-hidden bg-white px-0.5 py-0.5 font-medium"
 	>
 		<img src={icon} alt={label} class="h-4 pb-0.5" />
 		{label}
@@ -220,7 +217,7 @@
 
 <div
 	bind:clientHeight
-	class="container my-8 flex min-h-[525px] flex-grow justify-center sm:my-12 sm:min-h-[500px]"
+	class="container my-8 flex min-h-[525px] grow justify-center sm:my-12 sm:min-h-[500px]"
 >
 	{#if currentIndex < questions.length}
 		<ProgressBar
@@ -242,7 +239,7 @@
 				onsubmit={nextQuestion}
 			>
 				<div class="flex flex-col gap-2">
-					<h1 class="mx-8 font-mallory text-3xl font-light leading-8 tracking-tight">
+					<h1 class="font-mallory mx-8 text-3xl leading-8 font-light tracking-tight">
 						{question.label}
 					</h1>
 					{#if questions[currentIndex].label === 'multiple-choice'}
@@ -254,17 +251,17 @@
 					class:sm:grid-cols-3={question.answers.length === 3}
 					class:sm:grid-cols-4={question.answers.length === 4}
 				>
-					{#each question.answers as answer, i}
+					{#each question.answers as answer, i (answer.label)}
 						<button
 							type="button"
 							onclick={() => answerSelection(answer)}
 							class="
-                       flex h-36 w-36 flex-col items-center justify-center gap-2 rounded-2xl border-2
+                       flex h-36 w-36 cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2
                        border-gray-200 bg-gray-50 font-medium text-black [transition:border-color_300ms,background-color_300ms,filter_300ms]
                       hover:border-black hover:bg-white hover:drop-shadow-xl sm:gap-4 md:h-44 md:w-44 md:text-lg
                       {question.answers.length === 3 && i === 2 ? 'col-span-2 sm:col-auto' : ''}
                       {isAnswerSelected(answer)
-								? 'border-3 border-gray-950 bg-white shadow-inner-strong drop-shadow-none'
+								? 'shadow-inner-strong border-3 border-gray-950 bg-white drop-shadow-none'
 								: ''}
                   "
 						>
@@ -286,7 +283,7 @@
 						<button
 							type="button"
 							onclick={nextQuestion}
-							class="group relative flex flex-row items-center gap-2 overflow-hidden bg-white px-0.5 py-0.5 font-medium"
+							class="group relative flex cursor-pointer flex-row items-center gap-2 overflow-hidden bg-white px-0.5 py-0.5 font-medium"
 							>{#if currentIndex < questions.length - 1}
 								Next Question
 							{:else}
@@ -301,11 +298,11 @@
 						<button
 							type="button"
 							onclick={noneOfTheAbove}
-							class="group relative flex flex-row items-center gap-2.5 overflow-hidden whitespace-nowrap bg-white px-0.5 py-0.5 font-medium text-green-800"
+							class="group relative flex cursor-pointer flex-row items-center gap-2.5 overflow-hidden bg-white px-0.5 py-0.5 font-medium whitespace-nowrap text-green-800"
 						>
 							None of the above
-							<IconNone classes={'fill-current h-4 pb-0.5'} />
-							<AnimatedUnderline color={'bg-current'} />
+							<IconNone classes="fill-current h-4 pb-0.5" />
+							<AnimatedUnderline color="bg-current" />
 						</button>
 					{/if}
 				</div>
@@ -331,7 +328,7 @@
 			<div
 				class="grid w-full grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-2 lg:grid-cols-4 xl:gap-x-12"
 			>
-				{#each Object.entries(percentages).sort(([, percentageA], [, percentageB]) => percentageB - percentageA) as [medication, percentage]}
+				{#each Object.entries(percentages).sort(([, percentageA], [, percentageB]) => percentageB - percentageA) as [medication, percentage] (medication)}
 					<div class=" flex flex-col gap-2 bg-white text-left">
 						<h2 class="h3 border-b-2">
 							{#if medication === 'paracetamol'}
@@ -344,10 +341,10 @@
 							{(percentage as number).toFixed(0)}% match
 						</div>
 						<div class="flex flex-col gap-2">
-							<div class="h-2 w-full rounded bg-gray-200">
+							<div class="h-2 w-full rounded-sm bg-gray-200">
 								<div
-									class="h-full rounded"
-									style="width: {(percentage as number).toFixed(0)}%; 
+									class="h-full rounded-sm"
+									style="width: {(percentage as number).toFixed(0)}%;
              background-color: hsl({(percentage as number) * 1.2}, 70%, 50%)"
 								></div>
 							</div>
@@ -356,13 +353,14 @@
 								{#if medicationReasons[medication as Medication][type].length > 0}
 									<div class="rounded-lg {color} p-1 text-left text-sm font-normal">
 										<ul class="flex flex-col gap-1">
-											{#each medicationReasons[medication as Medication][type] as reasonInfo}
+											{#each medicationReasons[medication as Medication][type] as reasonInfo, idx (idx)}
 												<li
-													class="rounded-md {insetColor} flex flex-row items-center justify-between gap-2 py-1 pl-2 pr-1"
+													class="rounded-md {insetColor} flex flex-row items-center justify-between gap-2 py-1 pr-1 pl-2"
 												>
 													{reasonInfo.short}
 													{#if reasonInfo.long && reasonInfo.sources.length > 0}
 														<button
+															class="cursor-pointer"
 															onclick={() => {
 																setCurrentExplanationSources(
 																	reasonInfo.long || '',
@@ -400,10 +398,10 @@
 				{currentLongExplanation}
 			</p>
 			<ul class="flex flex-row flex-wrap gap-x-2 gap-y-1.5 text-xs text-gray-500">
-				{#each currentSources as source}
-					<li class="flex-shrink-0">
+				{#each currentSources as source (source.url)}
+					<li class="shrink-0">
 						<a class="text-link group relative text-nowrap" href={source.url} target="_blank"
-							>{source.label}<AnimatedUnderline color={'bg-current'} /></a
+							>{source.label}<AnimatedUnderline color="bg-current" /></a
 						>
 					</li>
 				{/each}

@@ -1,10 +1,55 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import 'tailwindcss';
+@config '../tailwind.config.ts';
+
+@layer base {
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentcolor);
+	}
+}
+
+@utility h1 {
+	@apply font-mallory text-4.5xl lg:text-5.5xl font-medium tracking-tighter md:text-5xl;
+}
+
+@utility h1-legal {
+	@apply mb-2 text-4xl font-medium;
+}
+
+@utility h2 {
+	@apply font-mallory text-3xl font-medium tracking-tight;
+}
+
+@utility h2-legal {
+	@apply h3 mb-4 border-b-2;
+}
+
+@utility h3 {
+	@apply text-xl font-medium;
+}
+
+@utility h3-legal {
+	@apply mt-4 font-medium;
+}
+
+@utility text-link {
+	@apply relative pb-0.75 font-normal underline decoration-slate-200 underline-offset-4;
+}
+
+@utility container {
+	@apply mx-auto max-w-350 px-8 sm:px-16 md:px-16 lg:px-20;
+}
+
+@utility section {
+	@apply my-20 md:my-28 lg:my-32;
+}
 
 @layer base {
 	html {
-		@apply text-left font-retina font-light sm:text-center;
+		@apply font-retina text-left font-light sm:text-center;
 	}
 
 	body {
@@ -12,40 +57,19 @@
 	}
 }
 
-@layer components {
-	.h1 {
-		@apply font-mallory text-4.5xl font-medium tracking-tighter md:text-5xl lg:text-5.5xl;
+/* Custom hover variant for devices with fine pointer (mouse) */
+@media (any-hover: hover) and (any-pointer: fine) {
+	.group:hover .group-hover\:-translate-x-2 {
+		--tw-translate-x: -0.5rem;
+		transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+			skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+			scaleY(var(--tw-scale-y));
 	}
-	.h1-legal {
-		@apply mb-2 text-4xl font-medium;
-	}
-
-	.h2 {
-		@apply font-mallory text-3xl font-medium tracking-tight;
-	}
-
-	.h2-legal {
-		@apply h3 mb-4 border-b-2;
-	}
-
-	.h3 {
-		@apply text-xl font-medium;
-	}
-
-	.h3-legal {
-		@apply mt-4 font-medium;
-	}
-
-	.text-link {
-		@apply relative pb-[3px] font-normal underline decoration-slate-200 underline-offset-4;
-	}
-
-	.container {
-		@apply mx-auto max-w-[1400px] px-8 sm:px-16 md:px-16 lg:px-20;
-	}
-
-	.section {
-		@apply my-20 md:my-28 lg:my-32;
+	.group:hover .group-hover\:translate-x-full {
+		--tw-translate-x: 100%;
+		transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
+			skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
+			scaleY(var(--tw-scale-y));
 	}
 }
 

@@ -36,7 +36,7 @@
 
 {#if isOpen}
 	<div
-		class="fixed inset-0 z-[100] flex h-screen w-screen items-center justify-center bg-black bg-opacity-50"
+		class="fixed inset-0 z-100 flex h-screen w-screen items-center justify-center bg-black/50"
 		onclick={handleOutsideClick}
 		role="presentation"
 	>
@@ -48,13 +48,17 @@
 			tabindex="-1"
 		>
 			<div class="flex items-center justify-end">
-				<button class=" text-gray-400 hover:text-gray-600" onclick={closeModal} aria-label="Close">
+				<button
+					class="cursor-pointer text-gray-400 hover:text-gray-600"
+					onclick={closeModal}
+					aria-label="Close"
+				>
 					<svg class="h-5 w-5" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
 					</svg>
 				</button>
 			</div>
-			<div class="mx-3 mb-2 flex-grow overflow-y-auto sm:mx-5 sm:mb-3">
+			<div class="mx-3 mb-2 grow overflow-y-auto sm:mx-5 sm:mb-3">
 				{@render children()}
 			</div>
 		</div>

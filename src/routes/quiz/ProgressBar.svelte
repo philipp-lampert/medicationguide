@@ -8,11 +8,11 @@
 	out:fade={{ duration: 250 }}
 	in:fade={{ duration: 350, delay: 350 }}
 >
-	{#each questions as _, index}
+	{#each Array(questions.length) as _, index (index)}
 		<div class="flex flex-row items-center">
 			<button
 				aria-label="Go to question"
-				class="rounded-full transition-all duration-500 {selectedAnswers[index] ||
+				class="cursor-pointer rounded-full transition-all duration-500 {selectedAnswers[index] ||
 				currentIndex === index
 					? 'bg-black'
 					: 'bg-gray-300'}

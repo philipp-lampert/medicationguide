@@ -3,25 +3,25 @@
 </script>
 
 <footer class="z-50 bg-white">
-	<div class="mx-auto max-w-[1400px] sm:px-12 md:px-16 lg:px-20">
+	<div class="mx-auto max-w-350 sm:px-12 md:px-16 lg:px-20">
 		<div
 			class="flex h-32 flex-row place-items-stretch border-t-2 border-black py-6 md:h-36 md:py-8 lg:h-40 lg:py-8"
 		>
 			<a href="/" class="ml-5 flex h-full flex-row gap-x-5">
 				<img src="/favicon.svg" alt="Caduceus" class="h-full object-contain" />
 				<div class="grid min-h-full grid-rows-3 items-stretch">
-					<div class="w-[3px] bg-black"></div>
-					<div class="w-[3px] bg-german-red"></div>
-					<div class="w-[3px] bg-german-gold"></div>
+					<div class="w-0.75 bg-black"></div>
+					<div class="bg-german-red w-0.75"></div>
+					<div class="bg-german-gold w-0.75"></div>
 				</div>
 				<div>
-					<span class="duration-50 left-0 block text-left font-normal leading-5">
+					<span class="left-0 block text-left leading-5 font-normal duration-50">
 						Medication<br />Guide
 					</span>
 				</div>
 			</a>
 			<div
-				class="ml-auto mr-5 flex flex-col items-end justify-between self-stretch text-right text-sm text-gray-500"
+				class="mr-5 ml-auto flex flex-col items-end justify-between self-stretch text-right text-sm text-gray-500"
 			>
 				<a class="group relative inline-block w-fit" href="/donate"
 					>Donate<AnimatedUnderline color="bg-gray-400" />

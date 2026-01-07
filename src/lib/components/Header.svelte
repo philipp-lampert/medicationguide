@@ -36,19 +36,19 @@
 				</ul>
 			</nav>
 			<div
-				class="ml-auto mr-2 flex h-full flex-row gap-x-3 transition-all duration-500 sm:mr-5 sm:gap-x-4 md:gap-x-5 {isShrunk
+				class="mr-2 ml-auto flex h-full flex-row gap-x-3 transition-all duration-500 sm:mr-5 sm:gap-x-4 md:gap-x-5 {isShrunk
 					? 'py-2.5 sm:py-3'
 					: 'py-5 sm:py-6 md:py-7'}"
 			>
 				<img src="/favicon.svg" alt="Caduceus" class="h-full object-contain" />
 				<div class="grid min-h-full grid-rows-3 items-stretch">
 					<div class="w-[3px] bg-black"></div>
-					<div class="w-[3px] bg-german-red"></div>
-					<div class="w-[3px] bg-german-gold"></div>
+					<div class="bg-german-red w-[3px]"></div>
+					<div class="bg-german-gold w-[3px]"></div>
 				</div>
 				<div class="relative flex items-center">
 					<span
-						class="duration-50 absolute left-0 top-0 block text-left text-sm font-normal leading-4 transition-all duration-200 md:text-base md:leading-5 {isShrunk
+						class="absolute top-0 left-0 block text-left text-sm leading-4 font-normal transition-all duration-50 duration-200 md:text-base md:leading-5 {isShrunk
 							? 'pointer-events-none opacity-0'
 							: 'pointer-events-auto opacity-100 delay-200'}"
 					>
@@ -62,7 +62,7 @@
 							: 'pointer-events-none opacity-0'}"
 					>
 						Start Quiz
-						<ArrowDoubleRight classes={'h-3'} />
+						<ArrowDoubleRight classes="h-3" />
 						<AnimatedUnderline />
 					</a>
 				</div>

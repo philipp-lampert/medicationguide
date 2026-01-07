@@ -62,7 +62,7 @@
 			</p>
 		</div>
 		<div
-			class="flex flex-row flex-wrap items-center justify-center gap-x-8 gap-y-4 rounded-2xl border-2 border-gray-200 bg-gray-100 py-4 pl-6 pr-4 text-center sm:text-left"
+			class="flex flex-row flex-wrap items-center justify-center gap-x-8 gap-y-4 rounded-2xl border-2 border-gray-200 bg-gray-100 py-4 pr-4 pl-6 text-center sm:text-left"
 		>
 			<p class="text-sm font-normal text-gray-700">
 				Get a personalized recommendation<br />by taking the anonymous quiz.
@@ -70,14 +70,14 @@
 			<a
 				href="/quiz"
 				data-sa-link-event="start_quiz_main"
-				class="group relative inline-flex items-center overflow-hidden rounded-xl bg-gradient-to-tr
-										   from-black to-gray-700 px-12 py-3 text-center font-normal text-white shadow-3xl transition-all
+				class="group shadow-3xl relative inline-flex items-center overflow-hidden rounded-xl
+										   bg-linear-to-tr from-black to-gray-700 px-12 py-3 text-center font-normal text-white transition-all
 											duration-500"
 			>
 				<span
 					class="ease absolute right-0 flex h-10 w-10 translate-x-full transform items-center justify-start duration-500 group-hover:-translate-x-2"
 				>
-					<ArrowDoubleRight classes={'h-4 fill-white'} />
+					<ArrowDoubleRight classes="h-4 fill-white" />
 				</span>
 				<span class="relative w-full transform duration-500 group-hover:-translate-x-2"
 					>Start Quiz</span
@@ -98,7 +98,7 @@
 				</p>
 			</article>
 			<div
-				class="my-6 h-[2px] w-full flex-shrink-0 bg-black lg:mx-12 lg:my-0 lg:h-28 lg:w-[2px] lg:self-center"
+				class="my-6 h-[2px] w-full shrink-0 bg-black lg:mx-12 lg:my-0 lg:h-28 lg:w-[2px] lg:self-center"
 			></div>
 			<article class="flex flex-col gap-1 bg-white text-left lg:w-1/3">
 				<h2 class="h3">2. Algorithmic Analysis</h2>
@@ -109,7 +109,7 @@
 				</p>
 			</article>
 			<div
-				class="my-6 h-[2px] w-full flex-shrink-0 bg-black lg:mx-12 lg:my-0 lg:h-28 lg:w-[2px] lg:self-center"
+				class="my-6 h-[2px] w-full shrink-0 bg-black lg:mx-12 lg:my-0 lg:h-28 lg:w-[2px] lg:self-center"
 			></div>
 			<article class="flex flex-col gap-1 bg-white text-left lg:w-1/3">
 				<h2 class="h3">3. Personalized Results</h2>
@@ -128,7 +128,7 @@
 			class="relative flex h-44 items-center justify-center overflow-hidden sm:h-32 sm:text-center md:h-24"
 		>
 			<div
-				class="absolute left-0 right-0 top-0 z-10 h-4 bg-gradient-to-b from-white to-transparent"
+				class="absolute top-0 right-0 left-0 z-10 h-4 bg-linear-to-b from-white to-transparent"
 			></div>
 			{#if !isAnimating}
 				<h2
@@ -142,7 +142,7 @@
 				</h2>
 			{/if}
 			<div
-				class="absolute bottom-0 left-0 right-0 z-10 h-4 bg-gradient-to-t from-white to-transparent"
+				class="absolute right-0 bottom-0 left-0 z-10 h-4 bg-linear-to-t from-white to-transparent"
 			></div>
 		</div>
 	</div>
