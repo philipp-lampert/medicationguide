@@ -217,7 +217,7 @@
 
 <div
 	bind:clientHeight
-	class="container my-8 flex min-h-131.25 grow justify-center sm:my-12 sm:min-h-125"
+	class="container my-8 flex min-h-[525px] grow justify-center sm:my-12 sm:min-h-[500px]"
 >
 	{#if currentIndex < questions.length}
 		<ProgressBar

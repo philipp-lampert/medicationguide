@@ -16,7 +16,7 @@
 				currentIndex === index
 					? 'bg-black'
 					: 'bg-gray-300'}
-          {currentIndex === index ? 'size-4.5' : 'h-3 w-3'}"
+          {currentIndex === index ? 'h-[18px] w-[18px]' : 'h-3 w-3'}"
 				onclick={() => onclick(index)}
 			></button>
 		</div>

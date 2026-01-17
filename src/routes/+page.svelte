@@ -98,7 +98,7 @@
 				</p>
 			</article>
 			<div
-				class="my-6 h-0.5 w-full shrink-0 bg-black lg:mx-12 lg:my-0 lg:h-28 lg:w-0.5 lg:self-center"
+				class="my-6 h-[2px] w-full shrink-0 bg-black lg:mx-12 lg:my-0 lg:h-28 lg:w-[2px] lg:self-center"
 			></div>
 			<article class="flex flex-col gap-1 bg-white text-left lg:w-1/3">
 				<h2 class="h3">2. Algorithmic Analysis</h2>
@@ -109,7 +109,7 @@
 				</p>
 			</article>
 			<div
-				class="my-6 h-0.5 w-full shrink-0 bg-black lg:mx-12 lg:my-0 lg:h-28 lg:w-0.5 lg:self-center"
+				class="my-6 h-[2px] w-full shrink-0 bg-black lg:mx-12 lg:my-0 lg:h-28 lg:w-[2px] lg:self-center"
 			></div>
 			<article class="flex flex-col gap-1 bg-white text-left lg:w-1/3">
 				<h2 class="h3">3. Personalized Results</h2>
