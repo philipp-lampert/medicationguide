@@ -1,5 +1,19 @@
 @import 'tailwindcss';
-@config '../tailwind.config.ts';
+
+@theme {
+	--font-retina: 'Retina', 'Tahoma Fallback', 'Arial Retina Fallback', sans-serif;
+	--font-mallory: 'Mallory', 'Arial Mallory Fallback', sans-serif;
+
+--letter-spacing-medium-wide: 0.015em;
+
+	--color-german-red: #e2001a;
+	--color-german-gold: #f8d100;
+
+	--border-width-3: 3px;
+
+	--shadow-inner-strong: inset 0 0px 12px 0px rgb(0 0 0 / 0.25);
+	--shadow-3xl: 0 10px 30px 0px rgb(0 0 0 / 0.25);
+}
 
 @layer base {
 	*,
@@ -12,7 +26,7 @@
 }
 
 @utility h1 {
-	@apply font-mallory text-4.5xl lg:text-5.5xl font-medium tracking-tighter md:text-5xl;
+	@apply font-mallory text-[2.625rem]/[3rem] lg:text-[3.375rem]/[1] font-medium tracking-tighter md:text-5xl;
 }
 
 @utility h1-legal {
